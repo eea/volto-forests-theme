@@ -7,7 +7,7 @@ import {
   hasBlocksData,
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { getBasePath } from '~/helpers';
+import { getBasePath } from '@eeacms/volto-forests-theme/helpers';
 
 const NewsItem = ({ item }) => {
   const blocksFieldname = getBlocksFieldname(item);

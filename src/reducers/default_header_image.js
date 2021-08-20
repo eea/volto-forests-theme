@@ -5,7 +5,7 @@
 
 import { map } from 'lodash';
 
-import { GET_DEFAULT_HEADER_IMAGE } from '~/constants/ActionTypes';
+import { GET_DEFAULT_HEADER_IMAGE } from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 const initialState = {
   error: null,

@@ -25,7 +25,7 @@ import {
   // setFolderHeader,
   setFolderTabs,
   getParentFolderData,
-} from '~/actions';
+} from '@eeacms/volto-forests-theme/actions';
 
 import config from '@plone/volto/registry';
 

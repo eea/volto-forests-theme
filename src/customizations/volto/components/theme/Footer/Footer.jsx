@@ -20,7 +20,7 @@ import ccsLogo from './climateChange.svg';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
-import { setCurrentVersion } from '~/actions';
+import { setCurrentVersion } from '@eeacms/volto-forests-theme/actions';
 
 /**
  * Component to display the footer.

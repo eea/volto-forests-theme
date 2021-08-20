@@ -21,11 +21,11 @@ import {
   getBaseUrl,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
-import BasicForestIMG from '~/components/theme/HomepageView/images/1.jpg';
-import ForestCarbonIMG from '~/components/theme/HomepageView/images/2.jpg';
-import ForestIMG from '~/components/theme/HomepageView/images/3.jpg';
-import NatureIMG from '~/components/theme/HomepageView/images/4.jpg';
-import ForestHealthIMG from '~/components/theme/HomepageView/images/5.jpg';
+import BasicForestIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/1.jpg';
+import ForestCarbonIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/2.jpg';
+import ForestIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/3.jpg';
+import NatureIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/4.jpg';
+import ForestHealthIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/5.jpg';
 
 import MosaicView from 'volto-mosaic/components/theme/View';
 

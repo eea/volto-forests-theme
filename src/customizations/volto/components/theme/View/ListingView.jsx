@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 // import { Link } from 'react-router-dom';
-import { getLocalnavigation } from '~/actions';
+import { getLocalnavigation } from '@eeacms/volto-forests-theme/actions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getBaseUrl } from '@plone/volto/helpers'; // , flattenToAppURL

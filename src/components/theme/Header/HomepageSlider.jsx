@@ -7,7 +7,7 @@ import ImageGallery from 'react-image-gallery';
 // import HomepageSliderPlaceholder from './HomepageSliderPlaceholder';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Placeholder } from 'semantic-ui-react';
-import { getBasePath } from '~/helpers';
+import { getBasePath } from '@eeacms/volto-forests-theme/helpers';
 // function SampleNextArrow(props) {
 //   const { onClick } = props;
 //   return (

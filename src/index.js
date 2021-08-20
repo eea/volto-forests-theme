@@ -5,7 +5,7 @@ import { installBlocks } from '@eeacms/volto-plotlycharts';
 import { applyConfig as installFiseFrontend } from './localconfig';
 
 import ObjectListInlineWidget from './components/manage/Widgets/ObjectListInlineWidget';
-import reducers from '~/reducers';
+import reducers from '@eeacms/volto-forests-theme/reducers';
 
 import '@plone/volto/config';
 

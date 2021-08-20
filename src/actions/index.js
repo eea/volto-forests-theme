@@ -8,7 +8,7 @@ import {
   GET_CHART_DATA_FROM_VISUALIZATION,
   GET_NAVSITEMAP,
   SET_CURRENT_VERSION,
-} from '~/constants/ActionTypes';
+} from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 export function setCurrentVersion(payload) {
   return {

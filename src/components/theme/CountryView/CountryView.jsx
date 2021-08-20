@@ -8,7 +8,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { setFolderTabs } from '~/actions';
+import { setFolderTabs } from '@eeacms/volto-forests-theme/actions';
 
 /**
  * Full view component class.
@@ -105,14 +105,14 @@ class FullView extends Component {
 
   renderTabs(nextContent) {
     const items = nextContent ? nextContent.items : this.props.content.items;
-    const content = items.filter(i => i.title !== 'folder_info');
+    const content = items.filter((i) => i.title !== 'folder_info');
     const tabs = (
       <div
         className={
           'ui item stackable tabs menu ' + numberToWord[content.length]
         }
       >
-        {content.map(item => (
+        {content.map((item) => (
           <Link
             key={item.url}
             className="item"
@@ -161,7 +161,4 @@ class FullView extends Component {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(FullView);
+export default connect(null, mapDispatchToProps)(FullView);

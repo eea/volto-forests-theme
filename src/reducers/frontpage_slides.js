@@ -5,7 +5,7 @@
 
 import { map } from 'lodash';
 
-import { GET_FRONTPAGESLIDES } from '~/constants/ActionTypes';
+import { GET_FRONTPAGESLIDES } from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 const initialState = {
   error: null,

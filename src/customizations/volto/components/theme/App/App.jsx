@@ -40,7 +40,10 @@ import {
   getWorkflow,
   purgeMessages,
 } from '@plone/volto/actions';
-import { getFrontpageSlides, getDefaultHeaderImage } from '~/actions';
+import {
+  getFrontpageSlides,
+  getDefaultHeaderImage,
+} from '@eeacms/volto-forests-theme/actions';
 import { getPortlets } from '@eeacms/volto-addons-forest/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';

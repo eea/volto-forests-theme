@@ -10,9 +10,9 @@ import { connect } from 'react-redux';
 
 import { Logo, Navigation, Breadcrumbs } from '@plone/volto/components';
 
-import HeaderImage from '~/components/theme/Header/HeaderImage';
-import HomepageSlider from '~/components/theme/Header/HomepageSlider';
-import MobileSearchWidget from '~/components/theme/MobileSearchWidget/MobileSearchWidget';
+import HeaderImage from '@eeacms/volto-forests-theme/components/theme/Header/HeaderImage';
+import HomepageSlider from '@eeacms/volto-forests-theme/components/theme/Header/HomepageSlider';
+import MobileSearchWidget from '@eeacms/volto-forests-theme/components/theme/MobileSearchWidget/MobileSearchWidget';
 import Sticky from 'react-stickynode';
 import HeaderBackground from './header-bg.png';
 

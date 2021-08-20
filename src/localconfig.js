@@ -2,23 +2,23 @@ import { defineMessages } from 'react-intl';
 
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 
-import CountryView from '~/components/theme/CountryView/CountryView';
+import CountryView from '@eeacms/volto-forests-theme/components/theme/CountryView/CountryView';
 // import CountryPageView from '~/components/theme/CountryPageView/CountryPageView';
 //import HomepageView from '~/components/theme/HomepageView/HomepageView';
-import NewsView from '~/components/theme/NewsView/NewsView';
-import RefreshView from '~/components/theme/RefreshView/RefreshView';
+import NewsView from '@eeacms/volto-forests-theme/components/theme/NewsView/NewsView';
+import RefreshView from '@eeacms/volto-forests-theme/components/theme/RefreshView/RefreshView';
 
 import chartIcon from '@plone/volto/icons/world.svg';
 
-import DefaultViewWide from '~/components/theme/DefaultViewWide/DefaultViewWide';
-import DefaultView from '~/customizations/volto/components/theme/View/DefaultView';
+import DefaultViewWide from '@eeacms/volto-forests-theme/components/theme/DefaultViewWide/DefaultViewWide';
+import DefaultView from '@eeacms/volto-forests-theme/customizations/volto/components/theme/View/DefaultView';
 
-import ForestMetadata from '~/components/theme/Viewlets/ForestMetadata';
+import ForestMetadata from '@eeacms/volto-forests-theme/components/theme/Viewlets/ForestMetadata';
 
-import NavigationBlockEdit from '~/components/manage/Blocks/NavigationBlock/Edit';
-import NavigationBlockView from '~/components/manage/Blocks/NavigationBlock/View';
+import NavigationBlockEdit from '@eeacms/volto-forests-theme/components/manage/Blocks/NavigationBlock/Edit';
+import NavigationBlockView from '@eeacms/volto-forests-theme/components/manage/Blocks/NavigationBlock/View';
 
-import RedirectView from '~/components/theme/View/RedirectView';
+import RedirectView from '@eeacms/volto-forests-theme/components/theme/View/RedirectView';
 import { uniqBy } from 'lodash';
 
 defineMessages({
