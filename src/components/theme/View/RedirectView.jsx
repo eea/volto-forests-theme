@@ -20,6 +20,7 @@ const RedirectView = (props) => {
     if (redirect) {
       history.push(getBasePath(redirectPage));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [redirect]);
 
   if (mounted && !redirect && !props.navigation.loading) {

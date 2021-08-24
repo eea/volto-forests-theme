@@ -35,6 +35,7 @@ const View = ({ content, ...props }) => {
       Object.keys(pagesProperties).map((page) => pagesProperties[page]) || [];
     setPages(newPages);
     setNavigationItems([...(props.navigation?.items || []), ...newPages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.navigation, data.pages?.value]);
 
   if (navigationItems.length < 2 && props.mode !== 'edit') return null;

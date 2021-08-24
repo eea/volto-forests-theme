@@ -15,7 +15,6 @@ import {
   // Legend,
 } from 'recharts';
 
-import { Helmet } from '@plone/volto/helpers';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
@@ -34,21 +33,6 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
-
-const numberToWord = {
-  1: 'one',
-  2: 'two',
-  3: 'three',
-  4: 'four',
-  5: 'five',
-  6: 'six',
-  7: 'seven',
-  8: 'eight',
-  9: 'nine',
-  10: 'ten',
-  11: 'eleven',
-  12: 'twelve',
-};
 
 const mapDispatchToProps = {
   // setFolderHeader,
@@ -172,13 +156,13 @@ class CountryPageView extends Component {
     if (
       JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)
     ) {
-      const title = nextProps.parent.title;
-      const description = nextProps.parent.description;
-      const image =
-        nextProps.parent.items &&
-        nextProps.parent.items.find((c) => c['@type'] === 'Image');
-      const url = image && image.image.download;
-      const inCountryFolder = true;
+      // const title = nextProps.parent.title;
+      // const description = nextProps.parent.description;
+      // const image =
+      //   nextProps.parent.items &&
+      //   nextProps.parent.items.find((c) => c['@type'] === 'Image');
+      // const url = image && image.image.download;
+      // const inCountryFolder = true;
       // this.props.setFolderHeader({ title, description, url, inCountryFolder });
       const pathArr = nextProps.location.pathname.split('/');
       pathArr.length = 3;
@@ -200,15 +184,15 @@ class CountryPageView extends Component {
     const content = this.props.content;
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-    {
-      /*if (!this.tabs) {
-      const pathArr = this.props.location.pathname.split('/');
-      pathArr.length = 3;
-      const path = pathArr.join('/');
-      this.props.getParentFolderData(path);
-    }
-    */
-    }
+    // {
+    //   /*if (!this.tabs) {
+    //   const pathArr = this.props.location.pathname.split('/');
+    //   pathArr.length = 3;
+    //   const path = pathArr.join('/');
+    //   this.props.getParentFolderData(path);
+    // }
+    // */
+    // }
 
     return hasBlocksData(content) ? (
       <div id="page-document" className="ui wrapper">
@@ -369,6 +353,7 @@ class CountryPageView extends Component {
               <div className="column map-container">
                 <div className="map-wrapper">
                   <iframe
+                    title="eea-maps"
                     src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true"
                     width="100%"
                     height="490"

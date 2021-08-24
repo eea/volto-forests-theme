@@ -12,7 +12,6 @@ import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 import config from '@plone/volto/registry';
 import { Helmet } from '@plone/volto/helpers';
-import { Link } from 'react-router-dom';
 
 import { Comments, Tags, Toolbar } from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
@@ -21,13 +20,8 @@ import {
   getBaseUrl,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
-import BasicForestIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/1.jpg';
-import ForestCarbonIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/2.jpg';
-import ForestIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/3.jpg';
-import NatureIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/4.jpg';
-import ForestHealthIMG from '@eeacms/volto-forests-theme/components/theme/HomepageView/images/5.jpg';
 
-import MosaicView from 'volto-mosaic/components/theme/View';
+//import MosaicView from 'volto-mosaic/components/theme/View';
 
 /**
  * View container class.

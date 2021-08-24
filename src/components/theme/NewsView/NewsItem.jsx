@@ -57,10 +57,10 @@ const NewsItem = ({ item }) => {
     return `${da} ${mo} ${ye} ${hh}:${mm} ${tz}`;
   };
 
-  const itemPath = (urlString) => {
-    const url = new URL(urlString);
-    return url.pathname.replace('/fise', '');
-  };
+  // const itemPath = (urlString) => {
+  //   const url = new URL(urlString);
+  //   return url.pathname.replace('/fise', '');
+  // };
   return (
     <article id="page-document" key={item.id}>
       <Link

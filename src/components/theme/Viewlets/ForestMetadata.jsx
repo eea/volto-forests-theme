@@ -3,7 +3,7 @@ import React from 'react';
 import { Portal } from 'react-portal';
 import { Label, Grid } from 'semantic-ui-react';
 
-const ForestMetadata = props => {
+const ForestMetadata = (props) => {
   const {
     nuts_level,
     resource_type,
@@ -30,7 +30,7 @@ const ForestMetadata = props => {
               <div id="forest-metadata-resource_type">
                 <h5>NUTS Level</h5>
                 <div>
-                  {nuts_level.map(el => (
+                  {nuts_level.map((el) => (
                     <Label key={el.token}>{el.title}</Label>
                   ))}
                 </div>
@@ -41,7 +41,7 @@ const ForestMetadata = props => {
               <div id="forest-metadata-geo-coverage">
                 <h5>Geo coverage</h5>
                 <div>
-                  {geo_coverage.map(el => (
+                  {geo_coverage.map((el) => (
                     <Label key={el.token}>{el.title}</Label>
                   ))}
                 </div>
@@ -52,7 +52,7 @@ const ForestMetadata = props => {
               <div id="forest-metadata-topics">
                 <h5>Topics</h5>
                 <div>
-                  {topics.map(el => (
+                  {topics.map((el) => (
                     <Label key={el}>{el}</Label>
                   ))}
                 </div>
@@ -63,7 +63,7 @@ const ForestMetadata = props => {
               <div id="forest-metadata-keywords">
                 <h5>Keywords</h5>
                 <div>
-                  {keywords.map(el => (
+                  {keywords.map((el) => (
                     <Label key={el}>{el}</Label>
                   ))}
                 </div>

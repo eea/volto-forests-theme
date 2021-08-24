@@ -13,7 +13,7 @@ import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container, Pagination } from 'semantic-ui-react';
 import qs from 'query-string';
-import moment from 'moment';
+//import moment from 'moment';
 import { isArray, isObject } from 'lodash';
 import config from '@plone/volto/registry';
 import { Helmet } from '@plone/volto/helpers';

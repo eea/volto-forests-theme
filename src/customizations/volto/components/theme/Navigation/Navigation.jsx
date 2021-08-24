@@ -30,14 +30,14 @@ const messages = defineMessages({
   },
 });
 
-const getChildPath = (parent, child) => {
-  if (!parent && child) return child.url === '' ? '/' : child.url;
-  if (!child) return parent.url === '' ? '/' : parent.url;
-  if (!parent) return '/';
-  if (parent.title === 'Countries' && child.items?.length > 0)
-    return child.items[0].url === '' ? '/' : child.items[0].url;
-  return child.url === '' ? '/' : child.url;
-};
+// const getChildPath = (parent, child) => {
+//   if (!parent && child) return child.url === '' ? '/' : child.url;
+//   if (!child) return parent.url === '' ? '/' : parent.url;
+//   if (!parent) return '/';
+//   if (parent.title === 'Countries' && child.items?.length > 0)
+//     return child.items[0].url === '' ? '/' : child.items[0].url;
+//   return child.url === '' ? '/' : child.url;
+// };
 
 /**
  * Navigation container class.

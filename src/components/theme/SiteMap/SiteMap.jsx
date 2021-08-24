@@ -6,7 +6,7 @@ import { asyncConnect } from 'redux-connect';
 import { Link } from 'react-router-dom';
 
 import { getBaseUrl } from '@plone/volto/helpers';
-import { getNavigation } from '@plone/volto/actions';
+
 import { getNavSiteMap } from '@eeacms/volto-forests-theme/actions';
 
 /**

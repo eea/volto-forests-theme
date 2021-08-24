@@ -3,9 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
-
-import { Footer } from '@plone/volto/components';
+import { Component } from 'react';
 
 class App extends Component {
   render() {
