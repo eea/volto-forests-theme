@@ -16,6 +16,12 @@
     "type": "git",
     "url": "git@github.com:eea/volto-forests-theme.git"
   },
+  "addons": [
+    "@eeacms/volto-plotlycharts",
+    "@eeacms/volto-addons-forest",
+    "@eeacms/volto-datablocks",
+    "@eeacms/volto-matomo"
+  ],
   "dependencies": {
     "@blueprintjs/core": "^3.30.0",
     "@blueprintjs/icons": "^3.19.0",
