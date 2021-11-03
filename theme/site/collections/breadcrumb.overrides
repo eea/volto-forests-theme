@@ -1,0 +1,45 @@
+/*******************************
+        Theme Overrides
+*******************************/
+
+.ui.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  .home.icon {
+    margin-right: 0;
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+body
+  .ui.vertical.segment.breadcrumbs:not(aside .ui.vertical.segment.breadcrumbs) {
+  position: absolute !important;
+  z-index: 1;
+  top: 0;
+  overflow: hidden;
+  padding: 0;
+  border-bottom: none;
+  background: none;
+  border-top-left-radius: 1rem;
+
+  .ui.container {
+    padding: 0;
+  }
+
+  .breadcrumb {
+    display: inline-flex;
+    padding: 5px;
+    background: black;
+  }
+
+  .ui.breadcrumb .section {
+    color: white;
+  }
+}
