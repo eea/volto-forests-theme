@@ -1,4 +1,3 @@
-/* eslint-disable  */
 <div className="country-report-section">
   <div className="ui stackable two column grid">
     <div className="column">

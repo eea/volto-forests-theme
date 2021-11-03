@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import 'react-image-gallery/styles/css/image-gallery.css';
+import "react-image-gallery/styles/css/image-gallery.css";
 
-import ImageGallery from 'react-image-gallery';
+import ImageGallery from "react-image-gallery";
 // import HomepageSliderPlaceholder from './HomepageSliderPlaceholder';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Placeholder } from 'semantic-ui-react';
-import { getBasePath } from '@eeacms/volto-forests-theme/helpers';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Placeholder } from "semantic-ui-react";
+import { getBasePath } from "@eeacms/volto-forests-theme/helpers";
 // function SampleNextArrow(props) {
 //   const { onClick } = props;
 //   return (
@@ -53,7 +53,7 @@ class HomepageSlider extends Component {
         title: PropTypes.string,
         url: PropTypes.string,
         description: PropTypes.string,
-      }),
+      })
     ),
   };
 
@@ -87,7 +87,7 @@ class HomepageSlider extends Component {
             // delayTime={1900}
             // src={item.original} // use normal <img> attributes as props
             style={{ backgroundImage: `url(${getBasePath(item.original)})` }}
-            width={'100%'}
+            width={"100%"}
             visibleByDefault={true}
             placeholder={
               <Placeholder>
@@ -105,8 +105,8 @@ class HomepageSlider extends Component {
 
         <div className="slide-overlay" />
         <div className="slide-body">
-          <div className="slide-title">{item.title || ''}</div>
-          <div className="slide-description">{item.description || ''}</div>
+          <div className="slide-title">{item.title || ""}</div>
+          <div className="slide-description">{item.description || ""}</div>
         </div>
       </div>
     );

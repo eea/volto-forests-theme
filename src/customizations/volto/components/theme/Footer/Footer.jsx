@@ -3,24 +3,24 @@
  * @module components/theme/Footer/Footer
  */
 
-import React from 'react';
-import { Container, Segment, Grid } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import footerImage from './footer.png';
-import ecLogo from './ec.png';
-import eeaLogo from './eea.png';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Placeholder } from 'semantic-ui-react';
-import climateAdaptLogo from './climateadapt.svg';
-import landMonitoringLogo from './landmonitoringservice.png';
-import biseLogo from './biselogo.png';
-import wiseLogo from './WISE.png';
-import ccsLogo from './climateChange.svg';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import config from '@plone/volto/registry';
-import { setCurrentVersion } from '@eeacms/volto-forests-theme/actions';
+import React from "react";
+import { Container, Segment, Grid } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { FormattedMessage, injectIntl } from "react-intl";
+import footerImage from "./footer.png";
+import ecLogo from "./ec.png";
+import eeaLogo from "./eea.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Placeholder } from "semantic-ui-react";
+import climateAdaptLogo from "./climateadapt.svg";
+import landMonitoringLogo from "./landmonitoringservice.png";
+import biseLogo from "./biselogo.png";
+import wiseLogo from "./WISE.png";
+import ccsLogo from "./climateChange.svg";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import config from "@plone/volto/registry";
+import { setCurrentVersion } from "@eeacms/volto-forests-theme/actions";
 
 /**
  * Component to display the footer.
@@ -28,17 +28,21 @@ import { setCurrentVersion } from '@eeacms/volto-forests-theme/actions';
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component
  */
-const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
+const Footer = ({
+  intl,
+  token,
+  setCurrentVersion,
+  currentVersion,
+  navItems,
+}) => {
   const { settings } = config;
-  const dtf = new Intl.DateTimeFormat('en', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
+  const dtf = new Intl.DateTimeFormat("en", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
   });
   const published_at = dtf.format(
-    new Date(
-      settings.frontendMeta?.published_at || currentVersion.published_at,
-    ),
+    new Date(settings.frontendMeta?.published_at || currentVersion.published_at)
   );
   const version_url = settings.frontendMeta.version_url
     ? settings.frontendMeta.version_url
@@ -53,6 +57,14 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
     settings.frontendMeta.version
   ) {
     setCurrentVersion(settings.frontendMeta);
+  }
+
+  const aboutUsItems = navItems.filter((item) =>
+    item.title?.toLowerCase().includes("about us")
+  );
+  let aboutUsItem;
+  if (aboutUsItems.length > 0) {
+    aboutUsItem = aboutUsItems[0];
   }
 
   return (
@@ -92,9 +104,16 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                   Contact us
                 </a>
               </li>
+              {aboutUsItem !== undefined && (
+                <li>
+                  <a className="item separated" href={aboutUsItem.url}>
+                    {aboutUsItem.title}
+                  </a>
+                </li>
+              )}
               <li>
                 <a
-                  className={`item ${token ? '' : 'separated'}`}
+                  className={`item ${token ? "" : "separated"}`}
                   href={`https://status.eea.europa.eu/`}
                   target="blank"
                 >
@@ -110,7 +129,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
               )}
             </ul>
             <p className="release-info">
-              Software version{' '}
+              Software version{" "}
               <a rel="noreferrer" target="_blank" href={version_url}>
                 {version}
               </a>
@@ -122,7 +141,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
               <b>About</b>
               <p>
                 FISE - Forest Information System for Europe is a forest
-                knowledge base in support of the EU Forest Strategy.{' '}
+                knowledge base in support of the EU Forest Strategy.{" "}
               </p>
             </Grid.Column>
 
@@ -142,7 +161,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={ecLogo}
                     alt="European Commission"
                     title="European Commission"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -164,7 +183,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={eeaLogo}
                     alt="European Environment Agency"
                     title="European Environment Agency"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -191,7 +210,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={climateAdaptLogo}
                     alt="Climate Adapt"
                     title="Climate Adapt"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -213,7 +232,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={biseLogo}
                     alt="Biodiversity Information Sistems for Europe"
                     title="Biodiversity Information Sistems for Europe"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -236,7 +255,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={wiseLogo}
                     alt="Water Information System for Europe"
                     title="Water Information System for Europe"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -259,7 +278,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={landMonitoringLogo}
                     alt="Land Monitoring Service"
                     title="Land Monitoring Service"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -281,7 +300,7 @@ const Footer = ({ intl, token, setCurrentVersion, currentVersion }) => {
                     src={ccsLogo}
                     alt="Climate Change Service"
                     title="Climate Change Service"
-                    width={'100%'}
+                    width={"100%"}
                     visibleByDefault={true}
                     placeholder={
                       <Placeholder>
@@ -315,7 +334,8 @@ export default compose(
     (state) => ({
       token: state.userSession.token,
       currentVersion: state.current_version?.items,
+      navItems: state.navigation.items,
     }),
-    { setCurrentVersion },
-  ),
+    { setCurrentVersion }
+  )
 )(Footer);

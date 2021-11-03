@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 const RefreshView = () => {
   if (__SERVER__) {
     return '';

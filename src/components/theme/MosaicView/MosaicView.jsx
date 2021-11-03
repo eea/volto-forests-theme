@@ -47,6 +47,7 @@ class MosaicView extends Component {
     super(props);
 
     let content = props.content;
+    console.log('content', content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
     let layout = content[blocksLayoutFieldname].layout;
@@ -56,23 +57,36 @@ class MosaicView extends Component {
         currentNode: layout,
       };
     }
+
+    console.log('This.state in constructor', this.state, content);
   }
 
   createNode = () => {
     // this.onAddBlock('text', 0);
+    console.log('Called createNode');
   };
 
   onChange = (currentNode) => {
     this.setState({ currentNode });
   };
 
-  onRelease = (currentNode) => {};
+  onRelease = (currentNode) => {
+    console.log('Mosaic.onRelease():', currentNode);
+  };
 
   renderBlock(blockid) {
     const content = this.props.content;
     const blocksFieldname = getBlocksFieldname(content);
     const availableBlocks = content[blocksFieldname];
     const blocktype = availableBlocks[blockid]['@type'];
+
+    console.log(
+      'Rendering block:',
+      blockid,
+      blocktype,
+      blocksFieldname,
+      content,
+    );
 
     let Block = null;
     Block = config.blocks.defaultBlocksViewMap[blocktype];
@@ -92,6 +106,7 @@ class MosaicView extends Component {
 
   render() {
     const content = this.props.content;
+    console.log('This.state in render: ', this.state);
 
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
     const height = content[blocksLayoutFieldname].layout_height || 500;

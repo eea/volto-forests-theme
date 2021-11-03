@@ -4,40 +4,40 @@
  * @module components/theme/Navigation/Navigation
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { isMatch } from 'lodash';
-import { compose } from 'redux';
-import { Link } from 'react-router-dom';
-import { defineMessages, injectIntl } from 'react-intl';
-import { Menu, Dropdown } from 'semantic-ui-react';
-import cx from 'classnames';
-import { getBasePath } from '@eeacms/volto-forests-theme/helpers';
-import SearchBlock from '@eeacms/volto-addons-forest/SearchBlock/View';
-import { Icon } from '@plone/volto/components';
-import zoomSVG from '@plone/volto/icons/zoom.svg';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { isMatch } from "lodash";
+import { compose } from "redux";
+import { Link } from "react-router-dom";
+import { defineMessages, injectIntl } from "react-intl";
+import { Menu, Dropdown } from "semantic-ui-react";
+import cx from "classnames";
+import { getBasePath } from "@eeacms/volto-forests-theme/helpers";
+import SearchBlock from "@eeacms/volto-addons-forest/SearchBlock/View";
+import { Icon } from "@plone/volto/components";
+import zoomSVG from "@plone/volto/icons/zoom.svg";
 
-import config from '@plone/volto/registry';
+import config from "@plone/volto/registry";
 
 const messages = defineMessages({
   closeMobileMenu: {
-    id: 'Close menu',
-    defaultMessage: 'Close menu',
+    id: "Close menu",
+    defaultMessage: "Close menu",
   },
   openMobileMenu: {
-    id: 'Open menu',
-    defaultMessage: 'Open menu',
+    id: "Open menu",
+    defaultMessage: "Open menu",
   },
 });
 
-// const getChildPath = (parent, child) => {
-//   if (!parent && child) return child.url === '' ? '/' : child.url;
-//   if (!child) return parent.url === '' ? '/' : parent.url;
-//   if (!parent) return '/';
-//   if (parent.title === 'Countries' && child.items?.length > 0)
-//     return child.items[0].url === '' ? '/' : child.items[0].url;
-//   return child.url === '' ? '/' : child.url;
-// };
+const getChildPath = (parent, child) => {
+  if (!parent && child) return child.url === "" ? "/" : child.url;
+  if (!child) return parent.url === "" ? "/" : parent.url;
+  if (!parent) return "/";
+  if (parent.title === "Countries" && child.items?.length > 0)
+    return child.items[0].url === "" ? "/" : child.items[0].url;
+  return child.url === "" ? "/" : child.url;
+};
 
 /**
  * Navigation container class.
@@ -73,6 +73,10 @@ class Navigation extends Component {
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.toggleMobileSearch = this.toggleMobileSearch.bind(this);
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
+    this.handleSearchClose = this.handleSearchClose.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+
+    this.searchBarRef = React.createRef();
     this.state = {
       isMobileMenuOpen: false,
       tappedMenu: null,
@@ -99,6 +103,7 @@ class Navigation extends Component {
     if (nextProps.pathname !== this.props.pathname) {
       // this.props.getNavigation(getBaseUrl(nextProps.pathname), 2);
       this.closeMobileMenu();
+      // this.handleSearchClose();
     }
   }
 
@@ -110,15 +115,40 @@ class Navigation extends Component {
    */
   isActive(url) {
     return (
-      (url === '' && this.props.pathname === '/') ||
-      (url !== '' && isMatch(this.props.pathname.split('/'), url.split('/')))
+      (url === "" && this.props.pathname === "/") ||
+      (url !== "" && isMatch(this.props.pathname.split("/"), url.split("/")))
     );
   }
 
   componentDidUpdate(nextProps) {
     // this hack prevents menu from staying open on route change
-    if (__CLIENT__ && document.querySelector('body')) {
-      document.querySelector('body').click();
+    if (__CLIENT__ && document.querySelector("body")) {
+      document.querySelector("body").click();
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside, false);
+  }
+
+  handleClickOutside(e) {
+    if (this.searchBarRef && !this.searchBarRef.current.contains(e.target)) {
+      this.handleSearchClose();
+    }
+  }
+
+  /**
+   * Close mobile menu
+   * @method handleSearchClose
+   * @returns {undefined}
+   */
+  handleSearchClose() {
+    if (this.state.isMobileSearchOpen) {
+      this.setState({ isMobileSearchOpen: false });
     }
   }
 
@@ -150,7 +180,7 @@ class Navigation extends Component {
   formatNavUrl = (nav) => {
     return nav.map((navItem) => ({
       ...navItem,
-      url: navItem.url ? getBasePath(navItem.url) : '',
+      url: navItem.url ? getBasePath(navItem.url) : "",
       items: navItem.items ? this.formatNavUrl(navItem.items) : false,
     }));
   };
@@ -159,20 +189,22 @@ class Navigation extends Component {
     const navigation = this.formatNavUrl(
       this.props.navigation.filter(
         (item) =>
-          !['header', 'head', 'footer'].includes(item.title?.toLowerCase()),
-      ),
+          !["header", "head", "footer", "about us"].includes(
+            item.title?.toLowerCase()
+          )
+      )
     );
     // return <div>{JSON.stringify(this.props.navigation)}</div>
     const pathName = this.props.pathname;
-    const hideSearch = ['/header', '/head', '/footer'].includes(pathName);
+    const hideSearch = ["/header", "/head", "/footer"].includes(pathName);
 
     return (
       <nav className="navigation">
         <div className="mobile-nav-wrapper">
-          <div className="hamburger-wrapper computer hidden large screen hidden widescreen hidden">
+          <div className="hamburger-wrapper mobile only">
             <button
-              className={cx('hamburger hamburger--collapse', {
-                'is-active': this.state.isMobileMenuOpen,
+              className={cx("hamburger hamburger--collapse", {
+                "is-active": this.state.isMobileMenuOpen,
               })}
               type="button"
               onClick={this.toggleMobileSearch}
@@ -186,10 +218,10 @@ class Navigation extends Component {
             </button>
           </div>
 
-          <div className="hamburger-wrapper computer hidden large screen hidden widescreen hidden">
+          <div className="hamburger-wrapper mobile only">
             <button
-              className={cx('hamburger hamburger--collapse', {
-                'is-active': this.state.isMobileMenuOpen,
+              className={cx("hamburger hamburger--collapse", {
+                "is-active": this.state.isMobileMenuOpen,
               })}
               aria-label={
                 this.state.isMobileMenuOpen
@@ -218,17 +250,27 @@ class Navigation extends Component {
             </button>
           </div>
         </div>
+        <div className="search-widget smallSearch">
+          <Icon
+            className="searchIcon"
+            onClick={this.toggleMobileSearch}
+            name={zoomSVG}
+            size="32px"
+          />
+        </div>
         <div
           className={
             this.state.isMobileSearchOpen
-              ? 'search open mobileSearch'
-              : 'search computer large screen widescreen only'
+              ? "search-widget open mobileSearch"
+              : "search-widget bigSearch"
           }
+          ref={this.searchBarRef}
         >
           {!hideSearch ? (
             <SearchBlock
+              handleClose={this.handleSearchClose}
               data={{
-                title: { value: 'Search results' },
+                title: { value: "Search results" },
                 query: {
                   value: {
                     properties: {
@@ -238,7 +280,7 @@ class Navigation extends Component {
                     },
                   },
                 },
-                placeholder: { value: 'Search website' },
+                placeholder: { value: "Search website" },
                 searchButton: { value: false },
               }}
             />
@@ -249,9 +291,7 @@ class Navigation extends Component {
           pointing
           secondary
           className={
-            this.state.isMobileMenuOpen
-              ? 'open firstLevel'
-              : 'computer large screen widescreen only'
+            this.state.isMobileMenuOpen ? "open firstLevel" : "mobile hidden"
           }
         >
           {navigation.map((item) =>
@@ -259,8 +299,8 @@ class Navigation extends Component {
               <div
                 className={
                   this.isActive(item.url)
-                    ? 'ui item simple dropdown item menuActive firstLevel'
-                    : 'ui item simple dropdown item firstLevel'
+                    ? "ui item simple dropdown item menuActive firstLevel"
+                    : "ui item simple dropdown item firstLevel"
                 }
                 key={item.url}
               >
@@ -292,9 +332,9 @@ class Navigation extends Component {
                       className="firstLevel"
                       to={
                         item.items && item.items.length
-                          ? ''
-                          : item.url === ''
-                          ? '/'
+                          ? ""
+                          : item.url === ""
+                          ? "/"
                           : item.url
                       }
                       key={item.url}
@@ -309,8 +349,8 @@ class Navigation extends Component {
                       className={`${item.title}--section ${
                         this.state.isMobileMenuOpen &&
                         this.state.tappedMenu === item.url
-                          ? 'hovered'
-                          : ''
+                          ? "hovered"
+                          : ""
                       }`}
                     >
                       {item.items.map((subitem) => (
@@ -319,13 +359,13 @@ class Navigation extends Component {
                           id={subitem.title}
                           key={subitem.url}
                         >
-                          {item.title === 'Countries' &&
-                          subitem.title === 'Regions' ? (
+                          {item.title === "Countries" &&
+                          subitem.title === "Regions" ? (
                             <div
                               className={
                                 this.isActive(subitem.url)
-                                  ? 'item secondLevel menuActive'
-                                  : 'item secondLevel'
+                                  ? "item secondLevel menuActive"
+                                  : "item secondLevel"
                               }
                             >
                               {subitem.title}
@@ -336,29 +376,29 @@ class Navigation extends Component {
                               key={subitem.url}
                               className={
                                 this.isActive(subitem.url)
-                                  ? 'item secondLevel menuActive'
-                                  : 'item secondLevel'
+                                  ? "item secondLevel menuActive"
+                                  : "item secondLevel"
                               }
                             >
                               {subitem.title}
                             </Link>
                           )}
                           {subitem.items &&
-                            subitem.title.toLowerCase() === 'regions' && (
+                            subitem.title.toLowerCase() === "regions" && (
                               <div className="submenu-wrapper">
                                 <div className="submenu">
                                   {subitem.items.map((subsubitem) => (
                                     <Link
                                       to={
-                                        subsubitem.url === ''
-                                          ? '/'
+                                        subsubitem.url === ""
+                                          ? "/"
                                           : subsubitem.url
                                       }
                                       key={subsubitem.url}
                                       className={
                                         this.isActive(subsubitem.url)
-                                          ? 'item thirdLevel menuActive'
-                                          : 'item thirdLevel'
+                                          ? "item thirdLevel menuActive"
+                                          : "item thirdLevel"
                                       }
                                     >
                                       {subsubitem.title}
@@ -371,24 +411,24 @@ class Navigation extends Component {
                       ))}
                     </Dropdown.Menu>
                   ) : (
-                    ''
+                    ""
                   )}
                 </React.Fragment>
               </div>
             ) : (
               <Link
                 // style={{ display: `${__CLIENT__ ? 'block' : 'none'}` }}
-                to={item.url === '' ? '/' : item.url}
+                to={item.url === "" ? "/" : item.url}
                 key={item.url}
                 className={
                   this.isActive(item.url)
-                    ? 'item menuActive firstLevel'
-                    : 'item firstLevel'
+                    ? "item menuActive firstLevel"
+                    : "item firstLevel"
                 }
               >
                 {item.title}
               </Link>
-            ),
+            )
           )}
         </Menu>
       </nav>

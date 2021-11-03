@@ -1,16 +1,16 @@
 /* REACT IMPORTS */
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getBasePath } from '~/helpers';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { getBasePath } from "@eeacms/volto-forests-theme/helpers";
+import { Dimmer, Loader } from "semantic-ui-react";
 
 const RedirectView = (props) => {
   const history = useHistory();
   const [mounted, setMounted] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const currentPage = props.content?.['@id'];
-  const redirectPage = props.content?.items?.[0]?.['@id'];
+  const currentPage = props.content?.["@id"];
+  const redirectPage = props.content?.items?.[0]?.["@id"];
   useEffect(() => {
     setMounted(true);
     /* eslint-disable-next-line */
@@ -19,19 +19,21 @@ const RedirectView = (props) => {
   useEffect(() => {
     if (redirect) {
       history.push(getBasePath(redirectPage));
+      console.log(getBasePath(redirectPage));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [redirect]);
 
-  if (mounted && !redirect && !props.navigation.loading) {
-    if (redirectPage) {
-      const currentPath = getBasePath(currentPage);
-      const redirectPath = getBasePath(redirectPage);
-      if (currentPath !== redirectPath) {
-        setRedirect(true);
+  useEffect(() => {
+    if (mounted && !redirect && !props.navigation.loading) {
+      if (redirectPage) {
+        const currentPath = getBasePath(currentPage);
+        const redirectPath = getBasePath(redirectPage);
+        if (currentPath !== redirectPath) {
+          setRedirect(true);
+        }
       }
     }
-  }
+  }, [mounted, redirectPage]);
 
   return (
     <Dimmer active inverted className="redirect-loader">

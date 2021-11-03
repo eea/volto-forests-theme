@@ -3,25 +3,31 @@
  * @module components/theme/View/View
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Portal } from 'react-portal';
-import { injectIntl } from 'react-intl';
-import qs from 'query-string';
-import config from '@plone/volto/registry';
-import { Helmet } from '@plone/volto/helpers';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { Portal } from "react-portal";
+import { injectIntl } from "react-intl";
+import qs from "query-string";
+import config from "@plone/volto/registry";
+import { Helmet } from "@plone/volto/helpers";
+import { Link } from "react-router-dom";
 
-import { Comments, Tags, Toolbar } from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
+import { Comments, Tags, Toolbar } from "@plone/volto/components";
+import { listActions, getContent } from "@plone/volto/actions";
 import {
   BodyClass,
   getBaseUrl,
   getLayoutFieldname,
-} from '@plone/volto/helpers';
+} from "@plone/volto/helpers";
+import BasicForestIMG from "@eeacms/volto-forests-theme/components/theme/HomepageView/images/1.jpg";
+import ForestCarbonIMG from "@eeacms/volto-forests-theme/components/theme/HomepageView/images/2.jpg";
+import ForestIMG from "@eeacms/volto-forests-theme/components/theme/HomepageView/images/3.jpg";
+import NatureIMG from "@eeacms/volto-forests-theme/components/theme/HomepageView/images/4.jpg";
+import ForestHealthIMG from "@eeacms/volto-forests-theme/components/theme/HomepageView/images/5.jpg";
 
-//import MosaicView from 'volto-mosaic/components/theme/View';
+import MosaicView from "volto-mosaic/components/theme/View";
 
 /**
  * View container class.
@@ -80,7 +86,7 @@ class View extends Component {
       /**
        * Type of the object
        */
-      '@type': PropTypes.string,
+      "@type": PropTypes.string,
       /**
        * Subjects of the object
        */
@@ -120,7 +126,7 @@ class View extends Component {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
-      this.props.versionId,
+      this.props.versionId
     );
   }
 
@@ -135,7 +141,7 @@ class View extends Component {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getContent(
         getBaseUrl(nextProps.pathname),
-        this.props.versionId,
+        this.props.versionId
       );
     }
 
@@ -160,7 +166,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByType = () =>
-    config.views.contentTypesViews[this.props.content['@type']] || null;
+    config.views.contentTypesViews[this.props.content["@type"]] || null;
 
   /**
    * Get view by content layout property
@@ -180,7 +186,7 @@ class View extends Component {
    * @returns {string} Clean displayName (no Connect(...)).
    */
   cleanViewName = (dirtyDisplayName) =>
-    dirtyDisplayName.replace('Connect(', '').replace(')', '').toLowerCase();
+    dirtyDisplayName.replace("Connect(", "").replace(")", "").toLowerCase();
 
   /**
    * Render method.
@@ -194,12 +200,12 @@ class View extends Component {
         // For some reason, while development and if CORS is in place and the
         // requested resource is 404, it returns undefined as status, then the
         // next statement will fail
-        FoundView = config.views.errorViews['404'];
+        FoundView = config.views.errorViews["404"];
       } else {
         FoundView = config.views.errorViews[this.props.error.status.toString()];
       }
       if (!FoundView) {
-        FoundView = config.views.errorViews['404']; // default to 404
+        FoundView = config.views.errorViews["404"]; // default to 404
       }
       return (
         <div id="view">
@@ -214,14 +220,14 @@ class View extends Component {
     return (
       <div id="view">
         {/* Body class if displayName in component is set */}
-        <Helmet title={'FISE'} />
+        <Helmet title={"FISE"} />
         <BodyClass
           className={
             RenderedView.displayName
               ? `view-${this.cleanViewName(
                   RenderedView.displayName
-                    .replace('injectIntl(', '')
-                    .toLowerCase(),
+                    .replace("injectIntl(", "")
+                    .toLowerCase()
                 )}`
               : null
           }
@@ -250,7 +256,7 @@ class View extends Component {
           <Comments pathname={this.props.pathname} />
         )}
 
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+        <Portal node={__CLIENT__ && document.getElementById("toolbar")}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>
       </div>
@@ -274,6 +280,6 @@ export default compose(
     {
       listActions,
       getContent,
-    },
-  ),
+    }
+  )
 )(View);

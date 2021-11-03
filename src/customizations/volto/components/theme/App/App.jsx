@@ -3,25 +3,24 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
-import { matchPath } from 'react-router';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers';
-import { Segment, Container } from 'semantic-ui-react';
-import { renderRoutes } from 'react-router-config';
-import { Slide, ToastContainer, toast } from 'react-toastify';
-import split from 'lodash/split';
-import join from 'lodash/join';
-import trim from 'lodash/trim';
-import cx from 'classnames';
-import config from '@plone/volto/registry';
-import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { asyncConnect } from "@plone/volto/helpers";
+import { Segment, Container } from "semantic-ui-react";
+import { renderRoutes } from "react-router-config";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import split from "lodash/split";
+import join from "lodash/join";
+import trim from "lodash/trim";
+import cx from "classnames";
+import config from "@plone/volto/registry";
+import { PluggablesProvider } from "@plone/volto/components/manage/Pluggable";
 
-import Error from '@plone/volto/error';
+import Error from "@plone/volto/error";
 
-import ViewletsRenderer from '@eeacms/volto-addons-forest/Viewlets/Render';
+import ViewletsRenderer from "@eeacms/volto-addons-forest/Viewlets/Render";
 
 import {
   Footer,
@@ -31,23 +30,23 @@ import {
   AppExtras,
   SkipLinks,
   Messages,
-} from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
+} from "@plone/volto/components";
+import { BodyClass, getBaseUrl, getView, isCmsUi } from "@plone/volto/helpers";
 import {
   getContent,
   getNavigation,
   getTypes,
   getWorkflow,
   purgeMessages,
-} from '@plone/volto/actions';
+} from "@plone/volto/actions";
 import {
   getFrontpageSlides,
   getDefaultHeaderImage,
-} from '@eeacms/volto-forests-theme/actions';
-import { getPortlets } from '@eeacms/volto-addons-forest/actions';
+} from "@eeacms/volto-forests-theme/actions";
+import { getPortlets } from "@eeacms/volto-addons-forest/actions";
 
-import clearSVG from '@plone/volto/icons/clear.svg';
-import * as Sentry from '@sentry/browser';
+import clearSVG from "@plone/volto/icons/clear.svg";
+import * as Sentry from "@sentry/browser";
 
 /**
  * @export
@@ -115,15 +114,40 @@ class App extends Component {
     const headerImage =
       this.props.content?.image?.download || this.props.defaultHeaderImage;
 
+    const bigLeading =
+      this.props.content?.big_leading_image &&
+      this.props.content.big_leading_image !== null
+        ? this.props.content.big_leading_image
+        : false;
+
+    const inheritLeadingData =
+      this.props.content?.inherit_leading_data &&
+      this.props.content.inherit_leading_data !== null
+        ? this.props.content.inherit_leading_data
+        : false;
+
+    const leadNavigation =
+      this.props.content?.lead_navigation &&
+      this.props.content.lead_navigation !== null
+        ? this.props.content.lead_navigation
+        : false;
+
+    const extraHeaderData = {
+      bigLeading,
+      inheritLeadingData,
+      parentData: this.props.content?.parent,
+      leadNavigation,
+    };
+
     return (
       <PluggablesProvider>
         <BodyClass className={`view-${action}view`} />
 
         {/* Body class depending on content type */}
-        {this.props.content && this.props.content['@type'] && (
+        {this.props.content && this.props.content["@type"] && (
           <BodyClass
-            className={`contenttype-${this.props.content['@type']
-              .replace(' ', '-')
+            className={`contenttype-${this.props.content["@type"]
+              .replace(" ", "-")
               .toLowerCase()}`}
           />
         )}
@@ -131,19 +155,20 @@ class App extends Component {
         {/* Body class depending on sections */}
         <BodyClass
           className={cx({
-            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
-              this.props.pathname !== '/',
-            siteroot: this.props.pathname === '/',
-            'is-authenticated': !!this.props.token,
-            'is-anonymous': !this.props.token,
-            'cms-ui': isCmsUI,
-            'public-ui': !isCmsUI,
+            [trim(join(split(this.props.pathname, "/"), " section-"))]:
+              this.props.pathname !== "/",
+            siteroot: this.props.pathname === "/",
+            "is-authenticated": !!this.props.token,
+            "is-anonymous": !this.props.token,
+            "cms-ui": isCmsUI,
+            "public-ui": !isCmsUI,
           })}
         />
         <SkipLinks />
         <Header
           actualPathName={this.props.pathname}
           pathname={path}
+          extraData={extraHeaderData}
           defaultHeaderImage={headerImage}
           navigationItems={this.props.navigation}
           frontpage_slides={this.props.frontpage_slides}
@@ -200,90 +225,71 @@ export const __test__ = connect(
     apiError: state.apierror.error,
     connectionRefused: state.apierror.connectionRefused,
   }),
-  { purgeMessages },
+  { purgeMessages }
 )(App);
 
 export default compose(
   asyncConnect([
     {
-      key: 'content',
-      promise: ({ location, store: { dispatch } }) => {
-        const withFullObjects = matchPath(
-          location.pathname,
-          config.settings.pathsWithFullobjects,
-        )?.isExact;
-        return (
-          __SERVER__ &&
-          dispatch(
-            getContent(
-              getBaseUrl(location.pathname),
-              null,
-              null,
-              null,
-              withFullObjects,
-            ),
-          )
-        );
-      },
+      key: "content",
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
     },
     {
-      key: 'frontpage_slides',
+      key: "frontpage_slides",
       promise: ({ store: { dispatch } }) =>
         __SERVER__ && dispatch(getFrontpageSlides()),
     },
     {
-      key: 'defaultHeaderImage',
+      key: "defaultHeaderImage",
       promise: ({ store: { dispatch } }) =>
         __SERVER__ && dispatch(getDefaultHeaderImage()),
     },
     {
-      key: 'navigation',
+      key: "navigation",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getNavigation(
-            getBaseUrl(location.pathname),
-            config.settings.navDepth,
-          ),
+          getNavigation(getBaseUrl(location.pathname), config.settings.navDepth)
         ),
     },
     {
-      key: 'types',
+      key: "types",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
-      key: 'workflow',
+      key: "workflow",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
     {
-      key: 'portlets',
+      key: "portlets",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getPortlets(getBaseUrl(location.pathname))),
     },
     {
-      key: 'portlets_left',
+      key: "portlets_left",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getPortlets(getBaseUrl(location.pathname), 'plone.leftcolumn'),
+          getPortlets(getBaseUrl(location.pathname), "plone.leftcolumn")
         ),
     },
     {
-      key: 'portlets_right',
+      key: "portlets_right",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getPortlets(getBaseUrl(location.pathname), 'plone.rightcolumn'),
+          getPortlets(getBaseUrl(location.pathname), "plone.rightcolumn")
         ),
     },
     {
-      key: 'portlets_footer',
+      key: "portlets_footer",
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getPortlets(getBaseUrl(location.pathname), 'plone.footerportlets'),
+          getPortlets(getBaseUrl(location.pathname), "plone.footerportlets")
         ),
     },
   ]),
@@ -298,6 +304,6 @@ export default compose(
       frontpage_slides: state.frontpage_slides.items,
       navigation: state.navigation.items,
     }),
-    { purgeMessages },
-  ),
+    { purgeMessages }
+  )
 )(App);

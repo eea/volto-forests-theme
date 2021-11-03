@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { asyncConnect } from 'redux-connect';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { asyncConnect } from "redux-connect";
+import { Link } from "react-router-dom";
 
-import { getBaseUrl } from '@plone/volto/helpers';
-
-import { getNavSiteMap } from '@eeacms/volto-forests-theme/actions';
+import { getBaseUrl } from "@plone/volto/helpers";
+import { getNavigation } from "@plone/volto/actions";
+import { getNavSiteMap } from "@eeacms/volto-forests-theme/actions";
 
 /**
  * @export
@@ -64,18 +64,18 @@ export const __test__ = connect(
     pathname: props.location.pathname,
     content: state.content.data,
   }),
-  {},
+  {}
 )(SiteMap);
 
 export default compose(
   asyncConnect([
     {
-      key: 'navigation',
+      key: "navigation",
       promise: ({ location, store: { dispatch } }) =>
         dispatch(getNavSiteMap(getBaseUrl(location.pathname), 100)),
     },
   ]),
   connect((state, props) => ({ pathname: props.location.pathname }), {
     getNavSiteMap,
-  }),
+  })
 )(SiteMap);

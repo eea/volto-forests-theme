@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
-// import { Link } from 'react-router-dom';
-import { getLocalnavigation } from '@eeacms/volto-forests-theme/actions';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { getBaseUrl } from '@plone/volto/helpers'; // , flattenToAppURL
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "@plone/volto/helpers";
+import { getLocalnavigation } from "@eeacms/volto-forests-theme/actions";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { getBaseUrl } from "@plone/volto/helpers"; // , flattenToAppURL
 
-// import { injectIntl } from 'react-intl'; // defineMessages,
+import { Container, Image } from "semantic-ui-react"; // , Grid
+import { map } from "lodash";
 
-import { Container, Image } from 'semantic-ui-react'; // , Grid
-import { map } from 'lodash';
-
-import config from '@plone/volto/registry';
-import { asyncConnect } from 'redux-connect';
+import config from "@plone/volto/registry";
+import { asyncConnect } from "redux-connect";
 
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '@plone/volto/helpers';
-import { samePath } from '../../../../../helpers';
-import { Dimmer, Loader } from 'semantic-ui-react';
+} from "@plone/volto/helpers";
+import { samePath } from "../../../../../helpers";
+import { Dimmer, Loader } from "semantic-ui-react";
 
 class ListingView extends Component {
   static propTypes = {
@@ -36,59 +33,32 @@ class ListingView extends Component {
       }),
       items: PropTypes.arrayOf(
         PropTypes.shape({
-          '@id': PropTypes.string,
-          '@type': PropTypes.string,
+          "@id": PropTypes.string,
+          "@type": PropTypes.string,
           description: PropTypes.string,
           review_state: PropTypes.string,
           title: PropTypes.string,
           url: PropTypes.string,
-        }),
+        })
       ),
     }).isRequired,
   };
 
-  // constructor(props) {
-  //   super(props);
-  //
-  //   const url = props.content['@id']
-  //     .replace(settings.apiPath, '')
-  //     .replace(settings.internalApiPath, '');
-  //
-  //   // this.props.getLocalnavigation(url);
-  // }
-
-  // componentDidMount() {
-  //   const url = this.props.content['@id']
-  //     .replace(settings.apiPath, '')
-  //     .replace(settings.internalApiPath, '');
-  //
-  //   this.props.getLocalnavigation(url);
-  // }
-  //
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.pathname !== this.props.pathname) {
-  //     const url = this.props.pathname;
-  //     this.props.getLocalnavigation(url);
-  //   }
-  // }
-
   render() {
-    // console.log('asynclocalnav prop', this.props);
     const content = this.props.content;
-    // const intl = this.props.intl;
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
     const localNavigation =
       (this.props.localNavigation &&
         this.props.localNavigation.items &&
         this.props.localNavigation.items.filter(
-          (item) => item.title !== 'Home',
+          (item) => item.title !== "Home"
         )) ||
       [];
 
-    const currentUrl = this.props.content?.['@id'];
+    const currentUrl = this.props.content?.["@id"];
     const shouldRenderRoutes =
-      typeof currentUrl !== 'undefined' &&
+      typeof currentUrl !== "undefined" &&
       samePath(currentUrl, this.props.pathname)
         ? true
         : false;
@@ -105,10 +75,10 @@ class ListingView extends Component {
         {map(content[blocksLayoutFieldname].items, (block) => {
           const Block =
             config.blocks.blocksConfig[
-              content[blocksFieldname]?.[block]?.['@type']
-            ]?.['view'] || null;
+              content[blocksFieldname]?.[block]?.["@type"]
+            ]?.["view"] || null;
           return Block !== null &&
-            content[blocksFieldname][block]['@type'] !== 'title' ? (
+            content[blocksFieldname][block]["@type"] !== "title" ? (
             <Block
               key={block}
               id={block}
@@ -116,22 +86,13 @@ class ListingView extends Component {
               data={content[blocksFieldname][block]}
             />
           ) : (
-            //   <div key={block}>
-            //     {intl.formatMessage(messages.unknownBlock, {
-            //       block: content[blocksFieldname]?.[block]?.['@type'],
-            //     })}
-            //   </div>
-            ''
+            ""
           );
         })}
       </div>
     ) : (
       <Container id="page-document">
         <Helmet title={content.title} />
-        {/* <h1 className="documentFirstHeading">{content.title}</h1>
-              {content.description && (
-                <p className="documentDescription">{content.description}</p>
-              )} */}
         {content.image && (
           <Image
             className="document-image"
@@ -150,7 +111,7 @@ class ListingView extends Component {
             dangerouslySetInnerHTML={{
               __html: content.text.data.replace(
                 /a href="([^"]*\.[^"]*)"/g,
-                `a href="${config.settings.apiPath}$1/download/file"`,
+                `a href="${config.settings.apiPath}$1/download/file"`
               ),
             }}
           />
@@ -164,10 +125,10 @@ class ListingView extends Component {
           {map(content[blocksLayoutFieldname].items, (block) => {
             const Block =
               config.blocks.blocksConfig[
-                content[blocksFieldname]?.[block]?.['@type']
-              ]?.['view'] || null;
+                content[blocksFieldname]?.[block]?.["@type"]
+              ]?.["view"] || null;
             return Block !== null &&
-              content[blocksFieldname][block]['@type'] !== 'title' ? (
+              content[blocksFieldname][block]["@type"] !== "title" ? (
               <Block
                 key={block}
                 id={block}
@@ -175,12 +136,7 @@ class ListingView extends Component {
                 data={content[blocksFieldname][block]}
               />
             ) : (
-              //   <div key={block}>
-              //     {intl.formatMessage(messages.unknownBlock, {
-              //       block: content[blocksFieldname]?.[block]?.['@type'],
-              //     })}
-              //   </div>
-              ''
+              ""
             );
           })}
         </div>
@@ -208,7 +164,7 @@ class ListingView extends Component {
               dangerouslySetInnerHTML={{
                 __html: content.text.data.replace(
                   /a href="([^"]*\.[^"]*)"/g,
-                  `a href="${config.settings.apiPath}$1/download/file"`,
+                  `a href="${config.settings.apiPath}$1/download/file"`
                 ),
               }}
             />
@@ -223,7 +179,7 @@ class ListingView extends Component {
 export default compose(
   asyncConnect([
     {
-      key: 'localnavigation',
+      key: "localnavigation",
       promise: ({ location, store: { content, dispatch } }) =>
         __SERVER__ &&
         dispatch(getLocalnavigation(getBaseUrl(location.pathname))),
@@ -235,6 +191,6 @@ export default compose(
       pathname: props.location.pathname,
       // localnavigation: state.localnavigation,
     }),
-    { getLocalnavigation },
-  ),
+    { getLocalnavigation }
+  )
 )(ListingView);

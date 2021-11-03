@@ -1,4 +1,4 @@
-import { Accordion, Button, Segment, Modal } from 'semantic-ui-react';
+import { Accordion, Button, Segment, Modal, Grid } from 'semantic-ui-react';
 
 import React, { useState } from 'react';
 import { Icon as VoltoIcon, FormFieldWrapper } from '@plone/volto/components';

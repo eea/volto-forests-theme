@@ -3,15 +3,15 @@
  * @module reducers/root
  */
 
-import defaultReducers from '@plone/volto/reducers';
-import frontpage_slides from '@eeacms/volto-forests-theme/reducers/frontpage_slides';
-import folder_header from '@eeacms/volto-forests-theme/reducers/folder_header';
-import folder_tabs from '@eeacms/volto-forests-theme/reducers/folder_tabs';
-import default_header_image from '@eeacms/volto-forests-theme/reducers/default_header_image';
-import parent_folder_data from '@eeacms/volto-forests-theme/reducers/parent_folder_data';
-import localnavigation from '@eeacms/volto-forests-theme/reducers/localnavigation';
-import navSiteMap from '@eeacms/volto-forests-theme/reducers/sitemap';
-import current_version from '@eeacms/volto-forests-theme/reducers/current_version';
+import defaultReducers from "@plone/volto/reducers";
+import frontpage_slides from "@eeacms/volto-forests-theme/reducers/frontpage_slides";
+import folder_header from "@eeacms/volto-forests-theme/reducers/folder_header";
+import folder_tabs from "@eeacms/volto-forests-theme/reducers/folder_tabs";
+import default_header_image from "@eeacms/volto-forests-theme/reducers/default_header_image";
+import parent_folder_data from "@eeacms/volto-forests-theme/reducers/parent_folder_data";
+import localnavigation from "@eeacms/volto-forests-theme/reducers/localnavigation";
+import navSiteMap from "@eeacms/volto-forests-theme/reducers/sitemap";
+import current_version from "@eeacms/volto-forests-theme/reducers/current_version";
 
 /**
  * Root reducer.

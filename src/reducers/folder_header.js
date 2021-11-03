@@ -3,7 +3,7 @@
  * @module reducers/frontpage_slides
  */
 
-import { SET_FOLDER_HEADER } from '@eeacms/volto-forests-theme/constants/ActionTypes';
+import { SET_FOLDER_HEADER } from "@eeacms/volto-forests-theme/constants/ActionTypes";
 
 const initialState = {
   error: null,
@@ -33,7 +33,7 @@ export default function folder_header(state = initialState, action = {}) {
         (action.result.image && action.result.image.download) || null;
       const title = action.result.title || null;
       const description = action.result.description || null;
-      const url = action.result['@id'] || null;
+      const url = action.result["@id"] || null;
       return {
         ...state,
         error: null,

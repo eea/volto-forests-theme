@@ -3,9 +3,9 @@
  * @module reducers/frontpage_slides
  */
 
-import { map } from 'lodash';
+import { map } from "lodash";
 
-import { GET_DEFAULT_HEADER_IMAGE } from '@eeacms/volto-forests-theme/constants/ActionTypes';
+import { GET_DEFAULT_HEADER_IMAGE } from "@eeacms/volto-forests-theme/constants/ActionTypes";
 
 const initialState = {
   error: null,
@@ -23,7 +23,7 @@ const initialState = {
  */
 export default function default_header_image(
   state = initialState,
-  action = {},
+  action = {}
 ) {
   switch (action.type) {
     case `${GET_DEFAULT_HEADER_IMAGE}_PENDING`:

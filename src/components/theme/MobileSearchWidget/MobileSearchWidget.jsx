@@ -12,7 +12,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Popup } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
-
+import Person from './person.svg';
 import { connect } from 'react-redux';
 
 const messages = defineMessages({
@@ -188,7 +188,7 @@ class MobileSearchWidget extends Component {
 }
 
 export default compose(
-  connect((state) => ({
+  connect(state => ({
     token: state.userSession.token,
   })),
   withRouter,

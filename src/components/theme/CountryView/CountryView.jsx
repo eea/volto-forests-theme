@@ -2,13 +2,13 @@
  * Full view component.
  * @module components/theme/View/FullView
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
-import { Link } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { setFolderTabs } from '@eeacms/volto-forests-theme/actions';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "@plone/volto/helpers";
+import { Link } from "react-router-dom";
+import { Container } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { setFolderTabs } from "@eeacms/volto-forests-theme/actions";
 
 /**
  * Full view component class.
@@ -18,18 +18,18 @@ import { setFolderTabs } from '@eeacms/volto-forests-theme/actions';
  */
 
 const numberToWord = {
-  1: 'one',
-  2: 'two',
-  3: 'three',
-  4: 'four',
-  5: 'five',
-  6: 'six',
-  7: 'seven',
-  8: 'eight',
-  9: 'nine',
-  10: 'ten',
-  11: 'eleven',
-  12: 'twelve',
+  1: "one",
+  2: "two",
+  3: "three",
+  4: "four",
+  5: "five",
+  6: "six",
+  7: "seven",
+  8: "eight",
+  9: "nine",
+  10: "ten",
+  11: "eleven",
+  12: "twelve",
 };
 
 const mapDispatchToProps = {
@@ -79,8 +79,8 @@ class FullView extends Component {
           /**
            * Type of the item
            */
-          '@type': PropTypes.string,
-        }),
+          "@type": PropTypes.string,
+        })
       ),
     }).isRequired,
   };
@@ -105,11 +105,11 @@ class FullView extends Component {
 
   renderTabs(nextContent) {
     const items = nextContent ? nextContent.items : this.props.content.items;
-    const content = items.filter((i) => i.title !== 'folder_info');
+    const content = items.filter((i) => i.title !== "folder_info");
     const tabs = (
       <div
         className={
-          'ui item stackable tabs menu ' + numberToWord[content.length]
+          "ui item stackable tabs menu " + numberToWord[content.length]
         }
       >
         {content.map((item) => (
@@ -117,7 +117,7 @@ class FullView extends Component {
             key={item.url}
             className="item"
             to={item.url}
-            title={item['@type']}
+            title={item["@type"]}
           >
             {item.title}
           </Link>
