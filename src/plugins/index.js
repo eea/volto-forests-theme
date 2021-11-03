@@ -1,10 +1,7 @@
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
 module.exports = function myRazzlePlugin(config, env, webpack, options) {
-  const { target, dev } = env;
-
-  const stats = `bundle-stats-${target}`.json;
-  const report = `bundle-stats-${target}`.html;
+  const { dev } = env;
 
   const webpackConfig = !dev
     ? {

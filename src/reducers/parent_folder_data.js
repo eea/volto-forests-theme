@@ -3,7 +3,7 @@
  * @module reducers/frontpage_slides
  */
 
-import { GET_PARENT_FOLDER_DATA } from "@eeacms/volto-forests-theme/constants/ActionTypes";
+import { GET_PARENT_FOLDER_DATA } from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 const initialState = {
   error: null,

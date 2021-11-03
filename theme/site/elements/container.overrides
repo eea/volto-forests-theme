@@ -2,8 +2,8 @@
          Theme Overrides
 *******************************/
 
-@toolbarWidth : 80px;
-@sidebarWidth : 375px;
+@toolbarWidth: 80px;
+@sidebarWidth: 375px;
 @collapsedWidth: 20px;
 
 /* All Sizes */
@@ -15,30 +15,29 @@
 .contentWidthMedia(@width, @gutter, @offset) {
   .ui.container {
     width: 100% !important;
-    margin-right: @gutter  !important;
-    margin-left: @gutter  !important;
-    padding-left: 2rem;
     padding-right: 2rem;
+    padding-left: 2rem;
+    margin-right: @gutter !important;
+    margin-left: @gutter !important;
   }
 
   .drag.handle.wrapper {
-    margin-left: @offset  !important;
+    margin-left: @offset !important;
   }
 
   .block .delete-button {
-    margin-right: @offset  !important;
+    margin-right: @offset !important;
   }
 }
 
 // ~768
 .contentWidth(@offset) {
-
   @media only screen and (max-width: @largestMobileScreen + @offset) {
     .contentWidthMedia(@mobileWidth, @mobileGutter, -12px);
 
     .ui.container {
-      padding-left: 0 !important;
       padding-right: 0 !important;
+      padding-left: 0 !important;
     }
 
     .nav-actions {
@@ -47,10 +46,9 @@
       padding-right: 0;
     }
 
-
     .thematic-areas {
-      margin-left: 0;
       margin-right: 0;
+      margin-left: 0;
     }
 
     .sticky-outer-wrapper.active {
@@ -65,7 +63,6 @@
     // .image-gallery-right-nav {
     //   bottom: 0 !important;
     // }
-
 
     .searchbox {
       svg,
@@ -87,17 +84,14 @@
     }
 
     .header .nav-actions {
-      bottom: 11px;
       top: unset;
+      bottom: 11px;
     }
-
   }
-
 
   // 1200
   @media (max-width: @largestTabletScreen + @offset) {
     .contentWidthMedia(@tabletWidth, @tabletGutter, -30px);
-
 
     .slider-wrapper .slider-slide .slide-img {
       height: 550px;
@@ -118,10 +112,8 @@
       }
     }
 
-
     .footerWrapper {
       .ui.grid {
-
         margin: 0;
       }
     }
@@ -135,15 +127,15 @@
     }
 
     .image-gallery-left-nav {
-      left: unset;
       right: 5rem;
-      bottom: -3.5rem!important;
+      bottom: -3.5rem !important;
+      left: unset;
     }
 
     .image-gallery-right-nav {
-      left: unset;
       right: 1rem;
-      bottom: -3.5rem!important;
+      bottom: -3.5rem !important;
+      left: unset;
     }
 
     .searchInput {
@@ -155,8 +147,8 @@
     }
 
     .logo-nav-wrapper {
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
       .logo {
         flex-grow: 1;
@@ -170,7 +162,7 @@
         background: transparent;
 
         &.show {
-          background: #F1F0EE;
+          background: #f1f0ee;
         }
       }
     }
@@ -191,66 +183,49 @@
 
     .ui.pointing.secondary.stackable.open.menu {
       position: absolute;
-      background: white;
+      right: 0;
       left: 0;
       display: flex;
       flex-direction: column;
-      right: 0;
-      box-shadow: 1px 1px 3px #13131361;
       margin-top: 17px;
+      background: white;
+      box-shadow: 1px 1px 3px #13131361;
 
-      >.item.firstLevel {
+      > .item.firstLevel {
         width: 100%;
-        margin-right: 0 !important;
         flex-direction: column;
-        text-align: left;
         align-items: flex-start;
+        margin-right: 0 !important;
+        text-align: left;
 
-        >a {
+        > a {
           width: 100%;
         }
 
         &:hover {
-          >.menu {
+          > .menu {
             position: relative;
           }
         }
       }
     }
-
   }
-
-
 
   // 1600
 
   @media (max-width: @largestSmallMonitor + @offset) {
     .contentWidthMedia(@computerWidth, @computerGutter, -30px);
-
   }
-
 
   //  1200+
 
   @media only screen and (max-width: @largeMonitorBreakpoint + @offset) {
     .contentWidthMedia(@largeMonitorWidth, @largeMonitorGutter, -30px);
-
   }
-
-
-
-
 
   @media only screen and (max-width: @widescreenMonitorBreakpoint + @offset) {
     .contentWidthMedia(@widescreenMonitorWidth, @largeMonitorGutter, -30px);
-
-
   }
-
-
-
-
-
 
   // ONLY STUFF
   @media only screen and (max-width: @largestMobileScreen + @offset) {
@@ -278,8 +253,6 @@
       display: none !important;
     }
   }
-
-
 
   @media only screen and (min-width: @computerBreakpoint + @offset) and (max-width: @largestSmallMonitor + @offset) {
     .contentWidthMedia(@computerWidth, @computerGutter, -30px);
@@ -315,39 +288,32 @@ body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-si
 body.has-toolbar:not(.has-sidebar):not(.has-sidebar-collapsed) {
   // .contentWidth(@toolbarWidth);
   .contentWidth(0);
-
 }
 
 body.has-toolbar.has-sidebar {
   // .contentWidth(@toolbarWidth + @sidebarWidth);
   .contentWidth(0);
-
 }
 
 body.has-toolbar.has-sidebar-collapsed {
   // .contentWidth(@toolbarWidth + @collapsedWidth);
   .contentWidth(0);
-
 }
 
 body.has-toolbar-collapsed:not(.has-sidebar):not(.has-sidebar-collapsed) {
   // .contentWidth(@collapsedWidth);
   .contentWidth(0);
-
 }
 
 body.has-toolbar-collapsed.has-sidebar {
   // .contentWidth(@collapsedWidth + @sidebarWidth);
   .contentWidth(0);
-
 }
 
 body.has-toolbar-collapsed.has-sidebar-collapsed {
   // .contentWidth(@collapsedWidth + @collapsedWidth);
   .contentWidth(0);
-
 }
-
 
 // body.has-toolbar:not(.has-sidebar):not(.has-sidebar-collapsed) {
 //   .contentWidth(0);
@@ -393,9 +359,7 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
 }
 
 body.view-editview {
-
   @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-
     [class*='mobile only']:not(.computer),
     [class*='tablet only']:not(.computer),
     [class*='large screen hidden'],
@@ -405,22 +369,19 @@ body.view-editview {
       display: none !important;
     }
   }
-
-
 }
 
+// Hotfix because we can't really do anything else for this situation
+@media only screen and (min-width: 1200px) and (max-width: 1219px) {
+  body.has-toolbar-collapsed
+    .hamburger-wrapper.computer.hidden.large.screen.hidden.widescreen.hidden {
+    display: block !important;
+  }
+}
 
-
-  // Hotfix because we can't really do anything else for this situation
-  @media only screen and (min-width: 1200px) and (max-width: 1219px) {
-    body.has-toolbar-collapsed .hamburger-wrapper.computer.hidden.large.screen.hidden.widescreen.hidden {
-       display: block!important;
-     }
-   }
-
-   @media only screen and (min-width: 1200px) and (max-width: 1279px) {
-    body.has-toolbar .hamburger-wrapper.computer.hidden.large.screen.hidden.widescreen.hidden {
-       display: block!important;
-     }
-   }
-
+@media only screen and (min-width: 1200px) and (max-width: 1279px) {
+  body.has-toolbar
+    .hamburger-wrapper.computer.hidden.large.screen.hidden.widescreen.hidden {
+    display: block !important;
+  }
+}

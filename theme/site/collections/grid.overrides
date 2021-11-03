@@ -21,7 +21,6 @@
 }
 // lg: 1549, md: 1086, sm: 718
 
-
 @tablet-breakpoint: 1086px;
 @phone-breakpoint: 718px;
 @desktop-breakpoint: 1549px;
@@ -47,10 +46,10 @@
 
 .element-grid {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: inherit;
-  align-items: flex-start;
   width: 100% !important;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: inherit;
   padding: 0rem;
   // height: 100%;
 }
@@ -59,7 +58,6 @@
   // flex-basis: calc(100% / (12 / @col));
   width: 100% / (12 / @col);
 }
-
 
 .viewport-columns(@screen-type) {
   .@{screen-type}-one {
@@ -111,26 +109,26 @@
   }
 }
 
-
-[class*='desktop-'], [class*='tablet-'], [class*='phone-'], [class*="widescreen-"] {
+[class*='desktop-'],
+[class*='tablet-'],
+[class*='phone-'],
+[class*='widescreen-'] {
   margin: 0;
 }
 
 // @media (min-width: @tablet-breakpoint) {
-  .viewport-columns(widescreen);
-  .viewport-columns(desktop);
-  .viewport-columns(tablet);
-  .viewport-columns(phone);
+.viewport-columns(widescreen);
+.viewport-columns(desktop);
+.viewport-columns(tablet);
+.viewport-columns(phone);
 // }
-
 
 // @media (max-width: @tablet-breakpoint) {
 // }
-
 
 // [max-width~=@phone-breakpoint] {
 // }
 
 // @media (min-width: @desktop-breakpoins) {
-  // .viewport-columns(desktop);
+// .viewport-columns(desktop);
 // }

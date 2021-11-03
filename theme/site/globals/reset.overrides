@@ -450,10 +450,11 @@ template {
 }
 
 .unlist {
-  list-style-type: none;
+  width: 100%;
   padding-left: 0;
   margin: 0;
-  width: 100%;
+  list-style-type: none;
+
   li {
     display: inline-block;
     margin-right: 1rem;

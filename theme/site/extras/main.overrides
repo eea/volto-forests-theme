@@ -275,14 +275,14 @@ button {
 
 // .loadUIOverrides();
 
-
 .document_wide_view {
- .content-area {
-   main {
-    padding: 3rem 1rem;
-    #page-document {
-      padding: 0;
+  .content-area {
+    main {
+      padding: 3rem 1rem;
+
+      #page-document {
+        padding: 0;
+      }
     }
   }
- }
 }

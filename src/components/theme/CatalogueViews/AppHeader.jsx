@@ -3,27 +3,27 @@
  * @module components/theme/App/App
  */
 
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { asyncConnect } from "redux-connect";
-import loadable from "@loadable/component";
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { asyncConnect } from 'redux-connect';
+import loadable from '@loadable/component';
 
-import { Header } from "@plone/volto/components";
-import { BodyClass, getBaseUrl, getView } from "@plone/volto/helpers";
+import { Header } from '@plone/volto/components';
+import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
   getContent,
   getNavigation,
   getTypes,
   getWorkflow,
   purgeMessages,
-} from "@plone/volto/actions";
+} from '@plone/volto/actions';
 import {
   getFrontpageSlides,
   getDefaultHeaderImage,
-} from "@eeacms/volto-forests-theme/actions";
-import { getPortlets } from "@eeacms/volto-addons-forest/actions";
+} from '@eeacms/volto-forests-theme/actions';
+import { getPortlets } from '@eeacms/volto-addons-forest/actions';
 
 class App extends Component {
   static propTypes = {
@@ -50,7 +50,7 @@ class App extends Component {
   componentDidMount() {
     // this.props.getDefaultHeaderImage();
     if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import("raven-js"));
+      const Raven = loadable(() => import('raven-js'));
 
       Raven.config(process.env.SENTRY_DSN).install();
     }
@@ -89,7 +89,7 @@ class App extends Component {
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
     if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import("raven-js"));
+      const Raven = loadable(() => import('raven-js'));
       Raven.captureException(error, { extra: info });
     }
   }
@@ -122,68 +122,68 @@ class App extends Component {
 
 export const __test__ = connect(
   (state, props) => ({ pathname: props.location.pathname }),
-  { purgeMessages }
+  { purgeMessages },
 )(App);
 
 export default compose(
   asyncConnect([
     {
-      key: "content",
+      key: 'content',
       promise: ({ location, store: { dispatch } }) =>
         dispatch(getContent(getBaseUrl(location.pathname))),
     },
     {
-      key: "frontpage_slides",
+      key: 'frontpage_slides',
       promise: ({ store: { dispatch } }) =>
         __SERVER__ && dispatch(getFrontpageSlides()),
     },
     {
-      key: "defaultHeaderImage",
+      key: 'defaultHeaderImage',
       promise: ({ store: { dispatch } }) =>
         __SERVER__ && dispatch(getDefaultHeaderImage()),
     },
     {
-      key: "navigation",
+      key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
     },
     {
-      key: "types",
+      key: 'types',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
-      key: "workflow",
+      key: 'workflow',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
     {
-      key: "portlets",
+      key: 'portlets',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getPortlets(getBaseUrl(location.pathname))),
     },
     {
-      key: "portlets_left",
+      key: 'portlets_left',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getPortlets(getBaseUrl(location.pathname), "plone.leftcolumn")
+          getPortlets(getBaseUrl(location.pathname), 'plone.leftcolumn'),
         ),
     },
     {
-      key: "portlets_right",
+      key: 'portlets_right',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getPortlets(getBaseUrl(location.pathname), "plone.rightcolumn")
+          getPortlets(getBaseUrl(location.pathname), 'plone.rightcolumn'),
         ),
     },
     {
-      key: "portlets_footer",
+      key: 'portlets_footer',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ &&
         dispatch(
-          getPortlets(getBaseUrl(location.pathname), "plone.footerportlets")
+          getPortlets(getBaseUrl(location.pathname), 'plone.footerportlets'),
         ),
     },
   ]),
@@ -200,6 +200,6 @@ export default compose(
       // loadingContent: state.content?.get,
       // search: state.search,
     }),
-    { purgeMessages }
-  )
+    { purgeMessages },
+  ),
 )(App);

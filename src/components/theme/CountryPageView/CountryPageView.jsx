@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   ResponsiveContainer,
@@ -13,42 +13,26 @@ import {
   CartesianGrid,
   Tooltip,
   // Legend,
-} from "recharts";
+} from 'recharts';
 
-import { Helmet } from "@plone/volto/helpers";
-import { Container, Image } from "semantic-ui-react";
-import { map } from "lodash";
-import { connect } from "react-redux";
+import { Container, Image } from 'semantic-ui-react';
+import { map } from 'lodash';
+import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 
 import {
   // setFolderHeader,
   setFolderTabs,
   getParentFolderData,
-} from "@eeacms/volto-forests-theme/actions";
+} from '@eeacms/volto-forests-theme/actions';
 
-import config from "@plone/volto/registry";
+import config from '@plone/volto/registry';
 
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from "@plone/volto/helpers";
-
-const numberToWord = {
-  1: "one",
-  2: "two",
-  3: "three",
-  4: "four",
-  5: "five",
-  6: "six",
-  7: "seven",
-  8: "eight",
-  9: "nine",
-  10: "ten",
-  11: "eleven",
-  12: "twelve",
-};
+} from '@plone/volto/helpers';
 
 const mapDispatchToProps = {
   // setFolderHeader,
@@ -57,19 +41,19 @@ const mapDispatchToProps = {
 };
 
 const data = [
-  { name: "01", uv: 31, Species: 9 },
-  { name: "04", uv: 22, Species: 18 },
-  { name: "07", uv: 2, Species: 38 },
-  { name: "10", uv: 24, Species: 16 },
-  { name: "18", uv: 21, Species: 19 },
+  { name: '01', uv: 31, Species: 9 },
+  { name: '04', uv: 22, Species: 18 },
+  { name: '07', uv: 2, Species: 38 },
+  { name: '10', uv: 24, Species: 16 },
+  { name: '18', uv: 21, Species: 19 },
 ];
 
 const coverage = [
-  { name: "01", uv: 5, pv: 8, amt: 12 },
-  { name: "04", uv: 7, pv: 13, amt: 3 },
-  { name: "07", uv: 6, pv: 15, amt: 19 },
-  { name: "10", uv: 3, pv: 12, amt: 8 },
-  { name: "18", uv: 5, pv: 15, amt: 9 },
+  { name: '01', uv: 5, pv: 8, amt: 12 },
+  { name: '04', uv: 7, pv: 13, amt: 3 },
+  { name: '07', uv: 6, pv: 15, amt: 19 },
+  { name: '10', uv: 3, pv: 12, amt: 8 },
+  { name: '18', uv: 5, pv: 15, amt: 9 },
 ];
 
 class StackedBarChart extends Component {
@@ -150,8 +134,8 @@ class CountryPageView extends Component {
           url: PropTypes.string,
           image: PropTypes.object,
           image_caption: PropTypes.string,
-          "@type": PropTypes.string,
-        })
+          '@type': PropTypes.string,
+        }),
       ),
     }).isRequired,
   };
@@ -172,26 +156,19 @@ class CountryPageView extends Component {
     if (
       JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)
     ) {
-      const title = nextProps.parent.title;
-      const description = nextProps.parent.description;
-      const image =
-        nextProps.parent.items &&
-        nextProps.parent.items.find((c) => c["@type"] === "Image");
-      const url = image && image.image.download;
-      const inCountryFolder = true;
       // this.props.setFolderHeader({ title, description, url, inCountryFolder });
-      const pathArr = nextProps.location.pathname.split("/");
+      const pathArr = nextProps.location.pathname.split('/');
       pathArr.length = 3;
-      const path = pathArr.join("/");
+      const path = pathArr.join('/');
       const tabsItems = nextProps.parent.items
         .map((i) => {
           return {
             url: `${path}/${i.id}`,
             title: i.title,
-            "@type": i["@type"],
+            '@type': i['@type'],
           };
         })
-        .filter((i) => i.title !== "folder_info");
+        .filter((i) => i.title !== 'folder_info');
       this.props.setFolderTabs(tabsItems);
     }
   }
@@ -200,15 +177,6 @@ class CountryPageView extends Component {
     const content = this.props.content;
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-    {
-      /*if (!this.tabs) {
-      const pathArr = this.props.location.pathname.split('/');
-      pathArr.length = 3;
-      const path = pathArr.join('/');
-      this.props.getParentFolderData(path);
-    }
-    */
-    }
 
     return hasBlocksData(content) ? (
       <div id="page-document" className="ui wrapper">
@@ -369,6 +337,7 @@ class CountryPageView extends Component {
               <div className="column map-container">
                 <div className="map-wrapper">
                   <iframe
+                    title="country-map"
                     src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true"
                     width="100%"
                     height="490"
@@ -390,7 +359,7 @@ class CountryPageView extends Component {
             let Block = null;
             Block =
               config.blocks.defaultBlocksViewMap[
-                content[blocksFieldname][block]["@type"]
+                content[blocksFieldname][block]['@type']
               ];
             return Block !== null ? (
               <Block
@@ -400,7 +369,7 @@ class CountryPageView extends Component {
               />
             ) : (
               <div>
-                {JSON.stringify(content[blocksFieldname][block]["@type"])}
+                {JSON.stringify(content[blocksFieldname][block]['@type'])}
               </div>
             );
           })}
@@ -493,7 +462,7 @@ class CountryPageView extends Component {
             dangerouslySetInnerHTML={{
               __html: content.text.data.replace(
                 /a href="([^"]*\.[^"]*)"/g,
-                `a href="${config.settings.apiPath}$1/download/file"`
+                `a href="${config.settings.apiPath}$1/download/file"`,
               ),
             }}
           />
@@ -508,5 +477,5 @@ export default connect(
     tabs: state.folder_tabs.items,
     parent: state.parent_folder_data.items,
   }),
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CountryPageView);

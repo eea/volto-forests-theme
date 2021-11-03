@@ -104,5 +104,5 @@
 }
 
 .users-control-panel .ui.clearing.segment.actions {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }

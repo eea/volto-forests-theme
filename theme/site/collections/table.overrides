@@ -9,22 +9,22 @@
 
 .ui.table td,
 .ui.table th {
+  padding: 0.6em;
   text-align: left;
-  padding: .6em;
 }
 
 /* Headers */
 .ui.table th {
+  border-left: @headerDivider;
   cursor: auto;
+  font-style: @headerFontStyle;
+  font-weight: @headerFontWeight;
   // background: @headerBackground;
   text-align: @headerAlign;
+  text-transform: @headerTextTransform;
   // color: @headerColor;
   /* padding: @headerVerticalPadding @headerHorizontalPadding; */
   vertical-align: @headerVerticalAlign;
-  font-style: @headerFontStyle;
-  font-weight: @headerFontWeight;
-  text-transform: @headerTextTransform;
-  border-left: @headerDivider;
 }
 
 .ui.table {
@@ -35,7 +35,8 @@
   font-weight: 700;
 }
 
-.ui.celled.table tr th, .ui.celled.table tr td {
+.ui.celled.table tr th,
+.ui.celled.table tr td {
   border: 1px solid #d9d9d9;
 }
 
@@ -46,9 +47,11 @@
 .ui.table tr:first-child > th:first-child {
   border-radius: @borderRadius 0em 0em 0em;
 }
+
 .ui.table tr:first-child > th:last-child {
   border-radius: 0em @borderRadius 0em 0em;
 }
+
 .ui.table tr:first-child > th:only-child {
   border-radius: @borderRadius @borderRadius 0em 0em;
 }

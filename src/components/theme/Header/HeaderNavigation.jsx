@@ -58,6 +58,7 @@ const HeaderNavigation = ({ items }) => {
     if (width && width > 600) {
       setIsMobile(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
   return (

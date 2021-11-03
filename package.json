@@ -22,6 +22,7 @@
     "@eeacms/volto-plotlycharts": "*",
     "@eeacms/volto-addons-forest": "0.1.1",
     "raven-js": "3.27.2",
+    "recharts": "2.1.6",
     "react-highlight-words": "^0.16.0",
     "react-image-gallery": "1.0.8",
     "react-lazy-load-image-component": "^1.5.0",

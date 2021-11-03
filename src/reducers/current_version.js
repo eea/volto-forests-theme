@@ -3,7 +3,7 @@
  * @module reducers/frontpage_slides
  */
 
-import { SET_CURRENT_VERSION } from "@eeacms/volto-forests-theme/constants/ActionTypes";
+import { SET_CURRENT_VERSION } from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 const initialState = {
   error: null,

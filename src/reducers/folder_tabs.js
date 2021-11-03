@@ -1,4 +1,4 @@
-import { SET_FOLDER_TABS } from "@eeacms/volto-forests-theme/constants/ActionTypes";
+import { SET_FOLDER_TABS } from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 const initialState = {
   error: null,

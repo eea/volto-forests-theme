@@ -8,7 +8,7 @@ import {
   GET_CHART_DATA_FROM_VISUALIZATION,
   GET_NAVSITEMAP,
   SET_CURRENT_VERSION,
-} from "@eeacms/volto-forests-theme/constants/ActionTypes";
+} from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 export function setCurrentVersion(payload) {
   return {
@@ -21,7 +21,7 @@ export function getFrontpageSlides() {
   return {
     type: GET_FRONTPAGESLIDES,
     request: {
-      op: "get",
+      op: 'get',
       path: `/frontpage_slides?fullobjects`,
     },
   };
@@ -31,7 +31,7 @@ export function getDefaultHeaderImage() {
   return {
     type: GET_DEFAULT_HEADER_IMAGE,
     request: {
-      op: "get",
+      op: 'get',
       path: `/default_header_image?fullobjects`,
     },
   };
@@ -41,7 +41,7 @@ export function getLocalnavigation(folder) {
   return {
     type: GET_LOCALNAVIGATION,
     request: {
-      op: "get",
+      op: 'get',
       path: `${folder}/@localnavigation`,
     },
   };
@@ -75,7 +75,7 @@ export function getParentFolderData(url) {
   return {
     type: GET_PARENT_FOLDER_DATA,
     request: {
-      op: "get",
+      op: 'get',
       path: `/${url}?fullobjects`,
     },
   };
@@ -95,7 +95,7 @@ export function getChartDataFromVisualization(path) {
   return {
     type: GET_CHART_DATA_FROM_VISUALIZATION,
     request: {
-      op: "get",
+      op: 'get',
       path,
     },
   };
@@ -106,7 +106,7 @@ export function getNavSiteMap(url, depth) {
   return {
     type: GET_NAVSITEMAP,
     request: {
-      op: "get",
+      op: 'get',
       path: `${url}/@navigation?expand.navigation.depth=${depth || 3}`,
     },
   };
