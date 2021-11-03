@@ -10,11 +10,17 @@ function HeaderImage(props) {
   const headerDimension = isBig ? 600 : 280;
   const [contentCount, setContentCount] = React.useState(0);
 
-  const imageContent = document.getElementsByClassName('header-image-content');
-  const ccount = imageContent[0] ? imageContent[0].childElementCount : 0;
+  const imageContent =
+    typeof window !== 'undefined' && window.document
+      ? window.document.getElementsByClassName('header-image-content')
+      : '';
+  const ccount =
+    imageContent && imageContent[0] ? imageContent[0].childElementCount : 0;
 
   React.useEffect(() => {
-    setContentCount(ccount);
+    if (typeof window !== 'undefined') {
+      setContentCount(ccount);
+    }
   }, [ccount]);
 
   return props.url ? (
