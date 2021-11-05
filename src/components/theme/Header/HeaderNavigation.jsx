@@ -3,9 +3,17 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import downIcon from '@plone/volto/icons/down-key.svg';
+import closeIcon from '@plone/volto/icons/clear.svg';
+import { Icon } from '@plone/volto/components';
+import { connect } from 'react-redux';
 
 const MobileNav = ({ items, activeItem }) => {
   const [expanded, setExpanded] = React.useState(false);
+
+  React.useEffect(() => {
+    setExpanded(false);
+  }, [activeItem]);
 
   return (
     <div className="lead-mobile-nav">
@@ -21,6 +29,14 @@ const MobileNav = ({ items, activeItem }) => {
                   }`}
                 >
                   {item.title}
+                  {item.url === activeItem.url && (
+                    <Icon
+                      className="lead-nav-icon"
+                      name={closeIcon}
+                      size="35px"
+                      onClick={() => setExpanded(false)}
+                    />
+                  )}
                 </p>
               </Link>
             ))}
@@ -32,6 +48,12 @@ const MobileNav = ({ items, activeItem }) => {
             className="lead-nav-item active-mobile-nav"
           >
             {activeItem.title}
+            <Icon
+              className="lead-nav-icon"
+              name={downIcon}
+              size="35px"
+              onClick={() => setExpanded(true)}
+            />
           </p>
         </div>
       )}
@@ -39,7 +61,7 @@ const MobileNav = ({ items, activeItem }) => {
   );
 };
 
-const HeaderNavigation = ({ items }) => {
+const HeaderNavigation = ({ items, pageWidth }) => {
   const [activeItem, setActiveItem] = React.useState('');
   const [isMobile, setIsMobile] = React.useState(false);
   const history = useHistory();
@@ -51,15 +73,14 @@ const HeaderNavigation = ({ items }) => {
     if (activeRouteDetected && activeRouteDetected.length > 0) {
       setActiveItem(activeRouteDetected[0]);
     }
-    const width = window && window.innerWidth ? window.innerWidth : '';
-    if (width && width <= 600) {
+    if (pageWidth && pageWidth <= 768) {
       setIsMobile(true);
     }
-    if (width && width > 600) {
+    if (pageWidth && pageWidth > 768) {
       setIsMobile(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items]);
+  }, [items, pageWidth]);
 
   return (
     <React.Fragment>
@@ -85,4 +106,6 @@ const HeaderNavigation = ({ items }) => {
   );
 };
 
-export default HeaderNavigation;
+export default connect((state) => ({
+  pageWidth: state.screen.page.width,
+}))(HeaderNavigation);

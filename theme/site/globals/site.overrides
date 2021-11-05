@@ -123,6 +123,8 @@ body.has-toolbar {
   height: 600px !important;
 }
 
+
+
 .lead-mobile-nav {
   position: absolute;
   z-index: 1;
@@ -142,6 +144,7 @@ body.has-toolbar {
   }
 
   .lead-nav-item {
+    position: relative;
     padding: 12px 20px;
     margin: 2px 0;
     background-color: #f7f7f5;
@@ -153,6 +156,17 @@ body.has-toolbar {
     font-weight: bold;
     text-align: center;
     text-decoration: none;
+
+    .lead-nav-icon {
+      fill: #554535 !important;
+      position: absolute;
+      right: 10px;
+      top: 6px;
+    }
+
+    .lead-nav-icon:hover{
+      fill: #cd4200 !important;
+    }
   }
 
   .lead-nav-item:hover {
