@@ -3,7 +3,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import useWindowSize from '../../../helpers/useWindowSize';
 import downIcon from '@plone/volto/icons/down-key.svg';
 import closeIcon from '@plone/volto/icons/clear.svg';
 import { Icon } from '@plone/volto/components';
