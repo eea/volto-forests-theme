@@ -164,7 +164,7 @@ body.has-toolbar {
       top: 6px;
     }
 
-    .lead-nav-icon::hover{
+    .lead-nav-icon:hover{
       fill: #cd4200 !important;
     }
   }
