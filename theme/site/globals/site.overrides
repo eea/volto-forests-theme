@@ -1305,10 +1305,10 @@ h5 {
 
     .slide-body {
       position: absolute;
-      bottom: 30%;
+      top: 20%;
+      text-align: center;
       left: unset;
-      max-width: 600px;
-      margin-left: 4rem;
+      width: 100%;
       color: #fff;
 
       @media (max-width: 700px) {
@@ -3220,7 +3220,7 @@ body.mosaic-view .content-area main {
     position: absolute;
     bottom: 35%;
     left: 19em;
-    max-width: 600px;
+    width: 100%;
     color: white;
     text-align: left;
 
@@ -3250,7 +3250,6 @@ body.mosaic-view .content-area main {
     }
 
     .slide-description {
-      max-width: 540px;
       font-size: 24px;
       font-weight: 200;
       line-height: 1.2;

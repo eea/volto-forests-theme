@@ -112,6 +112,21 @@ class HomepageSlider extends Component {
     );
   };
 
+  createDescription(children) {
+    const items = children.map( (child) => (
+      <div className="slider-child">
+        <span>{child.text}</span> <br></br>
+        <a href={child.link} style={{ borderRadius: '20% / 100%' }} > {child.linkText}</a>
+      </div>
+
+    ));
+    return (
+      <div className="slider-text" >
+          {items}
+      </div>
+    );
+  };
+
   getSlides(items) {
     const slidesArr = items ? items : this.props.items;
 
@@ -122,7 +137,7 @@ class HomepageSlider extends Component {
             original: item.image,
             thumbnail: item.image,
             title: item.title,
-            description: item.description,
+            description: this.createDescription(item.children || [{text: "Monocultures harbour less biodiversity than mixed forests.", link:"google.com", linkText: "Learn more about forest management"}, {text: "Natural disturbances like droughts and pests and storms decrease forest health", link: "google.com", linkText:"Learn more about forest health and resilience."}])
           };
         })) ||
       [];
@@ -179,11 +194,15 @@ class HomepageSlider extends Component {
         </Slider> */}
         {/* <img className="slider-caret" src={SliderCaret} alt="" /> */}
         <ImageGallery
-          className="mainSlider"
+          //className="mainSlider"
           items={slides}
+          showThumbnails={false}
+          showNav={false}
+          showBullets ={true}
+          disableThumbnailScroll={false}
           showFullscreenButton={false}
           showPlayButton={false}
-          autoPlay
+          autoplay
           renderItem={this.renderSlide}
           renderThumbInner={this.renderThumbnail}
           slideDuration={300}
