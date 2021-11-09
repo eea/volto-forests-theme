@@ -172,10 +172,17 @@ class View extends Component {
    * @method getViewByLayout
    * @returns {string} Markup for component.
    */
-  getViewByLayout = () =>
-    config.views.layoutViews[
-      this.props.content[getLayoutFieldname(this.props.content)]
-    ] || null;
+  getViewByLayout = () => {
+    if (this.props.pathname === '/') {
+      return config.views.layoutViews['document_view_wide'];
+    }
+
+    return (
+      config.views.layoutViews[
+        this.props.content[getLayoutFieldname(this.props.content)]
+      ] || null
+    );
+  };
 
   /**
    * Cleans the component displayName (specially for connected components)
@@ -359,6 +366,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      state,
       actions: state.actions.actions,
       token: state.userSession.token,
       content: state.content.data,
