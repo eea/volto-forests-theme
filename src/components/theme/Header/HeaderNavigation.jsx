@@ -3,10 +3,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import useWindowSize from '../../../helpers/useWindowSize';
 import downIcon from '@plone/volto/icons/down-key.svg';
 import closeIcon from '@plone/volto/icons/clear.svg';
 import { Icon } from '@plone/volto/components';
+import { connect } from 'react-redux';
 
 const MobileNav = ({ items, activeItem }) => {
   const [expanded, setExpanded] = React.useState(false);
@@ -61,28 +61,26 @@ const MobileNav = ({ items, activeItem }) => {
   );
 };
 
-const HeaderNavigation = ({ items }) => {
+const HeaderNavigation = ({ items, pageWidth }) => {
   const [activeItem, setActiveItem] = React.useState('');
   const [isMobile, setIsMobile] = React.useState(false);
   const history = useHistory();
-  const size = useWindowSize();
 
   React.useEffect(() => {
-    const { width } = size;
     const activeRouteDetected = items.filter(
       (item) => item.url === history.location.pathname,
     );
     if (activeRouteDetected && activeRouteDetected.length > 0) {
       setActiveItem(activeRouteDetected[0]);
     }
-    if (width && width <= 768) {
+    if (pageWidth && pageWidth <= 768) {
       setIsMobile(true);
     }
-    if (width && width > 768) {
+    if (pageWidth && pageWidth > 768) {
       setIsMobile(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items, size]);
+  }, [items, pageWidth]);
 
   return (
     <React.Fragment>
@@ -108,4 +106,6 @@ const HeaderNavigation = ({ items }) => {
   );
 };
 
-export default HeaderNavigation;
+export default connect((state) => ({
+  pageWidth: state.screen.page.width,
+}))(HeaderNavigation);
