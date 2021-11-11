@@ -46,8 +46,24 @@
   }
 }
 
-@media screen and (max-width: 1300px) and (min-width: 768px) {
+@media screen and (max-width: 1300px) and (min-width: 600px) {
   .sticky-tabs {
     top: 79px;
+  }
+}
+
+@media screen and (max-width: 766px) and (min-width: 600px) {
+  .mobile-authenticated-sticky {
+    top: 101px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sticky-tabs {
+    top: 67px;
+  }
+
+  .mobile-authenticated-sticky {
+    top: 101px;
   }
 }

@@ -241,7 +241,7 @@ class Navigation extends Component {
             </button>
           </div>
         </div>
-        <div className="search-widget smallSearch">
+        <div className="search-widget smallSearch menu-force-mobile">
           <Icon
             className="searchIcon"
             onClick={this.toggleMobileSearch}
@@ -282,7 +282,9 @@ class Navigation extends Component {
           pointing
           secondary
           className={
-            this.state.isMobileMenuOpen ? 'open firstLevel' : 'mobile hidden'
+            this.state.isMobileMenuOpen
+              ? 'open firstLevel'
+              : 'menu-manual-mobile'
           }
         >
           {navigation.map((item) =>
