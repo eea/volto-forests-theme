@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-forests-theme",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "@eeacms/volto-forests-theme: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -36,7 +36,7 @@
     "react-lazy-load-image-component": "^1.5.0",
     "react-stickynode": "^2.1.1",
     "react-toastify": "^5.3.2",
-    "volto-slate": "2.9.1",
+    "volto-slate": "4.2.1",
     "webpack-bundle-analyzer": "^3.6.0"
   },
   "devDependencies": {
