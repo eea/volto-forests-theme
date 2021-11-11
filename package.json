@@ -20,8 +20,7 @@
     "@eeacms/volto-plotlycharts",
     "@eeacms/volto-addons-forest",
     "@eeacms/volto-datablocks",
-    "@eeacms/volto-matomo",
-    "volto-slate"
+    "@eeacms/volto-matomo"
   ],
   "dependencies": {
     "@blueprintjs/core": "^3.30.0",
@@ -37,7 +36,6 @@
     "react-lazy-load-image-component": "^1.5.0",
     "react-stickynode": "^2.1.1",
     "react-toastify": "^5.3.2",
-    "volto-slate": "4.2.1",
     "webpack-bundle-analyzer": "^3.6.0"
   },
   "devDependencies": {
