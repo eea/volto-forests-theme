@@ -68,31 +68,67 @@
 .slider-text {
   display: flex;
   justify-content: space-around;
+
+  @media (max-width: 1300px) {
+    flex-direction: column;
+  }
+}
+
+.extra-header {
+  position: relative;
+  top: -1px;
+  height: 70px;
+  padding: 15px;
+  padding-left: 50px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 6px 0 #c7d5d8;
+  -moz-box-shadow: 0px 1px 6px 0 #c7d5d8;
+  box-shadow: 0px 1px 6px 0 #c7d5d8;
+  color: #7b1;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .slider-child {
-  width: 345px;
+  width: 320px;
+
   span {
     position: relative;
-    top: 30px;
-    font-weight: normal;
+    top: 20px;
+    font-weight: bold;
+
+    @media (max-width: 1300px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    width: auto;
+    margin: 0 auto;
   }
 
   a {
-    font-weight: bold;
-    color: white;
-    border-style: solid;
-    border-color: white;
-    position:relative;
-    top: 100px;
-    padding: 10px;
     display: block;
-    height:80px;
-  }
-  a:hover {
-    border-color: #006b96;
+    width: 320px;
+    height: 70px;
+
+    padding: 10px;
+    background-color: #588613;
+    color: white;
+    font-weight: bold;
+
+    @media (min-width: 1300px) {
+      position: absolute;
+      top: 250px;
+    }
   }
 
+  a:hover {
+    background-color: #49730a;
+    color: white;
+  }
 }
 
 .slide-overlay {
@@ -216,10 +252,10 @@
       position: absolute;
       // bottom     : 40%;
       top: 20%;
-      text-align: center;
-      width: 100%;
       left: unset;
+      width: 100%;
       color: white;
+      text-align: center;
 
       @media (max-width: 700px) {
         margin-left: 1rem;

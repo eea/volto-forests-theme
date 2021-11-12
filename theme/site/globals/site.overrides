@@ -123,8 +123,6 @@ body.has-toolbar {
   height: 600px !important;
 }
 
-
-
 .lead-mobile-nav {
   position: absolute;
   z-index: 1;
@@ -158,13 +156,13 @@ body.has-toolbar {
     text-decoration: none;
 
     .lead-nav-icon {
-      fill: #554535 !important;
       position: absolute;
-      right: 10px;
       top: 6px;
+      right: 10px;
+      fill: #554535 !important;
     }
 
-    .lead-nav-icon:hover{
+    .lead-nav-icon:hover {
       fill: #cd4200 !important;
     }
   }
@@ -192,7 +190,6 @@ body.has-toolbar {
   }
 
   .lead-navigation-item {
-
     padding: 12px 20px;
 
     border: 2px solid #f7f7f5;
@@ -213,7 +210,6 @@ body.has-toolbar {
       font-size: 14px;
     }
   }
-
 
   .lead-navigation-item:hover {
     background: white;
@@ -1048,7 +1044,6 @@ ul.ui.list li:before,
 }
 
 .unlist {
-
   padding-left: 0;
   list-style-type: none;
 
@@ -1312,10 +1307,10 @@ h5 {
     .slide-body {
       position: absolute;
       top: 20%;
-      text-align: center;
       left: unset;
       width: 100%;
       color: #fff;
+      text-align: center;
 
       @media (max-width: 700px) {
         margin-left: 1rem;
@@ -1661,7 +1656,6 @@ span.float-right {
 
   .forest-comparation {
     .land-data-wrapper {
-
       margin-bottom: 0;
       background-color: @tileBackgroundColor;
 
