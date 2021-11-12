@@ -10,7 +10,7 @@ import {
   RAZZLE_FRONTEND_VERSION,
   RAZZLE_FRONTEND_VERSION_URL,
   RAZZLE_FRONTEND_PUBLISHED_AT,
-} from '@eeacms/volto-forests-theme/constants/runtime';
+} from './constants/runtime';
 
 import '@plone/volto/config';
 
