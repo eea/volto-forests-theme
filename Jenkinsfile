@@ -83,7 +83,7 @@ pipeline {
               script {
                 try {
                   sh '''docker pull plone; docker run -d --name="$BUILD_TAG-plone" -e SITE="Plone" -e PROFILES="profile-plone.restapi:blocks" plone fg'''
-                  sh '''docker pull plone/volto-addon-ci; docker run -i --name="$BUILD_TAG-cypress" --link $BUILD_TAG-plone:plone -e NAMESPACE="$NAMESPACE" -e GIT_NAME=$GIT_NAME -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" -e DEPENDENCIES="$DEPENDENCIES" plone/volto-addon-ci cypress'''
+                  sh '''docker pull plone/volto-addon-ci; docker run -i --name="$BUILD_TAG-cypress" --link $BUILD_TAG-plone:plone -e NAMESPACE="$NAMESPACE" -e RAZZLE_FRONTEND_VERSION=eeacms/forests-frontend:2.4.3 -e RAZZLE_FRONTEND_VERSION_URL=https://github.com/eea/forests-frontend/releases/tag/2.4.3 -e RAZZLE_FRONTEND_PUBLISHED_AT=2021-06-18T15:15:04Z -e GIT_NAME=$GIT_NAME -e GIT_BRANCH="$BRANCH_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" -e DEPENDENCIES="$DEPENDENCIES" plone/volto-addon-ci cypress'''
                 } finally {
                   try {
                     sh '''rm -rf cypress-reports cypress-results cypress-coverage'''
