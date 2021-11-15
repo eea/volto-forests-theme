@@ -12,8 +12,6 @@ import {
   RAZZLE_FRONTEND_PUBLISHED_AT,
 } from './constants/runtime';
 
-import '@plone/volto/config';
-
 export default function applyConfig(config) {
   // Add here your project's configuration here by modifying `config` accordingly
   config = [installBlocks, installFiseFrontend].reduce(
