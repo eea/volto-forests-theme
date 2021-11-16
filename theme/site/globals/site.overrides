@@ -1734,10 +1734,6 @@ span.float-right {
     line-height: normal;
   }
 
-  a > span {
-    color: #047a79 !important;
-  }
-
   .map-wrapper {
     padding: 5px;
     border: 1px solid @darkGreen;
@@ -3402,3 +3398,7 @@ body.mosaic-view .content-area main {
   font-size: 12px;
   line-height: normal;
 }
+
+ a > span.discreet {
+    color: #047a79 !important;
+  }
