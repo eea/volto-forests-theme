@@ -21,6 +21,8 @@ import NavigationBlockView from '@eeacms/volto-forests-theme/components/manage/B
 import RedirectView from '@eeacms/volto-forests-theme/components/theme/View/RedirectView';
 import { uniqBy } from 'lodash';
 
+import './slate-inlineStyles.less';
+
 defineMessages({
   custom_addons: {
     id: 'custom_addons',
@@ -231,7 +233,7 @@ export function applyConfig(config) {
   config.settings.slate.styleMenu.inlineStyles = [
     ...(config.settings.slate.styleMenu?.inlineStyles || []),
     {
-      cssClass: 'discreet block_source',
+      cssClass: 'source-formating',
       label: 'Source formatting',
     },
   ];

@@ -1726,14 +1726,6 @@ span.float-right {
       }
     }
   }
-
-  .discreet {
-    margin-top: auto;
-    color: #999;
-    font-size: 12px;
-    line-height: normal;
-  }
-
   .map-wrapper {
     padding: 5px;
     border: 1px solid @darkGreen;
@@ -3398,7 +3390,3 @@ body.mosaic-view .content-area main {
   font-size: 12px;
   line-height: normal;
 }
-
- a > span.discreet {
-    color: #047a79 !important;
-  }
