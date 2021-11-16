@@ -1734,7 +1734,7 @@ span.float-right {
     line-height: normal;
   }
 
-  a > span.discreet {
+  a > span {
     color: #047a79 !important;
   }
 
