@@ -6,9 +6,9 @@
 
 [Volto](https://github.com/plone/volto) add-on
 
-## Features
+## Features![Screenshot 2021-11-17 at 13 27 10](https://user-images.githubusercontent.com/22280901/142159402-5da2e87d-5784-4155-8a8b-de3162d8939a.png)
 
-Demo GIF
+
 
 ## Getting started
 
