@@ -81,12 +81,12 @@
   padding: 15px;
   padding-left: 50px;
   margin-bottom: 15px;
-  background-color: white;
+  background-color: #f6f6f5;
   border-radius: 2px;
   -webkit-box-shadow: 0px 1px 6px 0 #c7d5d8;
   -moz-box-shadow: 0px 1px 6px 0 #c7d5d8;
   box-shadow: 0px 1px 6px 0 #c7d5d8;
-  color: #7b1;
+  color: #6fb22c;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -115,7 +115,7 @@
     height: 70px;
 
     padding: 10px;
-    background-color: #588613;
+    background-color: #168130ad;
     color: white;
     font-weight: bold;
 
@@ -126,7 +126,7 @@
   }
 
   a:hover {
-    background-color: #49730a;
+    background-color: #005c30cf;
     color: white;
   }
 }
