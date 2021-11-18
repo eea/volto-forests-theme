@@ -20,12 +20,13 @@ const Header = (props) => {
     parentData,
     leadNavigation,
     bigLeading,
+    leadImageCaption,
   } = props.extraData;
   const [isHomepage, setIsHomePage] = React.useState(
     props.actualPathName === '/',
   );
   const [inheritedImage, setInheritedImage] = React.useState('');
-  const [inheritedText, setInheritedText] = React.useState('');
+  const [leadCaptionText, setLeadCaptionText] = React.useState('');
   const [navigationItems, setNavigationItems] = React.useState('');
 
   const getParentData = (url) => {
@@ -41,9 +42,11 @@ const Header = (props) => {
             ? response.data.image.download
             : '';
 
-        const parentText =
-          response.data && response.data.text && response.data.text.data
-            ? response.data.text.data
+        const parentLeadCaption =
+          response.data &&
+          response.data.lead_image_caption &&
+          response.data.lead_image_caption.data
+            ? response.data.lead_image_caption.data
             : '';
 
         const parentData =
@@ -55,7 +58,7 @@ const Header = (props) => {
             : '';
         if (inheritLeadingData) {
           setInheritedImage(parentImage);
-          setInheritedText(parentText);
+          setLeadCaptionText(parentLeadCaption);
         }
         if (leadNavigation) {
           setNavigationItems(parentData.items);
@@ -76,6 +79,9 @@ const Header = (props) => {
     if (inheritLeadingData || leadNavigation) {
       const parentUrl = parentData['@id'];
       getParentData(parentUrl);
+      if (!inheritLeadingData) {
+        setLeadCaptionText(leadImageCaption.data);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.extraData, props.navItems]);
@@ -124,7 +130,9 @@ const Header = (props) => {
               bigImage={bigLeading}
               leadNavigation={leadNavigation}
               navigationItems={navigationItems}
-              metadata={inheritLeadingData ? inheritedText : ''}
+              metadata={
+                inheritLeadingData || leadImageCaption ? leadCaptionText : ''
+              }
               url={inheritLeadingData ? inheritedImage : headerImageUrl}
             />
           </div>
