@@ -11,25 +11,6 @@ import { connect } from 'react-redux';
 import circleLeft from '@plone/volto/icons/circle-left.svg';
 import circleRight from '@plone/volto/icons/circle-right.svg';
 
-const Card = ({ children, itemId }) => {
-  return (
-    <div
-      role="button"
-      style={{
-        border: '1px solid',
-        display: 'inline-block',
-        margin: '0 10px',
-        width: '160px',
-        userSelect: 'none',
-      }}
-      tabIndex={0}
-      className="card"
-    >
-      {children}
-    </div>
-  );
-};
-
 const MobileNav = ({ items, activeItem }) => {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -44,25 +25,23 @@ const MobileNav = ({ items, activeItem }) => {
           {items &&
             items.length > 0 &&
             items.map((item, i) => (
-              <Card>
-                <Link key={i} to={item.url}>
-                  <p
-                    className={`lead-nav-item ${
-                      activeItem.title === item.title ? 'active-mobile-nav' : ''
-                    }`}
-                  >
-                    {item.title}
-                    {item.url === activeItem.url && (
-                      <Icon
-                        className="lead-nav-icon"
-                        name={closeIcon}
-                        size="35px"
-                        onClick={() => setExpanded(false)}
-                      />
-                    )}
-                  </p>
-                </Link>
-              </Card>
+              <Link key={i} to={item.url}>
+                <p
+                  className={`lead-nav-item ${
+                    activeItem.title === item.title ? 'active-mobile-nav' : ''
+                  }`}
+                >
+                  {item.title}
+                  {item.url === activeItem.url && (
+                    <Icon
+                      className="lead-nav-icon"
+                      name={closeIcon}
+                      size="35px"
+                      onClick={() => setExpanded(false)}
+                    />
+                  )}
+                </p>
+              </Link>
             ))}
         </div>
       ) : (
@@ -85,21 +64,6 @@ const MobileNav = ({ items, activeItem }) => {
   );
 };
 
-function onWheel(apiObj, ev) {
-  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
-
-  if (isThouchpad) {
-    ev.stopPropagation();
-    return;
-  }
-
-  if (ev.deltaY < 0) {
-    apiObj.scrollNext();
-  } else if (ev.deltaY > 0) {
-    apiObj.scrollPrev();
-  }
-}
-
 const HeaderNavigation = ({ items, pageWidth }) => {
   const [activeItem, setActiveItem] = React.useState('');
   const [isMobile, setIsMobile] = React.useState(false);
@@ -120,9 +84,8 @@ const HeaderNavigation = ({ items, pageWidth }) => {
     const first = itemsIncrement * 3;
     const last = first + itemsPerPage;
     const itemsInit = items.slice(first, last);
-
     setDisplayedItems(itemsInit);
-  }, [itemsIncrement]);
+  }, [itemsIncrement, itemsPerPage, items]);
 
   React.useEffect(() => {
     //init items
@@ -143,6 +106,9 @@ const HeaderNavigation = ({ items, pageWidth }) => {
     }
     if (pageWidth && pageWidth > 768) {
       setIsMobile(false);
+    }
+    if (pageWidth && pageWidth > 1240) {
+      setItemsPerPage(7);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, pageWidth]);
