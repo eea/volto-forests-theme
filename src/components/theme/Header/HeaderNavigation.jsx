@@ -68,7 +68,9 @@ const HeaderNavigation = ({ items, pageWidth }) => {
   const [activeItem, setActiveItem] = React.useState('');
   const [isMobile, setIsMobile] = React.useState(false);
   const [itemsIncrement, setItemsIncrement] = React.useState(0);
-  const [itemsPerPage, setItemsPerPage] = React.useState(5);
+  const [itemsPerPage, setItemsPerPage] = React.useState(
+    items && items.length < 4 ? items.length : 4,
+  );
 
   const [displayedItems, setDisplayedItems] = React.useState([]);
   const history = useHistory();
@@ -108,7 +110,12 @@ const HeaderNavigation = ({ items, pageWidth }) => {
       setIsMobile(false);
     }
     if (pageWidth && pageWidth > 1240) {
-      setItemsPerPage(7);
+      if (items.length >= 6) {
+        setItemsPerPage(6);
+      }
+      if (items.length < 6) {
+        setItemsPerPage(items.length);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, pageWidth]);
