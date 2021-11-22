@@ -136,6 +136,7 @@ const HeaderNavigation = ({ items, pageWidth }) => {
                 }`}
                 key={index}
                 to={item.url}
+                title={item.title}
               >
                 {item.title}
               </Link>
