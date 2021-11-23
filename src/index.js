@@ -12,6 +12,8 @@ import {
   RAZZLE_FRONTEND_PUBLISHED_AT,
 } from './constants/runtime';
 
+import './slate-styles.css';
+
 export default function applyConfig(config) {
   // Add here your project's configuration here by modifying `config` accordingly
   config = [installBlocks, installFiseFrontend].reduce(
@@ -67,6 +69,47 @@ export default function applyConfig(config) {
   config.editForms = {
     ...config.editForms,
   };
+
+  config.settings.slate = config.settings.slate || {};
+  config.settings.slate.styleMenu = config.settings.slate.styleMenu || {};
+  config.settings.slate.styleMenu.inlineStyles = [
+    ...(config.settings.slate.styleMenu?.inlineStyles || []),
+    { cssClass: 'white-text', label: 'White text' },
+    // blue series
+    { cssClass: 'blue-powder-text', label: 'Blue powder text' },
+    { cssClass: 'blue-lightsteel-text', label: 'Blue lightsteel text' },
+    { cssClass: 'blue-cadet-text', label: 'Blue cadet text' },
+    { cssClass: 'blue-teal-text', label: 'Blue teal text' },
+    { cssClass: 'blue-darkslate-text', label: 'Blue darkslate text' },
+    // green series
+    {
+      cssClass: 'green-blanchedalmond-text',
+      label: 'Green blanchedalmond text',
+    },
+    { cssClass: 'green-tan-text', label: 'Green tan text' },
+    { cssClass: 'green-olivedrab-text', label: 'Green olivedrab text' },
+    { cssClass: 'light-green-text', label: 'Light green text' },
+    { cssClass: 'green-forest-text', label: 'Green forest text' },
+    { cssClass: 'green-darkslate-text', label: 'Green darkslate text' },
+
+    // army series
+    { cssClass: 'army-darkolivegreen-text', label: 'Army darkolivegreen text' },
+    { cssClass: 'army-yellowgreen-text', label: 'Army yellowgreen text' },
+    { cssClass: 'army-olivedrab-text', label: 'Army olivedrab text' },
+    { cssClass: 'army-moccasin-text', label: 'Army moccasin text' },
+    { cssClass: 'army-khaki-text', label: 'Army khaki text' },
+
+    { cssClass: 'vivid-green-text', label: 'Vivid green text' },
+    { cssClass: 'blue-text', label: 'Blue text' },
+    { cssClass: 'red-text', label: 'Red text' },
+    { cssClass: 'yellow-text', label: 'Yellow text' },
+    { cssClass: 'grey-text', label: 'Grey text' },
+  ];
+  // config.settings.slate.styleMenu.blockStyles = [
+  //   ...config.settings.slate.styleMenu.blockStyles,
+  //   { cssClass: 'green-block-text', label: 'Green Text' },
+  //   { cssClass: 'underline-block-text', label: 'Underline Text' },
+  // ];
 
   return config;
 }
