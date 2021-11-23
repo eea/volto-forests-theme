@@ -1,0 +1,93 @@
+.primary-big-text {
+  font-size: 45px;
+  line-height: 45px;
+}
+
+.medium-text {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.white-text {
+  color: #fff;
+}
+
+/* blue set */
+
+.blue-powder-text {
+  color: #bbdbec;
+}
+
+.blue-lightsteel-text {
+  color: #9dc6d4;
+}
+
+.blue-cadet-text {
+  color: #5a93aa;
+}
+
+.blue-teal-text {
+  color: #005d7b;
+}
+
+.blue-darkslate-text {
+  color: #003d53;
+}
+
+/* green set */
+.green-blanchedalmond-text {
+  color: #ebefc6;
+}
+
+.green-tan-text {
+  color: #bdd494;
+}
+
+.green-olivedrab-text {
+  color: #6bb535;
+}
+
+.green-forest-text {
+  color: #1e8339;
+}
+
+.green-darkslate-text {
+  color: #025e37;
+}
+
+/* army set */
+.army-darkolivegreen-text {
+  color: #464b0b;
+}
+
+.army-yellowgreen-text {
+  color: #b5c234;
+}
+
+.army-olivedrab-text {
+  color: #777b1a;
+}
+
+.army-moccasin-text {
+  color: #f4f1bc;
+}
+
+.army-khaki-text {
+  color: #e1e070;
+}
+
+.blue-text {
+  color: #0070ae;
+}
+
+.red-text {
+  color: #ed1834;
+}
+
+.yellow-text {
+  color: #f2a70e;
+}
+
+.grey-text {
+  color: #8d8d8d;
+}
