@@ -8,6 +8,9 @@ import closeIcon from '@plone/volto/icons/clear.svg';
 import { Icon } from '@plone/volto/components';
 import { connect } from 'react-redux';
 
+import circleLeft from '@plone/volto/icons/circle-left.svg';
+import circleRight from '@plone/volto/icons/circle-right.svg';
+
 const MobileNav = ({ items, activeItem }) => {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -64,9 +67,36 @@ const MobileNav = ({ items, activeItem }) => {
 const HeaderNavigation = ({ items, pageWidth }) => {
   const [activeItem, setActiveItem] = React.useState('');
   const [isMobile, setIsMobile] = React.useState(false);
+  const [itemsIncrement, setItemsIncrement] = React.useState(0);
+  const [itemsPerPage, setItemsPerPage] = React.useState(
+    items && items.length < 4 ? items.length : 4,
+  );
+
+  const [displayedItems, setDisplayedItems] = React.useState([]);
   const history = useHistory();
 
+  const noPrev = displayedItems && items && items[0] === displayedItems[0];
+  const noNext =
+    displayedItems &&
+    items &&
+    items[items.length - 1] === displayedItems[displayedItems.length - 1];
+
   React.useEffect(() => {
+    //init items
+    const first = itemsIncrement * 3;
+    const last = first + itemsPerPage;
+    const itemsInit = items.slice(first, last);
+    setDisplayedItems(itemsInit);
+  }, [itemsIncrement, itemsPerPage, items]);
+
+  React.useEffect(() => {
+    //init items
+    const first = itemsIncrement * 3;
+    const last = first + itemsPerPage;
+    const itemsInit = items.slice(first, last);
+
+    setDisplayedItems(itemsInit);
+
     const activeRouteDetected = items.filter(
       (item) => item.url === history.location.pathname,
     );
@@ -79,8 +109,24 @@ const HeaderNavigation = ({ items, pageWidth }) => {
     if (pageWidth && pageWidth > 768) {
       setIsMobile(false);
     }
+    if (pageWidth && pageWidth > 1240) {
+      if (items.length >= 6) {
+        setItemsPerPage(6);
+      }
+      if (items.length < 6) {
+        setItemsPerPage(items.length);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, pageWidth]);
+
+  const handlePrev = () => {
+    setItemsIncrement(itemsIncrement - 1);
+  };
+
+  const handleNext = () => {
+    setItemsIncrement(itemsIncrement + 1);
+  };
 
   return (
     <React.Fragment>
@@ -88,18 +134,36 @@ const HeaderNavigation = ({ items, pageWidth }) => {
         <MobileNav activeItem={activeItem} items={items} />
       ) : (
         <div className="header-navigation-lead">
-          {items.length > 0 &&
-            items.map((item, index) => (
-              <Link key={index} to={item.url}>
-                <p
-                  className={`lead-navigation-item ${
-                    activeItem.title === item.title ? 'active-lead-nav' : ''
-                  }`}
-                >
-                  {item.title}
-                </p>
+          {displayedItems.length > 0 &&
+            displayedItems.map((item, index) => (
+              <Link
+                style={{ width: `${100 / itemsPerPage}%` }}
+                className={`lead-navigation-item ${
+                  activeItem.title === item.title ? 'active-lead-nav' : ''
+                }`}
+                key={index}
+                to={item.url}
+                title={item.title}
+              >
+                {item.title}
               </Link>
             ))}
+          {!noPrev && (
+            <Icon
+              className="navigation-prev"
+              name={circleLeft}
+              size="34px"
+              onClick={handlePrev}
+            />
+          )}
+          {!noNext && (
+            <Icon
+              className="navigation-next"
+              name={circleRight}
+              size="34px"
+              onClick={handleNext}
+            />
+          )}
         </div>
       )}
     </React.Fragment>
