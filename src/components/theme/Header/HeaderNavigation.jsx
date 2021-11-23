@@ -137,7 +137,13 @@ const HeaderNavigation = ({ items, pageWidth }) => {
           {displayedItems.length > 0 &&
             displayedItems.map((item, index) => (
               <Link
-                style={{ width: `${100 / itemsPerPage}%` }}
+                style={{
+                  width: `${
+                    items.length < itemsPerPage
+                      ? 100 / items.length
+                      : 100 / itemsPerPage
+                  }%`,
+                }}
                 className={`lead-navigation-item ${
                   activeItem.title === item.title ? 'active-lead-nav' : ''
                 }`}
