@@ -99,7 +99,28 @@ export default function applyConfig(config) {
     { cssClass: 'army-moccasin-text', label: 'Army moccasin text' },
     { cssClass: 'army-khaki-text', label: 'Army khaki text' },
 
-    { cssClass: 'vivid-green-text', label: 'Vivid green text' },
+    //red series
+    { cssClass: 'red-mistyrose-text', label: 'Red mistyrose text' },
+    { cssClass: 'red-darksalmon-text', label: 'Red darksalmon text' },
+    { cssClass: 'red-indian-text', label: 'Red indian text' },
+    { cssClass: 'red-brown-text', label: 'Red brown text' },
+    { cssClass: 'red-dark-text', label: 'Red dark text' },
+
+    //orange set
+    { cssClass: 'orange-mistyrose-text', label: 'Orange mistyrose text' },
+    { cssClass: 'orange-pale-text', label: 'Orange pale text' },
+    { cssClass: 'orange-gold-text', label: 'Orange gold text' },
+    { cssClass: 'orange-text', label: 'Orange text' },
+    { cssClass: 'orange-sienna-text', label: 'Orange sienna text' },
+    { cssClass: 'orange-saddle-text', label: 'Orange saddle text' },
+
+    //black set
+    { cssClass: 'black-text', label: 'Black text' },
+    { cssClass: 'black-dimgray-text', label: 'Black dimgray text' },
+    { cssClass: 'black-gray-text', label: 'Black gray text' },
+    { cssClass: 'black-silver-text', label: 'Black silver text' },
+    { cssClass: 'black-gainsboro-text', label: 'Black gainsboro text' },
+
     { cssClass: 'blue-text', label: 'Blue text' },
     { cssClass: 'red-text', label: 'Red text' },
     { cssClass: 'yellow-text', label: 'Yellow text' },

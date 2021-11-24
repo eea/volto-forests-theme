@@ -91,3 +91,67 @@
 .grey-text {
   color: #8d8d8d;
 }
+
+/* red set */
+
+.red-mistyrose-text {
+  color: #fce6dc;
+}
+.red-darksalmon-text {
+  color: #f39a86;
+}
+
+.red-indian-text {
+  color: #e73d5c;
+}
+
+.red-brown-text {
+  color: #b92f47;
+}
+.red-dark-text {
+  color: #8e1206;
+}
+
+/* orange set */
+
+.orange-pale-text {
+  color: #fff6a6;
+}
+
+.orange-gold-text {
+  color: #ffe525;
+}
+
+.orange-text {
+  color: #f7a600;
+}
+
+.orange-sienna-text {
+  color: #b94b19;
+}
+
+.orange-saddle-text {
+  color: #8d4107;
+}
+
+/* black set */
+
+.black-text {
+  color: black;
+}
+
+.black-dimgray-text {
+  color: #6f6f6e;
+}
+
+.black-gray-text {
+  color: #929291;
+}
+
+.black-silver-text {
+  color: #bcbcbc;
+}
+
+.black-gainsboro-text {
+  color: #e3e3e3;
+}
