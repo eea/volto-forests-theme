@@ -3,8 +3,6 @@
  * @module reducers/frontpage_slides
  */
 
-import { map } from 'lodash';
-
 import { GET_FRONTPAGESLIDES } from '@eeacms/volto-forests-theme/constants/ActionTypes';
 
 const initialState = {
@@ -34,11 +32,7 @@ export default function frontpage_slides(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items: map(action.result.items, (item) => ({
-          title: item.title,
-          image: item.image.download,
-          description: item.description,
-        })),
+        items: action.result,
         loaded: true,
         loading: false,
       };

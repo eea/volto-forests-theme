@@ -67,9 +67,15 @@
 
 .slider-text {
   display: flex;
+  width: 60%;
   justify-content: space-around;
+  margin: 0 auto;
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1600px) {
+    width: 80%;
+  }
+
+  @media (max-width: 1200px) {
     flex-direction: column;
   }
 }
@@ -77,6 +83,7 @@
 .extra-header {
   position: relative;
   top: -1px;
+  display: flex;
   height: 70px;
   padding: 15px;
   padding-left: 50px;
@@ -86,48 +93,117 @@
   -webkit-box-shadow: 0px 1px 6px 0 #c7d5d8;
   -moz-box-shadow: 0px 1px 6px 0 #c7d5d8;
   box-shadow: 0px 1px 6px 0 #c7d5d8;
-  color: #6fb22c;
+  color: black;
   font-weight: bold;
   text-transform: uppercase;
+
+  @media (max-width: 700px) {
+    div {
+      span {
+        display: none;
+      }
+
+      a {
+        position: relative;
+        top: -15px;
+      }
+    }
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+
+    @media (max-width: 700px) {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  div {
+    flex-direction: column;
+  }
 }
 
 .slider-child {
-  width: 320px;
+  width: 280px;
+
+  @media (max-width: 1200px) {
+    position: relative;
+    top: -100px;
+    left: -30px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  @media (max-width: 700px) {
+    position: relative;
+    top: -40px;
+    left: -30px;
+  }
 
   span {
     position: relative;
-    top: 20px;
+    top: -40px;
     font-weight: bold;
 
-    @media (max-width: 1300px) {
+    @media (max-width: 1200px) {
       display: none;
     }
   }
 
-  @media (max-width: 1300px) {
-    width: auto;
-    margin: 0 auto;
+  img {
+    position: relative;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+
+    @media (min-width: 1200px) {
+      top: -60px;
+      left: 40%;
+    }
+
+    @media (max-width: 1200px) {
+      position: relative;
+      margin-top: 15px;
+      margin-right: 30px;
+    }
+
+    @media (max-width: 700px) {
+      width: 35px;
+      height: 35px;
+    }
   }
 
   a {
     display: block;
-    width: 320px;
+    width: 280px;
     height: 70px;
 
-    padding: 10px;
-    background-color: #168130ad;
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffffa3;
     color: white;
-    font-weight: bold;
+    font-weight: normal;
 
-    @media (min-width: 1300px) {
+    @media (min-width: 1200px) {
       position: absolute;
-      top: 250px;
+      top: 100px;
+      padding: 10px;
+    }
+
+    @media (max-width: 700px) {
+      height: 60px;
     }
   }
 
   a:hover {
-    background-color: #005c30cf;
-    color: white;
+    color: #ffffffa3;
   }
 }
 
