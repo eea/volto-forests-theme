@@ -8,7 +8,6 @@ import HomepageSlider from '@eeacms/volto-forests-theme/components/theme/Header/
 import MobileSearchWidget from '@eeacms/volto-forests-theme/components/theme/MobileSearchWidget/MobileSearchWidget';
 import Sticky from 'react-stickynode';
 import HeaderBackground from './header-bg.png';
-import axios from 'axios';
 import {
   getBasePath,
   getNavigationByParent,
@@ -88,6 +87,7 @@ const Header = (props) => {
         if (props.leadCaption) setLeadCaptionText(props.leadCaption);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     props.parentItems,
     props.parentImg,
@@ -105,7 +105,7 @@ const Header = (props) => {
 
   React.useEffect(() => {
     if (inheritLeadingData || leadNavigation) {
-      const parentUrl = parentData['@id'];
+      //const parentUrl = parentData['@id'];
       // getParentData(parentUrl);
 
       if (!inheritLeadingData) {
