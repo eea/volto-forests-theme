@@ -6,8 +6,13 @@ import { applyConfig as installFiseFrontend } from './localconfig';
 
 import ObjectListInlineWidget from './components/manage/Widgets/ObjectListInlineWidget';
 import reducers from '@eeacms/volto-forests-theme/reducers';
+import {
+  RAZZLE_FRONTEND_VERSION,
+  RAZZLE_FRONTEND_VERSION_URL,
+  RAZZLE_FRONTEND_PUBLISHED_AT,
+} from './constants/runtime';
 
-import '@plone/volto/config';
+import './slate-styles.css';
 
 export default function applyConfig(config) {
   // Add here your project's configuration here by modifying `config` accordingly
@@ -19,9 +24,12 @@ export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
     frontendMeta: {
-      version: process.env.RAZZLE_FRONTEND_VERSION || null,
-      version_url: process.env.RAZZLE_FRONTEND_VERSION_URL || null,
-      published_at: process.env.RAZZLE_FRONTEND_PUBLISHED_AT || null,
+      version: process.env.RAZZLE_FRONTEND_VERSION || RAZZLE_FRONTEND_VERSION,
+      version_url:
+        process.env.RAZZLE_FRONTEND_VERSION_URL || RAZZLE_FRONTEND_VERSION_URL,
+      published_at:
+        process.env.RAZZLE_FRONTEND_PUBLISHED_AT ||
+        RAZZLE_FRONTEND_PUBLISHED_AT,
     },
     timezone: 'CET',
     pathsWithFullobjects: ['/news', '/events'],
@@ -61,6 +69,68 @@ export default function applyConfig(config) {
   config.editForms = {
     ...config.editForms,
   };
+
+  config.settings.slate = config.settings.slate || {};
+  config.settings.slate.styleMenu = config.settings.slate.styleMenu || {};
+  config.settings.slate.styleMenu.inlineStyles = [
+    ...(config.settings.slate.styleMenu?.inlineStyles || []),
+    { cssClass: 'white-text', label: 'White text' },
+    // blue series
+    { cssClass: 'blue-powder-text', label: 'Blue powder text' },
+    { cssClass: 'blue-lightsteel-text', label: 'Blue lightsteel text' },
+    { cssClass: 'blue-cadet-text', label: 'Blue cadet text' },
+    { cssClass: 'blue-teal-text', label: 'Blue teal text' },
+    { cssClass: 'blue-darkslate-text', label: 'Blue darkslate text' },
+    // green series
+    {
+      cssClass: 'green-blanchedalmond-text',
+      label: 'Green blanchedalmond text',
+    },
+    { cssClass: 'green-tan-text', label: 'Green tan text' },
+    { cssClass: 'green-olivedrab-text', label: 'Green olivedrab text' },
+    { cssClass: 'light-green-text', label: 'Light green text' },
+    { cssClass: 'green-forest-text', label: 'Green forest text' },
+    { cssClass: 'green-darkslate-text', label: 'Green darkslate text' },
+
+    // army series
+    { cssClass: 'army-darkolivegreen-text', label: 'Army darkolivegreen text' },
+    { cssClass: 'army-yellowgreen-text', label: 'Army yellowgreen text' },
+    { cssClass: 'army-olivedrab-text', label: 'Army olivedrab text' },
+    { cssClass: 'army-moccasin-text', label: 'Army moccasin text' },
+    { cssClass: 'army-khaki-text', label: 'Army khaki text' },
+
+    //red series
+    { cssClass: 'red-mistyrose-text', label: 'Red mistyrose text' },
+    { cssClass: 'red-darksalmon-text', label: 'Red darksalmon text' },
+    { cssClass: 'red-indian-text', label: 'Red indian text' },
+    { cssClass: 'red-brown-text', label: 'Red brown text' },
+    { cssClass: 'red-dark-text', label: 'Red dark text' },
+
+    //orange set
+    { cssClass: 'orange-mistyrose-text', label: 'Orange mistyrose text' },
+    { cssClass: 'orange-pale-text', label: 'Orange pale text' },
+    { cssClass: 'orange-gold-text', label: 'Orange gold text' },
+    { cssClass: 'orange-text', label: 'Orange text' },
+    { cssClass: 'orange-sienna-text', label: 'Orange sienna text' },
+    { cssClass: 'orange-saddle-text', label: 'Orange saddle text' },
+
+    //black set
+    { cssClass: 'black-text', label: 'Black text' },
+    { cssClass: 'black-dimgray-text', label: 'Black dimgray text' },
+    { cssClass: 'black-gray-text', label: 'Black gray text' },
+    { cssClass: 'black-silver-text', label: 'Black silver text' },
+    { cssClass: 'black-gainsboro-text', label: 'Black gainsboro text' },
+
+    { cssClass: 'blue-text', label: 'Blue text' },
+    { cssClass: 'red-text', label: 'Red text' },
+    { cssClass: 'yellow-text', label: 'Yellow text' },
+    { cssClass: 'grey-text', label: 'Grey text' },
+  ];
+  // config.settings.slate.styleMenu.blockStyles = [
+  //   ...config.settings.slate.styleMenu.blockStyles,
+  //   { cssClass: 'green-block-text', label: 'Green Text' },
+  //   { cssClass: 'underline-block-text', label: 'Underline Text' },
+  // ];
 
   return config;
 }

@@ -166,29 +166,29 @@
 
 /*---  Theme colors  ---*/
 
-@lightGreen       : #769e2e;
-@darkGreen        : #225511;
-@darkerGreen      : #003311;
-@darkBrown        : #554433;
-@darkOrange       : #cc4400;
+@lightGreen       : #6fb22c;
+@darkGreen        : #168130;
+@darkerGreen      : #005c30;
+@darkBrown        : #8e4313;
+@darkOrange       : #b94d1f;
 
 // @textColor        : #002200;
-@textColor: #162A16;
+@textColor: #494e13;
 
 /*---  Colors  ---*/
 @orange           : #FA5C2A; // Palette: reddishOrange
-@yellow           : #F6A808; // Palette: goldenRod
-@green            : #51AA55; // Palette: darkPastelGreen
-@teal             : #517776; // Palette: slate
-@blue             : #007EB1; // Palette: Plone (tealBlue/cerulean)
-@pink             : #E40166; // Palette: darkHotPink
-@brown            : #826A6A; // Palette: reddishGrey
-@grey             : #68778D; // Palette: blueishGrey
+@yellow           : #F6A800; // Palette: goldenRod
+@green            : #168130; // Palette: darkPastelGreen
+@teal             : #5893a9; // Palette: slate
+@blue             : #5893a9; // Palette: Plone (tealBlue/cerulean)
+@pink             : #e63d5c; // Palette: darkHotPink
+@brown            : #8e4313; // Palette: reddishGrey
+@grey             : #9cc7d2; // Palette: blueishGrey
 @black            : #252525; // Palette: darkishGrey
 
 /*---  Light Colors  ---*/
-@lightOlive       : #C9EAB1; // Palette: lightSage
-@lightGrey        : #878F93;
+@lightOlive       : #bed492; // Palette: lightSage
+@lightGrey        : #A6A6A6;
 
 /*---   Neutrals  ---*/
 @fullBlack        : #000000;
@@ -198,7 +198,7 @@
 @white            : #FFFFFF;
 
 /*--- Colored Backgrounds ---*/
-@redBackground    : #F5C1C1; // Palette: alertError
+@redBackground    : #FDE7DC; // Palette: alertError
 @tealBackground   : #EDF1F2; // Palette: Breadcrumbs
 @blueBackground   : #F2F6F8;
 @purpleBackground : #B8C6C8; // Dublin Core Summary
@@ -211,8 +211,8 @@
 /*--- Colored Border ---*/
 // Pastanaga custom borders colors
 @greyBorderColor      : #C7D5D8; // breadcrumbs border
-@lightGreyBorderColor : #E0E1E0; // breadcrumbs background
-@blocksBorderGreen: #226622;
+@lightGreyBorderColor : #D9D9D9; // breadcrumbs background
+@blocksBorderGreen: #168130;
 
 
 /*-------------------
@@ -237,7 +237,7 @@
 /* Positive */
 
 /* Negative */
-@negativeBackgroundColor : rgb(237, 195, 194);
+@negativeBackgroundColor : rgb(253, 231, 220);
 @negativeHeaderColor     : @black;
 @negativeTextColor       : @black;
 

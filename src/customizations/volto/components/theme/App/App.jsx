@@ -114,6 +114,12 @@ class App extends Component {
     const headerImage =
       this.props.content?.image?.download || this.props.defaultHeaderImage;
 
+    const leadImageCaption =
+      this.props.content?.lead_image_caption &&
+      this.props.content.lead_image_caption !== null
+        ? this.props.content.lead_image_caption
+        : '';
+
     const bigLeading =
       this.props.content?.big_leading_image &&
       this.props.content.big_leading_image !== null
@@ -137,6 +143,7 @@ class App extends Component {
       inheritLeadingData,
       parentData: this.props.content?.parent,
       leadNavigation,
+      leadImageCaption,
     };
 
     return (

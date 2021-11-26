@@ -181,6 +181,35 @@ body.has-toolbar {
   left: 5px;
   display: flex;
   color: white;
+  width: 99%;
+
+  .navigation-prev {
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+    cursor: pointer;
+  }
+
+  .navigation-prev:hover{
+    fill: #cd4200 !important;
+  }
+
+  .navigation-next {
+    position: absolute;
+    bottom: 50px;
+    right: 0px;
+    cursor: pointer;
+  }
+
+  .navigation-next:hover{
+    fill: #cd4200 !important;
+  }
+
+  .lead-nav-wrapper{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap
+  }
 
   .active-lead-nav {
     background: white !important;
@@ -191,6 +220,9 @@ body.has-toolbar {
 
   .lead-navigation-item {
     padding: 12px 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     border: 2px solid #f7f7f5;
 
@@ -198,6 +230,8 @@ body.has-toolbar {
 
     background-color: #f7f7f5;
     border-radius: 3px 3px 0 0;
+    text-decoration: none;
+    text-align: center;
 
     color: #554535;
     cursor: pointer;
@@ -205,7 +239,9 @@ body.has-toolbar {
     font-weight: bold;
     text-decoration: none;
 
+
     @media (max-width: @computerBreakpoint) {
+      height: 40px;
       padding: 8px 10px;
       font-size: 14px;
     }
@@ -334,7 +370,7 @@ body.has-toolbar {
       display: none !important;
     }
 
-    @media (max-width: @largestMobileScreen) {
+    @media (max-width: @tabletBreakpoint) {
       display: none !important;
     }
   }
@@ -1067,6 +1103,12 @@ nav.navigation .menu > a.item:first-of-type {
   display: none !important;
 }
 
+nav.navigation .menu-manual-mobile {
+  @media (max-width: @tabletBreakpoint) {
+    display: none !important;
+  }
+}
+
 .modal .block {
   min-height: 400px;
 }
@@ -1720,18 +1762,6 @@ span.float-right {
       }
     }
   }
-
-  .discreet {
-    margin-top: auto;
-    color: #999;
-    font-size: 12px;
-    line-height: normal;
-  }
-
-  a:nth-of-type(1) span.discreet {
-    color: #047a79 !important;
-  }
-
   .map-wrapper {
     padding: 5px;
     border: 1px solid @darkGreen;

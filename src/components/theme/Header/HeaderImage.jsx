@@ -10,6 +10,8 @@ function HeaderImage(props) {
   const headerDimension = isBig ? 600 : 280;
   const [contentCount, setContentCount] = React.useState(0);
 
+  const hasMetadata = props.metadata && props.metadata !== '<p><br/></p>'; //this is the DefaultEditor empty text
+
   const imageContent =
     typeof window !== 'undefined' && window.document
       ? window.document.getElementsByClassName('header-image-content')
@@ -49,7 +51,7 @@ function HeaderImage(props) {
       ) : (
         <div className="header-image-content" />
       )}
-      {props.metadata && (
+      {hasMetadata && (
         <div
           className="header-meta-data"
           dangerouslySetInnerHTML={{ __html: props.metadata }}

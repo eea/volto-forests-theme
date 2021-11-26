@@ -382,6 +382,12 @@
   }
 }
 
+@media (max-width: @computerBreakpoint - 1px) {
+  .logoImageWithText {
+    display: none !important;
+  }
+}
+
 @media (max-width: 450px) {
   .logoImage {
     height: 55px !important;
@@ -395,6 +401,12 @@
 
   .logoImageSm {
     display: block !important;
+  }
+
+  @media (max-width: @computerBreakpoint - 1px) {
+    .logoImageWithText {
+      display: none !important;
+    }
   }
 
   .searchInput {

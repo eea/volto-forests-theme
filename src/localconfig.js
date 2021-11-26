@@ -21,6 +21,8 @@ import NavigationBlockView from '@eeacms/volto-forests-theme/components/manage/B
 import RedirectView from '@eeacms/volto-forests-theme/components/theme/View/RedirectView';
 import { uniqBy } from 'lodash';
 
+import './slate-inlineStyles.less';
+
 defineMessages({
   custom_addons: {
     id: 'custom_addons',
@@ -155,21 +157,22 @@ export function applyConfig(config) {
     {
       title: 'Forest Default',
       colorscale: [
-        '#215511',
-        '#77BB12',
-        '#CBEE66',
+        '#005c30',
+        '#168130',
+        '#6fb22c',
+        '#bed492',
         '#ffffff',
-        '#F4F4F1',
+        '#ecf0c5',
         '#000000',
       ],
     },
     {
       title: 'Forest Active',
       colorscale: [
-        '#CA4300 ',
-        '#E0E1E2',
-        '#E30166',
-        '#074F7C',
+        '#b94d1f ',
+        '#d9d9d9',
+        '#b92e48',
+        '#005e7d',
         '#000000',
         '#ffffff',
       ],
@@ -231,7 +234,7 @@ export function applyConfig(config) {
   config.settings.slate.styleMenu.inlineStyles = [
     ...(config.settings.slate.styleMenu?.inlineStyles || []),
     {
-      cssClass: 'discreet block_source',
+      cssClass: 'source-formating',
       label: 'Source formatting',
     },
   ];
