@@ -162,7 +162,7 @@
     height: 40px;
     justify-content: center;
 
-    @media (min-width: 1200px) {
+    @media (min-width: 1201px) {
       top: -60px;
       left: 40%;
     }
@@ -191,7 +191,7 @@
     color: white;
     font-weight: normal;
 
-    @media (min-width: 1200px) {
+    @media (min-width: 1201px) {
       position: absolute;
       top: 100px;
       padding: 10px;
