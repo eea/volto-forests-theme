@@ -29,46 +29,6 @@ const Header = (props) => {
   const [leadCaptionText, setLeadCaptionText] = React.useState('');
   const [navigationItems, setNavigationItems] = React.useState('');
 
-  // console.log('parentImg', props.parentImg);
-  // const getParentData = (url) => {
-  //   axios
-  //     .get(url, {
-  //       headers: {
-  //         accept: 'application/json',
-  //       },
-  //     })
-  //     .then((response) => {
-  //       const parentImage =
-  //         response.data && response.data.image && response.data.image.download
-  //           ? response.data.image.download
-  //           : '';
-
-  //       const parentLeadCaption =
-  //         response.data &&
-  //         response.data.lead_image_caption &&
-  //         response.data.lead_image_caption.data
-  //           ? response.data.lead_image_caption.data
-  //           : '';
-
-  //       const parentData =
-  //         response.data && props.navItems && response.data['@id']
-  //           ? getNavigationByParent(
-  //               props.navItems,
-  //               getBasePath(response.data['@id']),
-  //             )
-  //           : '';
-  //       if (inheritLeadingData) {
-  //         //setInheritedImage(props.parentImg);
-  //         //setLeadCaptionText(parentLeadCaption);
-  //       }
-  //       // if (leadNavigation) {
-  //       //   setNavigationItems(parentData.items);
-  //       // }
-  //     })
-  //     .catch((error) => {
-  //       return error;
-  //     });
-  // };
   React.useEffect(() => {
     if (leadNavigation || inheritLeadingData) {
       if (!props.parentItems || props.parentItems.length === 0) {
@@ -86,6 +46,9 @@ const Header = (props) => {
           setInheritedImage(props.parentImg.download);
         if (props.leadCaption) setLeadCaptionText(props.leadCaption);
       }
+      if (!inheritLeadingData) {
+        setLeadCaptionText(leadImageCaption.data);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -102,18 +65,6 @@ const Header = (props) => {
       setIsHomePage(props.actualPathName === '/');
     }
   }, [props.actualPathName, props.frontPageSlides]);
-
-  React.useEffect(() => {
-    if (inheritLeadingData || leadNavigation) {
-      //const parentUrl = parentData['@id'];
-      // getParentData(parentUrl);
-
-      if (!inheritLeadingData) {
-        setLeadCaptionText(leadImageCaption.data);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.extraData, props.navItems]);
 
   const defaultHeaderImage = props.defaultHeaderImage;
   let headerImageUrl = defaultHeaderImage?.image || defaultHeaderImage;
