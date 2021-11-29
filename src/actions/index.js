@@ -77,6 +77,7 @@ export function getParentFolderData(url) {
     request: {
       op: 'get',
       path: `/${url}?fullobjects`,
+      accept: 'application/json',
     },
   };
 }

@@ -157,3 +157,17 @@
 .black-gainsboro-text {
   color: #e3e3e3;
 }
+
+/* font sizes */
+
+.x-large {
+  font-size: x-large;
+}
+
+.xx-large {
+  font-size: xx-large;
+}
+
+.xxx-large {
+  font-size: xxx-large;
+}

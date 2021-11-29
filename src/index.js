@@ -125,6 +125,11 @@ export default function applyConfig(config) {
     { cssClass: 'red-text', label: 'Red text' },
     { cssClass: 'yellow-text', label: 'Yellow text' },
     { cssClass: 'grey-text', label: 'Grey text' },
+
+    // font-sizes
+    { cssClass: 'x-large', label: 'x-large' },
+    { cssClass: 'xx-large', label: 'xx-large' },
+    { cssClass: 'xxx-large', label: 'xxx-large' },
   ];
   // config.settings.slate.styleMenu.blockStyles = [
   //   ...config.settings.slate.styleMenu.blockStyles,

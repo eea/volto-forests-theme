@@ -8,11 +8,11 @@ import HomepageSlider from '@eeacms/volto-forests-theme/components/theme/Header/
 import MobileSearchWidget from '@eeacms/volto-forests-theme/components/theme/MobileSearchWidget/MobileSearchWidget';
 import Sticky from 'react-stickynode';
 import HeaderBackground from './header-bg.png';
-import axios from 'axios';
 import {
   getBasePath,
   getNavigationByParent,
 } from '@eeacms/volto-forests-theme/components/manage/Blocks/NavigationBlock/helpers';
+import { getParentFolderData } from '@eeacms/volto-forests-theme/actions';
 
 const Header = (props) => {
   const {
@@ -29,45 +29,73 @@ const Header = (props) => {
   const [leadCaptionText, setLeadCaptionText] = React.useState('');
   const [navigationItems, setNavigationItems] = React.useState('');
 
-  const getParentData = (url) => {
-    axios
-      .get(url, {
-        headers: {
-          accept: 'application/json',
-        },
-      })
-      .then((response) => {
-        const parentImage =
-          response.data && response.data.image && response.data.image.download
-            ? response.data.image.download
-            : '';
+  // console.log('parentImg', props.parentImg);
+  // const getParentData = (url) => {
+  //   axios
+  //     .get(url, {
+  //       headers: {
+  //         accept: 'application/json',
+  //       },
+  //     })
+  //     .then((response) => {
+  //       const parentImage =
+  //         response.data && response.data.image && response.data.image.download
+  //           ? response.data.image.download
+  //           : '';
 
-        const parentLeadCaption =
-          response.data &&
-          response.data.lead_image_caption &&
-          response.data.lead_image_caption.data
-            ? response.data.lead_image_caption.data
-            : '';
+  //       const parentLeadCaption =
+  //         response.data &&
+  //         response.data.lead_image_caption &&
+  //         response.data.lead_image_caption.data
+  //           ? response.data.lead_image_caption.data
+  //           : '';
 
-        const parentData =
-          response.data && props.navItems && response.data['@id']
-            ? getNavigationByParent(
-                props.navItems,
-                getBasePath(response.data['@id']),
-              )
-            : '';
-        if (inheritLeadingData) {
-          setInheritedImage(parentImage);
-          setLeadCaptionText(parentLeadCaption);
-        }
-        if (leadNavigation) {
-          setNavigationItems(parentData.items);
-        }
-      })
-      .catch((error) => {
-        return error;
-      });
-  };
+  //       const parentData =
+  //         response.data && props.navItems && response.data['@id']
+  //           ? getNavigationByParent(
+  //               props.navItems,
+  //               getBasePath(response.data['@id']),
+  //             )
+  //           : '';
+  //       if (inheritLeadingData) {
+  //         //setInheritedImage(props.parentImg);
+  //         //setLeadCaptionText(parentLeadCaption);
+  //       }
+  //       // if (leadNavigation) {
+  //       //   setNavigationItems(parentData.items);
+  //       // }
+  //     })
+  //     .catch((error) => {
+  //       return error;
+  //     });
+  // };
+  React.useEffect(() => {
+    if (leadNavigation || inheritLeadingData) {
+      if (!props.parentItems || props.parentItems.length === 0) {
+        props.getParentFolderData(getBasePath(parentData['@id']));
+      }
+      if (props.parentItems && props.parentItems.length > 0) {
+        const parentItems = getNavigationByParent(
+          props.navItems,
+          getBasePath(parentData['@id']),
+        );
+        if (leadNavigation) setNavigationItems(parentItems.items);
+      }
+      if (inheritLeadingData) {
+        if (props.parentImg && props.parentImg.download)
+          setInheritedImage(props.parentImg.download);
+        if (props.leadCaption) setLeadCaptionText(props.leadCaption);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    props.parentItems,
+    props.parentImg,
+    inheritLeadingData,
+    props.leadCaption,
+    parentData,
+    leadNavigation,
+  ]);
 
   React.useEffect(() => {
     if (props.actualPathName) {
@@ -77,8 +105,9 @@ const Header = (props) => {
 
   React.useEffect(() => {
     if (inheritLeadingData || leadNavigation) {
-      const parentUrl = parentData['@id'];
-      getParentData(parentUrl);
+      //const parentUrl = parentData['@id'];
+      // getParentData(parentUrl);
+
       if (!inheritLeadingData) {
         setLeadCaptionText(leadImageCaption.data);
       }
@@ -141,7 +170,15 @@ const Header = (props) => {
     </div>
   );
 };
-export default connect((state) => ({
-  token: state.userSession.token,
-  navItems: state.navigation?.items,
-}))(Header);
+export default connect(
+  (state) => ({
+    token: state.userSession.token,
+    navItems: state.navigation?.items,
+    parentItems: state.parent_folder_data?.items?.items,
+    parentImg: state.parent_folder_data?.items?.image,
+    leadCaption: state.parent_folder_data?.items?.lead_image_caption?.data,
+  }),
+  {
+    getParentFolderData,
+  },
+)(Header);
