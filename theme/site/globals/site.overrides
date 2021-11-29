@@ -219,7 +219,6 @@ body.has-toolbar {
   }
 
   .lead-navigation-item {
-    height: 50px;
     padding: 12px 20px;
     white-space: nowrap;
     overflow: hidden;
@@ -1238,10 +1237,10 @@ h5 {
   bottom: 0;
   left: 0;
   background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.64) 14%,
-    rgba(0, 0, 0, 0) 49%,
+    0deg,
+    rgba(0, 0, 0) 0%,
+    rgba(0, 0, 0) 60%,
+    rgba(0, 0, 0, 0) 10%,
     rgba(0, 0, 0, 0) 100%
   );
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -1349,11 +1348,11 @@ h5 {
 
     .slide-body {
       position: absolute;
-      bottom: 30%;
+      top: 20%;
       left: unset;
-      max-width: 600px;
-      margin-left: 4rem;
+      width: 100%;
       color: #fff;
+      text-align: center;
 
       @media (max-width: 700px) {
         margin-left: 1rem;
@@ -3225,21 +3224,6 @@ body.mosaic-view .content-area main {
   // }
 }
 
-.slide-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.64) 14%,
-    rgba(0, 0, 0, 0) 49%,
-    rgba(0, 0, 0, 0) 100%
-  );
-}
-
 .slider-slide {
   .slide-img {
     height: 600px;
@@ -3251,7 +3235,7 @@ body.mosaic-view .content-area main {
     position: absolute;
     bottom: 35%;
     left: 19em;
-    max-width: 600px;
+    width: 100%;
     color: white;
     text-align: left;
 
@@ -3281,7 +3265,8 @@ body.mosaic-view .content-area main {
     }
 
     .slide-description {
-      max-width: 540px;
+      position: relative;
+      top: 120px;
       font-size: 24px;
       font-weight: 200;
       line-height: 1.2;
