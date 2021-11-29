@@ -5,7 +5,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 
 import ImageGallery from 'react-image-gallery';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Placeholder } from 'semantic-ui-react';
+import { Placeholder, Dimmer, Loader } from 'semantic-ui-react';
 import { getBasePath } from '@eeacms/volto-forests-theme/helpers';
 
 class HomepageSlider extends Component {
@@ -104,11 +104,14 @@ class HomepageSlider extends Component {
 
   render() {
     const slides = this.getSlides(this.props.items.slides);
-    const icon = this.props.items.extra.icon || '';
-    const text = this.props.items.extra.text || '';
-    const link = this.props.items.extra.link || '';
-    const linkText = this.props.items.extra.linkText || '';
-    return (
+    const icon = this.props.items.extra?.icon;
+    const text = this.props.items.extra?.text;
+    const link = this.props.items.extra?.link;
+    const linkText = this.props.items.extra?.linkText;
+
+    const hasHeaderData = this.props.items.extra ? true : false;
+
+    return hasHeaderData ? (
       <div>
         <div className="slider-wrapper">
           <ImageGallery
@@ -138,6 +141,12 @@ class HomepageSlider extends Component {
             <a href={link}>{linkText}</a>
           </div>
         </div>
+      </div>
+    ) : (
+      <div className="loader">
+        <Dimmer active inverted>
+          <Loader />
+        </Dimmer>
       </div>
     );
   }
