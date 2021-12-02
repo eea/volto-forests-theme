@@ -126,11 +126,11 @@ class HomepageSlider extends Component {
             disableThumbnailScroll={false}
             showFullscreenButton={false}
             showPlayButton={false}
-            autoplay
+            autoPlay={true}
             renderItem={this.renderSlide}
             renderThumbInner={this.renderThumbnail}
-            slideDuration={300}
-            slideInterval={90000}
+            slideDuration={450}
+            slideInterval={5000}
           />
         </div>
         <div className="extra-header">
