@@ -24,11 +24,11 @@ export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
     frontendMeta: {
-      version: process.env.RAZZLE_FRONTEND_VERSION || RAZZLE_FRONTEND_VERSION,
+      version: process.env.RAZZLE_FRONTEND_VERSION ?? RAZZLE_FRONTEND_VERSION,
       version_url:
-        process.env.RAZZLE_FRONTEND_VERSION_URL || RAZZLE_FRONTEND_VERSION_URL,
+        process.env.RAZZLE_FRONTEND_VERSION_URL ?? RAZZLE_FRONTEND_VERSION_URL,
       published_at:
-        process.env.RAZZLE_FRONTEND_PUBLISHED_AT ||
+        process.env.RAZZLE_FRONTEND_PUBLISHED_AT ??
         RAZZLE_FRONTEND_PUBLISHED_AT,
     },
     timezone: 'CET',
