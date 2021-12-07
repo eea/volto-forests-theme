@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-forests-theme",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "@eeacms/volto-forests-theme: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -27,7 +27,7 @@
     "@blueprintjs/icons": "^3.19.0",
     "@eeacms/volto-plotlycharts": "*",
     "@eeacms/volto-addons-forest": "*",
-    "@eeacms/volto-datablocks": "*",
+    "@eeacms/volto-datablocks": "2.0.16",
     "@eeacms/volto-matomo": "*",
     "raven-js": "3.27.2",
     "recharts": "2.1.6",
