@@ -19,6 +19,9 @@ function HeaderImage(props) {
   const ccount =
     imageContent && imageContent[0] ? imageContent[0].childElementCount : 0;
 
+  const pathName = props.pathname;
+  const hideHeaderContent = ['/header', '/head', '/footer'].includes(pathName);
+
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       setContentCount(ccount);
@@ -43,7 +46,7 @@ function HeaderImage(props) {
       />
       <div className="header-image-overlay" />
       <div className="header-image-content" />
-      {props.content && contentCount === 0 ? (
+      {!hideHeaderContent && props.content && contentCount === 0 ? (
         <div className="header-image-content">
           <h1>{props.content.title}</h1>
           <p>{props.content.description}</p>
