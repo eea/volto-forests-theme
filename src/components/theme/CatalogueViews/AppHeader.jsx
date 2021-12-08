@@ -141,7 +141,6 @@ class App extends Component {
       <Fragment>
         <BodyClass className={`view-${action}view`} />
         <Header
-          folderHeader={this.props.folderHeader}
           actualPathName={this.props.pathname}
           pathname={path}
           extraData={extraHeaderData}
@@ -223,7 +222,6 @@ export default compose(
   ]),
   connect(
     (state, props) => ({
-      folderHeader: state.folder_header.items,
       defaultHeaderImage: state.default_header_image.items?.[0],
       // content: state.content.data,
       content: state.content.data,
