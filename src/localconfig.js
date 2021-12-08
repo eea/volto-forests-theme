@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-
+import loadable from '@loadable/component';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 
 import CountryView from '@eeacms/volto-forests-theme/components/theme/CountryView/CountryView';
@@ -19,6 +19,11 @@ import NavigationBlockEdit from '@eeacms/volto-forests-theme/components/manage/B
 import NavigationBlockView from '@eeacms/volto-forests-theme/components/manage/Blocks/NavigationBlock/View';
 
 import RedirectView from '@eeacms/volto-forests-theme/components/theme/View/RedirectView';
+import SiteMap from '@eeacms/volto-forests-theme/components/theme/SiteMap/SiteMap';
+import Header from '@eeacms/volto-forests-theme/components/theme/CatalogueViews/AppHeader.jsx';
+import Footer from '@eeacms/volto-forests-theme/components/theme/CatalogueViews/AppFooter.jsx';
+import Head from '@eeacms/volto-forests-theme/components/theme/CatalogueViews/AppHead.jsx';
+
 import { uniqBy } from 'lodash';
 
 import './slate-inlineStyles.less';
@@ -79,6 +84,31 @@ export function applyConfig(config) {
     matomoSiteId: 46,
     // ...['navigation', '&expand.navigation.depth=3'],
   };
+
+  const addonRoutes = [
+    {
+      path: '/header',
+      component: Header,
+      exact: true,
+    },
+    {
+      path: '/footer',
+      component: Footer,
+      exact: true,
+    },
+    {
+      path: '/head',
+      component: Head,
+      exact: true,
+    },
+    {
+      path: '/sitemap',
+      component: SiteMap,
+      exact: true,
+    },
+  ];
+
+  config.addonRoutes = addonRoutes;
 
   config.views = {
     ...config.views,
@@ -157,28 +187,31 @@ export function applyConfig(config) {
     {
       title: 'Forest Default',
       colorscale: [
-        '#005c30',
-        '#168130',
-        '#6fb22c',
-        '#bed492',
+        '#215511',
+        '#77BB12',
+        '#CBEE66',
         '#ffffff',
-        '#ecf0c5',
+        '#F4F4F1',
         '#000000',
       ],
     },
     {
       title: 'Forest Active',
       colorscale: [
-        '#b94d1f ',
-        '#d9d9d9',
-        '#b92e48',
-        '#005e7d',
+        '#CA4300 ',
+        '#E0E1E2',
+        '#E30166',
+        '#074F7C',
         '#000000',
         '#ffffff',
       ],
     },
   ];
 
+  config.settings.loadables.rechartsLib = loadable.lib(
+    () => import('recharts'),
+    { ssr: false },
+  );
   // border-tile
   config.settings.pluggableStyles = [
     ...(config.settings.pluggableStyles || []),
