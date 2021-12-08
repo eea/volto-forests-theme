@@ -102,15 +102,48 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    const leadImageCaption =
+      this.props.content?.lead_image_caption &&
+      this.props.content.lead_image_caption !== null
+        ? this.props.content.lead_image_caption
+        : '';
+
+    const bigLeading =
+      this.props.content?.big_leading_image &&
+      this.props.content.big_leading_image !== null
+        ? this.props.content.big_leading_image
+        : false;
+
+    const inheritLeadingData =
+      this.props.content?.inherit_leading_data &&
+      this.props.content.inherit_leading_data !== null
+        ? this.props.content.inherit_leading_data
+        : false;
+
+    const leadNavigation =
+      this.props.content?.lead_navigation &&
+      this.props.content.lead_navigation !== null
+        ? this.props.content.lead_navigation
+        : false;
+
     const headerImage =
       this.props.content?.image?.download || this.props.defaultHeaderImage;
+
+    const extraHeaderData = {
+      bigLeading,
+      inheritLeadingData,
+      parentData: this.props.content?.parent,
+      leadNavigation,
+      leadImageCaption,
+    };
+
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
         <Header
-          folderHeader={this.props.folderHeader}
           actualPathName={this.props.pathname}
           pathname={path}
+          extraData={extraHeaderData}
           defaultHeaderImage={headerImage}
           navigationItems={this.props.navigation}
           frontpage_slides={this.props.frontpage_slides}
@@ -189,10 +222,9 @@ export default compose(
   ]),
   connect(
     (state, props) => ({
-      folderHeader: state.folder_header.items,
       defaultHeaderImage: state.default_header_image.items?.[0],
       // content: state.content.data,
-      content: state.prefetch?.[props.location.pathname] || state.content.data,
+      content: state.content.data,
       frontpage_slides: state.frontpage_slides.items,
       navigation: state.navigation.items,
       pathname: state.router.location.pathname, //props.location.pathname,
