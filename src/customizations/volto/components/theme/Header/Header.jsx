@@ -107,7 +107,7 @@ const Header = (props) => {
             <Breadcrumbs pathname={props.pathname} />
 
             <HeaderImage
-              pathname={props.pathName}
+              pathname={props.pathname}
               bigImage={bigLeading}
               leadNavigation={leadNavigation}
               navigationItems={navigationItems}
