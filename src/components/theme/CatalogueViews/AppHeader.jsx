@@ -24,6 +24,7 @@ import {
   getDefaultHeaderImage,
 } from '@eeacms/volto-forests-theme/actions';
 import { getPortlets } from '@eeacms/volto-addons-forest/actions';
+import config from '@plone/volto/registry';
 
 class App extends Component {
   static propTypes = {
@@ -178,7 +179,13 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
+        __SERVER__ &&
+        dispatch(
+          getNavigation(
+            getBaseUrl(location.pathname),
+            config.settings.navDepth,
+          ),
+        ),
     },
     {
       key: 'types',
