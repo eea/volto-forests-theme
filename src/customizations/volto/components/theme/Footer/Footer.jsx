@@ -21,6 +21,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
 import { setCurrentVersion } from '@eeacms/volto-forests-theme/actions';
+import {
+  RAZZLE_FRONTEND_VERSION,
+  RAZZLE_FRONTEND_VERSION_URL,
+  RAZZLE_FRONTEND_PUBLISHED_AT,
+} from '@eeacms/volto-forests-theme/constants/runtime';
 
 /**
  * Component to display the footer.
@@ -36,23 +41,28 @@ const Footer = ({
   navItems,
 }) => {
   const { settings } = config;
+  let env = React.useRef(__CLIENT__ && window.env);
+
   const dtf = new Intl.DateTimeFormat('en', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
   });
+
   const published_at = dtf.format(
     new Date(
-      settings.frontendMeta?.published_at || currentVersion.published_at,
+      settings.frontendMeta?.published_at ||
+        env?.current.RAZZLE_FRONTEND_PUBLISHED_AT ||
+        RAZZLE_FRONTEND_PUBLISHED_AT, //needed for cypress
     ),
   );
-  const version_url = settings.frontendMeta.version_url
-    ? settings.frontendMeta.version_url
-    : currentVersion.version_url;
+  const version_url =
+    settings.frontendMeta.version_url ??
+    (env?.current.RAZZLE_FRONTEND_VERSION_URL || RAZZLE_FRONTEND_VERSION_URL);
 
-  const version = settings.frontendMeta.version
-    ? settings.frontendMeta.version
-    : currentVersion.version;
+  const version =
+    settings.frontendMeta.version ??
+    (env?.current.RAZZLE_FRONTEND_VERSION || RAZZLE_FRONTEND_VERSION);
   if (
     settings.frontendMeta.published_at &&
     settings.frontendMeta.version_url &&
