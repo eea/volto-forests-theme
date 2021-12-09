@@ -6,11 +6,6 @@ import { applyConfig as installFiseFrontend } from './localconfig';
 
 import ObjectListInlineWidget from './components/manage/Widgets/ObjectListInlineWidget';
 import reducers from '@eeacms/volto-forests-theme/reducers';
-import {
-  RAZZLE_FRONTEND_VERSION,
-  RAZZLE_FRONTEND_VERSION_URL,
-  RAZZLE_FRONTEND_PUBLISHED_AT,
-} from './constants/runtime';
 
 import './slate-styles.css';
 
@@ -24,12 +19,9 @@ export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
     frontendMeta: {
-      version: process.env.RAZZLE_FRONTEND_VERSION ?? RAZZLE_FRONTEND_VERSION,
-      version_url:
-        process.env.RAZZLE_FRONTEND_VERSION_URL ?? RAZZLE_FRONTEND_VERSION_URL,
-      published_at:
-        process.env.RAZZLE_FRONTEND_PUBLISHED_AT ??
-        RAZZLE_FRONTEND_PUBLISHED_AT,
+      version: process.env.RAZZLE_FRONTEND_VERSION,
+      version_url: process.env.RAZZLE_FRONTEND_VERSION_URL,
+      published_at: process.env.RAZZLE_FRONTEND_PUBLISHED_AT,
     },
     timezone: 'CET',
     pathsWithFullobjects: ['/news', '/events'],
