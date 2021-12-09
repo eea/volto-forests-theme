@@ -45,14 +45,17 @@ function HeaderImage(props) {
         }
       />
       <div className="header-image-overlay" />
-      <div className="header-image-content" />
-      {!hideHeaderContent && props.content && contentCount === 0 ? (
-        <div className="header-image-content">
-          <h1>{props.content.title}</h1>
-          <p>{props.content.description}</p>
-        </div>
-      ) : (
-        <div className="header-image-content" />
+      {!hideHeaderContent && (
+        <React.Fragment>
+          {props.content && contentCount === 0 ? (
+            <div className="header-image-content">
+              <h1>{props.content.title}</h1>
+              <p>{props.content.description}</p>
+            </div>
+          ) : (
+            <div className="header-image-content" />
+          )}
+        </React.Fragment>
       )}
       {hasMetadata && (
         <div
