@@ -30,7 +30,7 @@ const toSearchOptions = (searchableText, subject, queryOptions) => {
     ...(subject && {
       Subject: subject,
     }),
-    ...(queryOptions && queryOptions),
+    ...(queryOptions ? queryOptions : {}),
   };
 };
 
