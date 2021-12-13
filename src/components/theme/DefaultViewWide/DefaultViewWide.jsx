@@ -56,14 +56,6 @@ const DefaultViewWide = (props) => {
       <BodyClass className={`document_wide_view`} />
 
       <Grid columns="equal" className="zero-margin">
-        {/* {renderPortletManager('plone.leftcolumn', 2, { ...props })}
-      <Grid.Column
-        style={{ position: 'static' }}
-        tablet={12}
-        largeScreen={6}
-        widescreen={6}
-        computer={8}
-      > */}
         {hasBlocksData(content) ? (
           <div id="page-document" className="ui container">
             <Helmet title={content.title} />
@@ -82,11 +74,6 @@ const DefaultViewWide = (props) => {
                   path={getBaseUrl(location?.pathname || '')}
                 />
               ) : (
-                //   <div key={block}>
-                //     {intl.formatMessage(messages.unknownBlock, {
-                //       block: content[blocksFieldname]?.[block]?.['@type'],
-                //     })}
-                //   </div>
                 ''
               );
             })}
@@ -94,11 +81,6 @@ const DefaultViewWide = (props) => {
           </div>
         ) : (
           <Container id="page-document">
-            {/* <Helmet title={content.title} />
-      <h1 className="documentFirstHeading">{content.title}</h1>
-      {content.description && (
-        <p className="documentDescription">{content.description}</p>
-      )} */}
             {content.image && (
               <Image
                 className="document-image"
