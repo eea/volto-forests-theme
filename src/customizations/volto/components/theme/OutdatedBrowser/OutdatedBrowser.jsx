@@ -8,6 +8,7 @@ import { BodyClass } from '@plone/volto/helpers';
 const OutdatedBrowser = () => {
   const browserdetect = useSelector((state) => state.browserdetect);
   return (
+    browserdetect &&
     config.settings.notSupportedBrowsers.includes(browserdetect.name) && (
       <Container style={{ marginBottom: '20px' }}>
         <BodyClass className="overflow-hidden" />
