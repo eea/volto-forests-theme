@@ -1,4 +1,5 @@
 import { setupBeforeEach, tearDownAfterEach } from '../support';
+import 'cypress-file-upload';
 
 describe('Blocks Tests', () => {
   beforeEach(setupBeforeEach);
@@ -30,6 +31,16 @@ describe('Blocks Tests', () => {
     // then the page view should contain our changes
     cy.contains('My Page');
     cy.get('.block.image');
+
+    cy.visit('/default_header_image/contents');
+    const imageFile = 'cat.jpg';
+    cy.get('.top-menu-menu button').first().click();
+    cy.get('.modal .content .table').attachFile(imageFile, { subjectType: 'drag-n-drop' });
+    cy.get('.actions .arrow.right.icon').click();
+
+    cy.get('.navigation').contains('Cypress').click();
+    cy.get('.menu.transition.Cypress--section').contains('My Add-on', {force:true}).click({force:true});
+    cy.scrollTo(0, 100);
 
     // header
     cy.get('.header-wrapper');
