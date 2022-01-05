@@ -79,7 +79,7 @@ class Navigation extends Component {
    * @method componentWillMount
    * @returns {undefined}getBasePath
    */
-  componentWillMount() {
+  componentDidMount() {
     // this.props.getNavigation(getBaseUrl(this.props.pathname), 2);
     this.closeMobileMenu();
   }
