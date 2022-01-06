@@ -16,15 +16,6 @@ class HomepageSlider extends Component {
     };
     this.getSlides = this.getSlides.bind(this);
   }
-
-  static propTypes = {
-    items: PropTypes.objectOf({
-      title: PropTypes.string,
-      url: PropTypes.string,
-      description: PropTypes.string,
-    }),
-  };
-
   renderThumbnail = (item) => {
     return (
       <div className="slider-thumbnail" key={getBasePath(item.original)}>
@@ -149,5 +140,12 @@ class HomepageSlider extends Component {
     );
   }
 }
+HomepageSlider.propTypes = {
+  items: PropTypes.shape({
+    title: PropTypes.string,
+    url: PropTypes.string,
+    description: PropTypes.string,
+  }),
+};
 
 export default HomepageSlider;
