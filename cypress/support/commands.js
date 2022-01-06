@@ -5,7 +5,7 @@ Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   user = 'admin';
-  password = 'secret';
+  password = 'admin';
 
   return cy
     .request({
@@ -31,7 +31,7 @@ Cypress.Commands.add(
     api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
     auth = {
       user: 'admin',
-      pass: 'secret',
+      pass: 'admin',
     };
     if (contentType === 'File') {
       return cy.request({
@@ -131,7 +131,7 @@ Cypress.Commands.add('removeContent', (path) => {
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
     user: 'admin',
-    pass: 'secret',
+    pass: 'admin',
   };
   return cy
     .request({
@@ -164,7 +164,7 @@ Cypress.Commands.add(
     api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
     auth = {
       user: 'admin',
-      pass: 'secret',
+      pass: 'admin',
     };
     return cy.request({
       method: 'POST',
