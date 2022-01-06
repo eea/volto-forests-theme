@@ -18,7 +18,7 @@ class HomepageSlider extends Component {
   }
 
   static propTypes = {
-    items: PropTypes.shape({
+    items: PropTypes.objectOf({
       title: PropTypes.string,
       url: PropTypes.string,
       description: PropTypes.string,
