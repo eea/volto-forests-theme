@@ -141,11 +141,14 @@ class HomepageSlider extends Component {
   }
 }
 HomepageSlider.propTypes = {
-  items: PropTypes.shape({
-    title: PropTypes.string,
-    url: PropTypes.string,
-    description: PropTypes.string,
-  }),
+  items: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ]),
 };
 
 export default HomepageSlider;
