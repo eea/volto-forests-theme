@@ -75,16 +75,6 @@ class Navigation extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}getBasePath
-   */
-  componentDidMount() {
-    // this.props.getNavigation(getBaseUrl(this.props.pathname), 2);
-    this.closeMobileMenu();
-  }
-
-  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -120,6 +110,7 @@ class Navigation extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside, false);
+    this.closeMobileMenu();
   }
 
   componentWillUnmount() {
