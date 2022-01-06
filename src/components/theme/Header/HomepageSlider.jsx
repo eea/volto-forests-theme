@@ -62,8 +62,8 @@ class HomepageSlider extends Component {
   };
 
   createDescription(children) {
-    const items = children.map((child) => (
-      <div className="slider-child">
+    const items = children.map((child, index) => (
+      <div className="slider-child" key={index}>
         <img
           alt="descriptive icon"
           src={`data:image/svg+xml;utf8,${child.icon}`}
