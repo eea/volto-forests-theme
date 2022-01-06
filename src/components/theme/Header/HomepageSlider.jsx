@@ -18,13 +18,11 @@ class HomepageSlider extends Component {
   }
 
   static propTypes = {
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    ),
+    items: PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+      description: PropTypes.string,
+    }),
   };
 
   renderThumbnail = (item) => {
