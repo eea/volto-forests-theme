@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import { compose } from 'redux';
 import { asyncConnect } from '@plone/volto/helpers';
 import { Segment, Container } from 'semantic-ui-react';
@@ -17,6 +18,7 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
+import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
 import Error from '@plone/volto/error';
 
@@ -205,6 +207,10 @@ class App extends Component {
           </Container>
         </Segment>
         <Footer />
+        <LockingToastsFactory
+          content={this.props.content}
+          user={this.props.userId}
+        />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
@@ -306,6 +312,9 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       token: state.userSession.token,
       content: state.content.data,
       apiError: state.apierror.error,
