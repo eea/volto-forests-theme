@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
-import loadable from '@loadable/component';
 
 import { Header } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
@@ -25,6 +24,7 @@ import {
 } from '@eeacms/volto-forests-theme/actions';
 import { getPortlets } from '@eeacms/volto-addons-forest/actions';
 import config from '@plone/volto/registry';
+import * as Sentry from '@sentry/browser';
 
 class App extends Component {
   static propTypes = {
@@ -41,21 +41,6 @@ class App extends Component {
     errorInfo: null,
   };
 
-  /**
-   * ComponentDidMount
-   * @method ComponentDidMount
-   * @param {string} error  The error
-   * @param {string} info The info
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    // this.props.getDefaultHeaderImage();
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-
-      Raven.config(process.env.SENTRY_DSN).install();
-    }
-  }
   // shouldComponentUpdate(nextProps, nextState) {
   //   if (nextProps.loadingContent.loading || nextProps.search.loading) {
   //     console.log('dont load');
@@ -89,9 +74,10 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__ && process.env.SENTRY_DSN) {
-      const Raven = loadable(() => import('raven-js'));
-      Raven.captureException(error, { extra: info });
+    if (__CLIENT__) {
+      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
+        Sentry.captureException(error);
+      }
     }
   }
 

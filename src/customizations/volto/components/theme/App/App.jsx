@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import { compose } from 'redux';
 import { asyncConnect } from '@plone/volto/helpers';
 import { Segment, Container } from 'semantic-ui-react';
@@ -17,8 +18,10 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-
+import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
+import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import Error from '@plone/volto/error';
+import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 
 import ViewletsRenderer from '@eeacms/volto-addons-forest/Viewlets/Render';
 
@@ -205,6 +208,11 @@ class App extends Component {
           </Container>
         </Segment>
         <Footer />
+        <LockingToastsFactory
+          content={this.props.content}
+          user={this.props.userId}
+        />
+        <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
@@ -235,12 +243,47 @@ export const __test__ = connect(
   { purgeMessages },
 )(App);
 
+export const fetchContent = async ({ store, location }) => {
+  const content = await store.dispatch(
+    getContent(getBaseUrl(location.pathname)),
+  );
+
+  const promises = [];
+  const { blocksConfig } = config.blocks;
+
+  const visitor = ([id, data]) => {
+    const blockType = data['@type'];
+    const { getAsyncData } = blocksConfig[blockType];
+    if (getAsyncData) {
+      const p = getAsyncData({
+        store,
+        dispatch: store.dispatch,
+        path: location.pathname,
+        location,
+        id,
+        data,
+      });
+      if (!p?.length) {
+        throw new Error(
+          'You should return a list of promises from getAsyncData',
+        );
+      }
+      promises.push(...p);
+    }
+  };
+
+  visitBlocks(content, visitor);
+
+  await Promise.allSettled(promises);
+
+  return content;
+};
 export default compose(
   asyncConnect([
     {
       key: 'content',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
+      promise: ({ location, store }) =>
+        __SERVER__ && fetchContent({ store, location }),
     },
     {
       key: 'frontpage_slides',
@@ -306,6 +349,9 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       token: state.userSession.token,
       content: state.content.data,
       apiError: state.apierror.error,
