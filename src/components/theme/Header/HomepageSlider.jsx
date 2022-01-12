@@ -16,17 +16,6 @@ class HomepageSlider extends Component {
     };
     this.getSlides = this.getSlides.bind(this);
   }
-
-  static propTypes = {
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    ),
-  };
-
   renderThumbnail = (item) => {
     return (
       <div className="slider-thumbnail" key={getBasePath(item.original)}>
@@ -73,8 +62,8 @@ class HomepageSlider extends Component {
   };
 
   createDescription(children) {
-    const items = children.map((child) => (
-      <div className="slider-child">
+    const items = children.map((child, index) => (
+      <div className="slider-child" key={index}>
         <img
           alt="descriptive icon"
           src={`data:image/svg+xml;utf8,${child.icon}`}
@@ -151,5 +140,15 @@ class HomepageSlider extends Component {
     );
   }
 }
+HomepageSlider.propTypes = {
+  items: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ]),
+};
 
 export default HomepageSlider;
