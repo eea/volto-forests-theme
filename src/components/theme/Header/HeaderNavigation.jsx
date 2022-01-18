@@ -78,7 +78,6 @@ const HeaderNavigation = ({ items, pageWidth }) => {
 
   const [displayedItems, setDisplayedItems] = React.useState([]);
   const history = useHistory();
-  const pathname = history.location.pathname;
 
   const noPrev = displayedItems && items && items[0] === displayedItems[0];
   const noNext =

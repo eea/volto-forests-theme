@@ -28,7 +28,6 @@ const Header = (props) => {
   const [inheritedImage, setInheritedImage] = React.useState('');
   const [leadCaptionText, setLeadCaptionText] = React.useState('');
   const [navigationItems, setNavigationItems] = React.useState('');
-  const [disableSticky, setDisableSticky] = React.useState(false);
 
   React.useEffect(() => {
     if (leadNavigation || inheritLeadingData) {
