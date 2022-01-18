@@ -108,9 +108,7 @@ const Header = (props) => {
           <HomepageSlider items={props.frontpage_slides} />
         ) : (
           <div style={{ position: 'relative' }}>
-            <Sticky key={props.pathname} enabled={true} top={102} className="sticky-breadcrumbs" bottomBoundary={".sticky-header-nav"}>
-              <Breadcrumbs pathname={props.pathname} />
-            </Sticky>
+            <Breadcrumbs pathname={props.pathname} />
             <HeaderImage
               bigImage={bigLeading}
               leadNavigation={leadNavigation}

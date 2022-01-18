@@ -174,12 +174,6 @@ body.has-toolbar {
   }
 }
 
-.sticky-breadcrumbs {
-  position: inherit;
-  z-index: 1;
-  .sticky-inner-wrapper {    
-  }
-}
 
 .sticky-header-nav {
  
@@ -258,20 +252,6 @@ body.has-toolbar {
       padding: 8px 10px;
       font-size: 14px;
     }
-    &.custom {
-      position: absolute;
-      left: -90px;
-      padding: 12px 10px;
-      display: flex;
-      background: white;
-      box-shadow: 0 -1px 2px 0 #cd4200;
-      color: #cd4200;
-      p {
-        position: relative;
-        top: 2px;
-        left: -7px;
-      }
-    }
   }
 
   .lead-navigation-item:hover {
@@ -282,12 +262,6 @@ body.has-toolbar {
   }
 }
 
-.custom-breadcrumb{
-  position: relative;
-  left: -160px;
-  top: -18px;
-  white-space: nowrap;
-}
 
 .header-image-wrapper {
   position: relative;

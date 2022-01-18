@@ -8,9 +8,6 @@ import closeIcon from '@plone/volto/icons/clear.svg';
 import { Icon } from '@plone/volto/components';
 import { connect } from 'react-redux';
 import  Sticky from 'react-stickynode';
-import {  Icon as IconSemantic, Popup }  from 'semantic-ui-react';
-import { Breadcrumbs } from '@plone/volto/components';
-
 
 
 import circleLeft from '@plone/volto/icons/circle-left.svg';
@@ -153,7 +150,6 @@ const HeaderNavigation = ({ items, pageWidth }) => {
       ) : (
         <Sticky enabled={true} top={isTablet ? 75 : 102} className="sticky-header-nav">
             <div className="header-navigation-lead">
-            <Popup basic size={"mini"} style={{boxShadow:"none"}} hoverable position="bottom right" trigger={<div className="lead-navigation-item custom" ><IconSemantic size='large' name="home"></IconSemantic> <p>/...</p></div>}> <Popup.Content className="custom-breadcrumb"><Breadcrumbs  pathname={pathname} /></Popup.Content> </Popup>
               {displayedItems.length > 0 &&
                 displayedItems.map((item, index) => (
                   <Link
