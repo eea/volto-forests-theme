@@ -28,6 +28,7 @@ const Header = (props) => {
   const [inheritedImage, setInheritedImage] = React.useState('');
   const [leadCaptionText, setLeadCaptionText] = React.useState('');
   const [navigationItems, setNavigationItems] = React.useState('');
+  const [disableSticky, setDisableSticky] = React.useState(false);
 
   React.useEffect(() => {
     if (leadNavigation || inheritLeadingData) {
@@ -71,6 +72,9 @@ const Header = (props) => {
   const pathName = props.pathname;
   const hideSearch = ['/header', '/head', '/footer'].includes(pathName);
 
+
+  
+
   return (
     <div className="header-wrapper" role="banner">
       <Sticky enabled={true} top={0}>
@@ -104,10 +108,10 @@ const Header = (props) => {
           <HomepageSlider items={props.frontpage_slides} />
         ) : (
           <div style={{ position: 'relative' }}>
-            <Breadcrumbs pathname={props.pathname} />
-
+            <Sticky key={props.pathname} enabled={true} top={102} className="sticky-breadcrumbs" bottomBoundary={".sticky-header-nav"}>
+              <Breadcrumbs pathname={props.pathname} />
+            </Sticky>
             <HeaderImage
-              pathname={props.pathname}
               bigImage={bigLeading}
               leadNavigation={leadNavigation}
               navigationItems={navigationItems}
