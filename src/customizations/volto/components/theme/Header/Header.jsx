@@ -72,9 +72,6 @@ const Header = (props) => {
   const pathName = props.pathname;
   const hideSearch = ['/header', '/head', '/footer'].includes(pathName);
 
-
-  
-
   return (
     <div className="header-wrapper" role="banner">
       <Sticky enabled={true} top={0}>

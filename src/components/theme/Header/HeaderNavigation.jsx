@@ -7,8 +7,7 @@ import downIcon from '@plone/volto/icons/down-key.svg';
 import closeIcon from '@plone/volto/icons/clear.svg';
 import { Icon } from '@plone/volto/components';
 import { connect } from 'react-redux';
-import  Sticky from 'react-stickynode';
-
+import Sticky from 'react-stickynode';
 
 import circleLeft from '@plone/volto/icons/circle-left.svg';
 import circleRight from '@plone/volto/icons/circle-right.svg';
@@ -65,7 +64,6 @@ const MobileNav = ({ items, activeItem }) => {
         )}
       </div>
     </Sticky>
-
   );
 };
 
@@ -77,7 +75,6 @@ const HeaderNavigation = ({ items, pageWidth }) => {
   const [itemsPerPage, setItemsPerPage] = React.useState(
     items && items.length < 4 ? items.length : 4,
   );
-
 
   const [displayedItems, setDisplayedItems] = React.useState([]);
   const history = useHistory();
@@ -148,48 +145,51 @@ const HeaderNavigation = ({ items, pageWidth }) => {
       {isMobile ? (
         <MobileNav activeItem={activeItem} items={items} />
       ) : (
-        <Sticky enabled={true} top={isTablet ? 75 : 102} className="sticky-header-nav">
-            <div className="header-navigation-lead">
-              {displayedItems.length > 0 &&
-                displayedItems.map((item, index) => (
-                  <Link
-                    style={{
-                      width: `${
-                        items.length < itemsPerPage
-                          ? 100 / items.length - 1
-                          : 100 / itemsPerPage - 1
-                      }%`,
-                    }}
-                    className={`lead-navigation-item ${
-                      activeItem.title === item.title ? 'active-lead-nav' : ''
-                    }`}
-                    key={index}
-                    to={item.url}
-                    title={item.title}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              {!noPrev && (
-                <Icon
-                  className="navigation-prev"
-                  name={circleLeft}
-                  size="34px"
-                  onClick={handlePrev}
-                />
-              )}
-              {!noNext && (
-                <Icon
-                  className="navigation-next"
-                  name={circleRight}
-                  size="34px"
-                  onClick={handleNext}
-                />
-              )}
-            </div>
+        <Sticky
+          enabled={true}
+          top={isTablet ? 75 : 102}
+          className="sticky-header-nav"
+        >
+          <div className="header-navigation-lead">
+            {displayedItems.length > 0 &&
+              displayedItems.map((item, index) => (
+                <Link
+                  style={{
+                    width: `${
+                      items.length < itemsPerPage
+                        ? 100 / items.length - 1
+                        : 100 / itemsPerPage - 1
+                    }%`,
+                  }}
+                  className={`lead-navigation-item ${
+                    activeItem.title === item.title ? 'active-lead-nav' : ''
+                  }`}
+                  key={index}
+                  to={item.url}
+                  title={item.title}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            {!noPrev && (
+              <Icon
+                className="navigation-prev"
+                name={circleLeft}
+                size="34px"
+                onClick={handlePrev}
+              />
+            )}
+            {!noNext && (
+              <Icon
+                className="navigation-next"
+                name={circleRight}
+                size="34px"
+                onClick={handleNext}
+              />
+            )}
+          </div>
         </Sticky>
       )}
-
     </React.Fragment>
   );
 };
