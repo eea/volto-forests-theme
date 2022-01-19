@@ -105,9 +105,7 @@ const Header = (props) => {
         ) : (
           <div style={{ position: 'relative' }}>
             <Breadcrumbs pathname={props.pathname} />
-
             <HeaderImage
-              pathname={props.pathname}
               bigImage={bigLeading}
               leadNavigation={leadNavigation}
               navigationItems={navigationItems}
