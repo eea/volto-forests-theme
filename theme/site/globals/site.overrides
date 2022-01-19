@@ -178,8 +178,8 @@ body.has-toolbar {
 .sticky-header-nav {
  
   position: absolute;
-  top: 235px;
-  z-index: 2;
+  bottom: -5px;
+  z-index: 4;
   width: 99%;
   .sticky-inner-wrapper {
     box-shadow: none !important;
