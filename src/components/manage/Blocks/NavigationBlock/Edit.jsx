@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import _uniqueId from 'lodash/uniqueId';
-import RenderFields from '@eeacms/volto-datablocks/Utils/RenderFields';
+//import RenderFields from '@eeacms/volto-datablocks/Utils/RenderFields';
 import View from './View';
 import config from '@plone/volto/registry';
 
@@ -75,7 +75,7 @@ const Edit = (props) => {
         position: 'relative',
       }}
     >
-      <RenderFields schema={state.schema} {...props} title="Navigation block" />
+      {/* <RenderFields schema={state.schema} {...props} title="Navigation block" /> */}
       <View {...props} id={state.id} mode="edit" />
       <div
         style={{
