@@ -1543,124 +1543,195 @@ span.float-right {
 }
 
 // Europe forest specific blocks
-.block-container,
-.columns-view {
-  h5 {
-    color: @darkBrown;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
+h5 {
+  color: @darkBrown;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
-  div {
-    &.flex {
-      display: flex;
-    }
-
-    &.flex-column {
-      flex-direction: column;
-    }
-
-    &.h-100 {
-      height: 100%;
-    }
-
-    &.w-100 {
-      width: 100%;
-    }
-
-    &.pa-1 {
-      padding: 10px;
-    }
-  }
-
-  .forest-block-wrapper {
+div {
+  &.flex {
     display: flex;
-    height: 100%;
-    padding: 10px;
   }
 
-  .forest-specific-block {
-    display: flex;
-    width: 100%;
+  &.flex-column {
     flex-direction: column;
   }
 
-  .land-data-wrapper,
-  .data-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 1em;
-    margin-bottom: 1em;
-    border-radius: 5px;
+  &.h-100 {
+    height: 100%;
   }
 
-  .land-data,
-  .data {
-    padding-right: 10px;
+  &.w-100 {
+    width: 100%;
+  }
+
+  &.pa-1 {
+    padding: 10px;
+  }
+}
+
+.forest-block-wrapper {
+  display: flex;
+  height: 100%;
+  padding: 10px;
+}
+
+.forest-specific-block {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.land-data-wrapper,
+.data-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+
+  .formatted-value {
+    span {
+      color: #000 !important;
+      font-size: 13px;
+      font-weight: normal;
+    }
+  }
+}
+
+.land-data,
+.data {
+  padding-right: 10px;
+
+  span {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 46px;
+  }
+}
+
+.land-data-content,
+.data-content {
+  font-size: 14px;
+  font-weight: 300;
+
+  span {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .data-entity {
+    display: inline;
+  }
+}
+
+.data-wrapper {
+  &.brown {
+    background-color: @tileBackgroundColor;
 
     span {
-      font-size: 50px;
-      font-weight: 700;
-      line-height: 46px;
+      color: @darkBrown;
     }
   }
 
-  .land-data-content,
-  .data-content {
-    font-size: 14px;
-    font-weight: 300;
+  &.green {
+    background-color: @tileBackgroundColor;
+    color: @darkGreen;
 
-    span {
-      display: block;
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    .data-entity {
-      display: inline;
-    }
-  }
-
-  .data-wrapper {
-    &.brown {
-      background-color: @tileBackgroundColor;
+    .data-content {
+      color: initial;
 
       span {
-        color: @darkBrown;
+        color: @darkGreen;
       }
     }
+  }
 
-    &.green {
-      background-color: @tileBackgroundColor;
-      color: @darkGreen;
+  &.blue {
+    background-color: @tileBackgroundColor;
+    color: @darkBlue;
 
-      .data-content {
-        color: initial;
+    .data-content {
+      color: initial;
 
-        span {
-          color: @darkGreen;
-        }
+      span {
+        color: @darkBlue;
       }
     }
+  }
 
-    &.blue {
-      background-color: @tileBackgroundColor;
-      color: @darkBlue;
+  &.purple {
+    background-color: @tileBackgroundColor;
+    color: @purple;
 
-      .data-content {
-        color: initial;
+    .data-content {
+      color: initial;
 
-        span {
-          color: @darkBlue;
-        }
+      span {
+        color: @purple;
+      }
+    }
+  }
+}
+
+.ui.list .item span {
+  float: right;
+}
+
+.ui.bulleted.list > .item {
+  padding: 7px 0;
+  font-size: 14px;
+
+  a {
+    color: @textColor;
+    text-decoration: underline;
+  }
+}
+
+ul.ui.list li:before,
+.ui.bulleted.list .list > .item:before,
+.ui.bulleted.list > .item:before {
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: @darkBrown;
+  border-radius: 50%;
+  content: '';
+}
+
+.forest-comparation {
+  .land-data-wrapper {
+    margin-bottom: 0;
+    background-color: @tileBackgroundColor;
+
+    span {
+      color: @darkBrown;
+    }
+  }
+}
+
+@tileBackgroundColor: #f6f6f5;
+@darkBlue: #002d54;
+
+.forest-area-block {
+  .land-data-wrapper.eu28-data {
+    background-color: @tileBackgroundColor;
+    color: @darkGreen;
+
+    .land-data-content {
+      color: initial;
+
+      span {
+        color: @darkGreen;
       }
     }
 
     &.purple {
-      background-color: @tileBackgroundColor;
       color: @purple;
 
-      .data-content {
+      .land-data-content {
         color: initial;
 
         span {
@@ -1670,107 +1741,41 @@ span.float-right {
     }
   }
 
-  .ui.list .item span {
-    float: right;
-  }
+  .land-data-wrapper.eea39-data {
+    background-color: @tileBackgroundColor;
+    color: @darkBlue;
 
-  .ui.bulleted.list > .item {
-    padding: 7px 0;
-    font-size: 14px;
-
-    a {
-      color: @textColor;
-      text-decoration: underline;
-    }
-  }
-
-  ul.ui.list li:before,
-  .ui.bulleted.list .list > .item:before,
-  .ui.bulleted.list > .item:before {
-    top: 10px;
-    width: 8px;
-    height: 8px;
-    background-color: @darkBrown;
-    border-radius: 50%;
-    content: '';
-  }
-
-  .forest-comparation {
-    .land-data-wrapper {
-      margin-bottom: 0;
-      background-color: @tileBackgroundColor;
+    .land-data-content {
+      color: initial;
 
       span {
-        color: @darkBrown;
+        color: @darkBlue;
       }
     }
   }
 
-  @tileBackgroundColor: #f6f6f5;
-  @darkBlue: #002d54;
+  .coverage-data {
+    display: flex;
+    margin: 1em 0;
+    color: #fff;
+    font-size: 16px;
 
-  .forest-area-block {
-    .land-data-wrapper.eu28-data {
-      background-color: @tileBackgroundColor;
-      color: @darkGreen;
-
-      .land-data-content {
-        color: initial;
-
-        span {
-          color: @darkGreen;
-        }
-      }
-
-      &.purple {
-        color: @purple;
-
-        .land-data-content {
-          color: initial;
-
-          span {
-            color: @purple;
-          }
-        }
-      }
-    }
-
-    .land-data-wrapper.eea39-data {
-      background-color: @tileBackgroundColor;
-      color: @darkBlue;
-
-      .land-data-content {
-        color: initial;
-
-        span {
-          color: @darkBlue;
-        }
-      }
-    }
-
-    .coverage-data {
-      display: flex;
-      margin: 1em 0;
-      color: #fff;
-      font-size: 16px;
-
-      span {
-        display: block;
-        margin-bottom: 0.2em;
-        font-size: 28px;
-      }
+    span {
+      display: block;
+      margin-bottom: 0.2em;
+      font-size: 28px;
     }
   }
+}
 
-  .map-wrapper {
-    padding: 5px;
-    border: 1px solid @darkGreen;
-    border-radius: 5px;
-  }
+.map-wrapper {
+  padding: 5px;
+  border: 1px solid @darkGreen;
+  border-radius: 5px;
+}
 
-  .map-buttons {
-    margin-top: 2em;
-  }
+.map-buttons {
+  margin-top: 2em;
 }
 
 .forest-patch-size-distribution {
