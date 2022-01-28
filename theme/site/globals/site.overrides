@@ -845,6 +845,12 @@ body #page-document .imageAndRichText + p {
 
 /*---  Home page  ---*/
 
+.homepage-button {
+  &:hover {
+    background-image: linear-gradient(#9dcfb3, #b5c333);
+  }
+}
+
 .home-tab.ui.item.menu {
   max-width: 715px;
   margin: 2em auto !important;
