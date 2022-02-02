@@ -49,7 +49,7 @@ export default {
     pages: {
       title: 'Pages',
       schema: pagesSchema,
-      type: 'schema',
+      widget: 'object_list',
     },
   },
   required: [],
