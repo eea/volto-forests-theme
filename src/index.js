@@ -2,7 +2,7 @@ import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 import installAppExtras from '@eeacms/volto-forests-theme/components/theme/AppExtras';
-import { installBlocks } from '@eeacms/volto-plotlycharts';
+
 import { applyConfig as installFiseFrontend } from './localconfig';
 
 import ObjectListInlineWidget from './components/manage/Widgets/ObjectListInlineWidget';
@@ -12,7 +12,7 @@ import './slate-styles.css';
 
 export default function applyConfig(config) {
   // Add here your project's configuration here by modifying `config` accordingly
-  config = [installBlocks, installAppExtras, installFiseFrontend].reduce(
+  config = [installAppExtras, installFiseFrontend].reduce(
     (acc, apply) => apply(acc),
     config,
   );
