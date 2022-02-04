@@ -176,7 +176,7 @@ body.has-toolbar {
 
 
 .sticky-header-nav {
- 
+
   position: absolute;
   bottom: -5px;
   z-index: 4;
@@ -190,7 +190,7 @@ body.has-toolbar {
 
 .header-navigation-lead {
 
-  
+
 
   .navigation-prev {
     position: absolute;
@@ -1607,6 +1607,14 @@ span.float-right {
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 5px;
+
+    .formatted-value {
+      span {
+        color: #000 !important;
+        font-size: 13px;
+        font-weight: normal;
+      }
+    }
   }
 
   .land-data,

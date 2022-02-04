@@ -1,17 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { SidebarPortal } from '@plone/volto/components';
 import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
-
+import { connectToMultipleProviders } from '@eeacms/volto-datablocks/hocs';
+import getSchema from './schema';
 import View from './View';
 
-import schema from './schema';
-
 const Edit = (props) => {
+  const schema = React.useMemo(() => getSchema(props), [props]);
+
   return (
     <>
       <View {...props} mode="edit" />
+
       <SidebarPortal selected={props.selected}>
         <InlineForm
           schema={schema}
@@ -30,7 +31,7 @@ const Edit = (props) => {
 };
 
 export default compose(
-  connect((state, props) => ({
-    pathname: state.router.location.pathname,
+  connectToMultipleProviders((props) => ({
+    providers: props.data?.providers,
   })),
 )(Edit);

@@ -2,8 +2,9 @@ import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 import installAppExtras from '@eeacms/volto-forests-theme/components/theme/AppExtras';
-import { installBlocks } from '@eeacms/volto-plotlycharts';
+
 import { applyConfig as installFiseFrontend } from './localconfig';
+import installDiscodataConnectorBlock from '@eeacms/volto-forests-theme/components/manage/Blocks/DiscodataConnectorBlock';
 
 import ObjectListInlineWidget from './components/manage/Widgets/ObjectListInlineWidget';
 import reducers from '@eeacms/volto-forests-theme/reducers';
@@ -12,10 +13,11 @@ import './slate-styles.css';
 
 export default function applyConfig(config) {
   // Add here your project's configuration here by modifying `config` accordingly
-  config = [installBlocks, installAppExtras, installFiseFrontend].reduce(
-    (acc, apply) => apply(acc),
-    config,
-  );
+  config = [
+    installAppExtras,
+    installFiseFrontend,
+    installDiscodataConnectorBlock,
+  ].reduce((acc, apply) => apply(acc), config);
 
   config.settings = {
     ...config.settings,

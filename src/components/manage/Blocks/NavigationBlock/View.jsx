@@ -28,14 +28,12 @@ const View = ({ content, ...props }) => {
   const isLoggedIn = cookie.load('auth_token');
 
   const parent =
-    data?.navFromParent?.value && props.properties?.parent
+    data?.navFromParent && props.properties?.parent
       ? getBasePath(props.properties?.parent?.['@id'])
-      : data.parent?.value;
+      : data.parent;
   const history = useHistory();
   useEffect(() => {
-    const pagesProperties = data.pages?.value
-      ? data.pages?.value?.properties || {}
-      : {};
+    const pagesProperties = data.pages ? data.pages?.properties || {} : {};
     const newPages =
       Object.keys(pagesProperties).map((page) => pagesProperties[page]) || [];
     setPages(newPages);
@@ -49,7 +47,7 @@ const View = ({ content, ...props }) => {
       setIsMobile(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.navigation, data.pages?.value]);
+  }, [props.navigation, data.pages]);
 
   const isFixed = props.fixedTabs;
 
@@ -82,9 +80,7 @@ const View = ({ content, ...props }) => {
           props.navigation?.items?.length ||
           pages.length
         }
-        className={
-          props.data.className?.value ? props.data.className.value : ''
-        }
+        className={props.data.className || ''}
       >
         {isMobile ? (
           <React.Fragment>
@@ -235,13 +231,13 @@ export default compose(
       discodata_resources: state.discodata_resources,
       navItems: state.navigation?.items,
       flags: state.flags,
-      fixedTabs: props.data?.fixedTabs?.value,
+      fixedTabs: props.data?.fixedTabs,
       navigation: props.properties?.parent
         ? getNavigationByParent(
             state.navigation?.items,
-            props.data?.navFromParent?.value
+            props.data?.navFromParent
               ? getBasePath(props.properties?.parent?.['@id'])
-              : props.data?.parent?.value,
+              : props.data?.parent,
           )
         : {},
     }),
