@@ -4,7 +4,7 @@ import { connectToMultipleProviders } from '@eeacms/volto-datablocks/hocs';
 import { DataConnectedValue } from '@eeacms/volto-datablocks/Utils';
 import { Sources } from '@eeacms/volto-datablocks/Utils';
 
-const providerView = (dataProviderKey, dataProvider) => {
+const providerView = (dataProviderKey, dataProvider, editMode) => {
   return (
     <div
       key={`land-data-for-${dataProviderKey}`}
@@ -17,6 +17,7 @@ const providerView = (dataProviderKey, dataProvider) => {
             column={dataProvider.displayColumn}
             textTemplate={dataProvider.textTemplate}
             specifier={dataProvider.specifier}
+            animatedCounter={!editMode ? dataProvider.animatedCounter : ''}
             placeholder="_"
           />
         )}
@@ -122,11 +123,15 @@ const View = (props) => {
                     className={dataProvider.wrapperClassName}
                     key={`data-wrapper-${dataProviderKey}`}
                   >
-                    {providerView(dataProviderKey, dataProvider)}
+                    {providerView(
+                      dataProviderKey,
+                      dataProvider,
+                      props.editMode,
+                    )}
                     {Object.entries(
                       dataProvider.children,
                     ).map(([cildrenKey, children]) =>
-                      providerView(cildrenKey, children),
+                      providerView(cildrenKey, children, props.editMode),
                     )}
                   </div>
                 );
@@ -136,7 +141,7 @@ const View = (props) => {
                   className={dataProvider.wrapperClassName}
                   key={`data-wrapper-${dataProviderKey}`}
                 >
-                  {providerView(dataProviderKey, dataProvider)}
+                  {providerView(dataProviderKey, dataProvider, props.editMode)}
                 </div>
               );
             },
