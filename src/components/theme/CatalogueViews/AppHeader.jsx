@@ -49,37 +49,37 @@ class App extends Component {
   //   console.log('load:', nextProps.loadingContent);
   //   return true;
   // }
-  //
-  /**
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.purgeMessages();
+  // //
+  // /**
+  //  * @method componentWillReceiveProps
+  //  * @param {Object} nextProps Next properties
+  //  * @returns {undefined}
+  //  */
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.pathname !== this.props.pathname) {
+  //     this.props.purgeMessages();
 
-      if (this.state.hasError) {
-        this.setState({ hasError: false });
-      }
-    }
-  }
+  //     if (this.state.hasError) {
+  //       this.setState({ hasError: false });
+  //     }
+  //   }
+  // }
 
-  /**
-   * ComponentDidCatch
-   * @method ComponentDidCatch
-   * @param {string} error  The error
-   * @param {string} info The info
-   * @returns {undefined}
-   */
-  componentDidCatch(error, info) {
-    this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__) {
-      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
-        Sentry.captureException(error);
-      }
-    }
-  }
+  // /**
+  //  * ComponentDidCatch
+  //  * @method ComponentDidCatch
+  //  * @param {string} error  The error
+  //  * @param {string} info The info
+  //  * @returns {undefined}
+  //  */
+  // componentDidCatch(error, info) {
+  //   this.setState({ hasError: true, error, errorInfo: info });
+  //   if (__CLIENT__) {
+  //     if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
+  //       Sentry.captureException(error);
+  //     }
+  //   }
+  // }
 
   /**
    * Render method.
@@ -124,19 +124,7 @@ class App extends Component {
       leadImageCaption,
     };
 
-    return (
-      <Fragment>
-        <BodyClass className={`view-${action}view`} />
-        <Header
-          actualPathName={this.props.pathname}
-          pathname={path}
-          extraData={extraHeaderData}
-          defaultHeaderImage={headerImage}
-          navigationItems={this.props.navigation}
-          frontpage_slides={this.props.frontpage_slides}
-        />
-      </Fragment>
-    );
+    return '';
   }
 }
 
@@ -146,73 +134,73 @@ export const __test__ = connect(
 )(App);
 
 export default compose(
-  asyncConnect([
-    {
-      key: 'content',
-      promise: ({ location, store: { dispatch } }) =>
-        dispatch(getContent(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'frontpage_slides',
-      promise: ({ store: { dispatch } }) =>
-        __SERVER__ && dispatch(getFrontpageSlides()),
-    },
-    {
-      key: 'defaultHeaderImage',
-      promise: ({ store: { dispatch } }) =>
-        __SERVER__ && dispatch(getDefaultHeaderImage()),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getNavigation(
-            getBaseUrl(location.pathname),
-            config.settings.navDepth,
-          ),
-        ),
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'portlets',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getPortlets(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'portlets_left',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getPortlets(getBaseUrl(location.pathname), 'plone.leftcolumn'),
-        ),
-    },
-    {
-      key: 'portlets_right',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getPortlets(getBaseUrl(location.pathname), 'plone.rightcolumn'),
-        ),
-    },
-    {
-      key: 'portlets_footer',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getPortlets(getBaseUrl(location.pathname), 'plone.footerportlets'),
-        ),
-    },
-  ]),
+  // asyncConnect([
+  //   {
+  //     key: 'content',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       dispatch(getContent(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'frontpage_slides',
+  //     promise: ({ store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getFrontpageSlides()),
+  //   },
+  //   {
+  //     key: 'defaultHeaderImage',
+  //     promise: ({ store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getDefaultHeaderImage()),
+  //   },
+  //   {
+  //     key: 'navigation',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ &&
+  //       dispatch(
+  //         getNavigation(
+  //           getBaseUrl(location.pathname),
+  //           config.settings.navDepth,
+  //         ),
+  //       ),
+  //   },
+  //   {
+  //     key: 'types',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'workflow',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'portlets',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getPortlets(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'portlets_left',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ &&
+  //       dispatch(
+  //         getPortlets(getBaseUrl(location.pathname), 'plone.leftcolumn'),
+  //       ),
+  //   },
+  //   {
+  //     key: 'portlets_right',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ &&
+  //       dispatch(
+  //         getPortlets(getBaseUrl(location.pathname), 'plone.rightcolumn'),
+  //       ),
+  //   },
+  //   {
+  //     key: 'portlets_footer',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ &&
+  //       dispatch(
+  //         getPortlets(getBaseUrl(location.pathname), 'plone.footerportlets'),
+  //       ),
+  //   },
+  // ]),
   connect(
     (state, props) => ({
       defaultHeaderImage: state.default_header_image.items?.[0],
