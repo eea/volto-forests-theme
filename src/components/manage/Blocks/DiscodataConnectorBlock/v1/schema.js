@@ -20,7 +20,12 @@ const dataProviderSchemaExtender = (schema, child = {}, props) => {
       {
         id: 'properties',
         title: 'Properties',
-        fields: ['measurmentUnit', 'additionalText', 'className'],
+        fields: [
+          'measurmentUnit',
+          'additionalText',
+          'className',
+          'animatedCounter',
+        ],
       },
       ...(child.hasDiscodataConnector
         ? [
@@ -90,6 +95,7 @@ const dataProviderSchema = {
         'className',
         'parent',
         'wrapperClassName',
+        'animatedCounter',
       ],
     },
   ],
@@ -146,6 +152,11 @@ const dataProviderSchema = {
     additionalText: {
       type: 'text',
       title: 'Additional text',
+    },
+    animatedCounter: {
+      type: 'boolean',
+      title: 'Animated Counter',
+      description: 'Apply counter animation to a number',
     },
 
     className: {

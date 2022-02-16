@@ -72,7 +72,7 @@ const Edit = (props) => {
           block={props.block}
         />
       </SidebarPortal>
-      <View {...props} id={state.id} />
+      <View {...props} editMode id={state.id} />
     </div>
   );
 };
