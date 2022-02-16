@@ -1608,13 +1608,13 @@ span.float-right {
     margin-bottom: 1em;
     border-radius: 5px;
 
-    .formatted-value {
-      span {
-        color: #000 !important;
-        font-size: 13px;
-        font-weight: normal;
-      }
-    }
+//    .formatted-value {
+//      span {
+//        color: #000 !important;
+//        font-size: 13px;
+//        font-weight: normal;
+//      }
+//    }
   }
 
   .land-data,
