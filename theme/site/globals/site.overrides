@@ -190,7 +190,8 @@ body.has-toolbar {
 
 .header-navigation-lead {
 
-
+  display: flex;
+  justify-content: center;
 
   .navigation-prev {
     position: absolute;
