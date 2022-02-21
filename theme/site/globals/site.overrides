@@ -189,13 +189,14 @@ body.has-toolbar {
 
 
 .header-navigation-lead {
-
-
+  position: relative;
+  display: flex;
+  justify-content: center;
 
   .navigation-prev {
     position: absolute;
-    bottom: 50px;
-    left: 0px;
+    bottom: 3px;
+    left: -4px;
     cursor: pointer;
   }
 
@@ -205,8 +206,8 @@ body.has-toolbar {
 
   .navigation-next {
     position: absolute;
-    right: 0px;
-    bottom: 50px;
+    right: -4px;
+    bottom: 3px;
     cursor: pointer;
   }
 
