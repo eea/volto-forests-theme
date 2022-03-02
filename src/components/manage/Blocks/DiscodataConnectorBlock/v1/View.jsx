@@ -15,6 +15,12 @@ const providerView = (dataProviderKey, dataProvider, editMode) => {
           <DataConnectedValue
             url={dataProvider.path}
             column={dataProvider.displayColumn}
+            data={{
+              data_query: dataProvider.data_query,
+              has_data_query_by_context: dataProvider.has_data_query_by_context,
+              has_data_query_by_provider:
+                dataProvider.has_data_query_by_provider,
+            }}
             textTemplate={dataProvider.textTemplate}
             specifier={dataProvider.specifier}
             animatedCounter={!editMode ? dataProvider.animatedCounter : ''}
@@ -111,7 +117,7 @@ const View = (props) => {
   }, [JSON.stringify(dataProviders)]);
 
   const view = (
-    <div className="flex h-100 pa-1">
+    <div className="flex h-100 pa-1" style={{ position: 'relative' }}>
       <div className="flex flex-column w-100">
         {/* {props.data?.block_title ? <h5>{props.data.block_title}</h5> : ''} */}
         {parentsDataProviders &&
@@ -175,7 +181,6 @@ export default compose(
       props.data?.data_providers
         ?.map((provider) => ({
           provider_url: provider.path,
-          title: provider.title,
           has_data_query_by_context: provider.has_data_query_by_context,
           has_data_query_by_provider: provider.has_data_query_by_provider,
           data_query: provider.data_query,
