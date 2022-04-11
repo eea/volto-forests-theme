@@ -294,15 +294,17 @@ class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
-    const cleanedViewClass = RenderedView.displayName
-      ? `view-${this.cleanViewName(RenderedView.displayName)}`
-      : null;
-
     return (
       <div id="view">
         <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
-        <BodyClass className={cleanedViewClass} />
+        <BodyClass
+          className={
+            RenderedView.displayName
+              ? `view-${this.cleanViewName(RenderedView.displayName)}`
+              : null
+          }
+        />
         {this.props.loading && (
           <Dimmer active inverted>
             <Loader size="massive" />
