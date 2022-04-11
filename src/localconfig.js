@@ -64,10 +64,10 @@ export function applyConfig(config) {
     ...config.settings,
     navDepth: 4,
     repo: 'eea/forests-frontend',
-    richTextEditorInlineToolbarButtons: [
-      // Underline,
-      ...config.settings.richTextEditorInlineToolbarButtons,
-    ],
+    // richTextEditorInlineToolbarButtons: [
+    //   // Underline,
+    //   ...config.settings.richTextEditorInlineToolbarButtons,
+    // ],
     nonContentRoutes: [
       // handled differently in getBaseUrl
       ...config.settings.nonContentRoutes,
