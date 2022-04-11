@@ -30,7 +30,8 @@
     "react-highlight-words": "^0.16.0",
     "react-image-gallery": "1.2.7",
     "react-lazy-load-image-component": "^1.5.0",
-    "react-stickynode": "^2.1.1"
+    "react-stickynode": "^2.1.1",
+    "pigeon-maps": "0.21.0"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
