@@ -44,6 +44,12 @@ const ValidImage = ({ imageUrl }) => {
   );
 };
 
+const validUrl = (url) => {
+  const containsProtocol = url.includes('http://') || url.includes('https://');
+  const checkedUrl = containsProtocol ? url : `https://${url}`;
+  return checkedUrl;
+};
+
 const PopupRow = ({
   rowData,
   tableData,
@@ -83,7 +89,7 @@ const PopupRow = ({
         title: rowData[popupTitle],
         logo: rowData[image_url],
         description: rowData[popupDescription],
-        url: rowData[popupUrl],
+        url: validUrl(rowData[popupUrl]),
         tableColumns: popupTableColumns,
         mapData: {
           long: popupLong,

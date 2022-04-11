@@ -88,7 +88,7 @@ const View = (props) => {
         props.dispatch({
           type: 'TABLE_FINISH_SEARCH',
           results: _.filter(filteredTableData, isMatch),
-          payload: { activePage: data.activePage, row_size },
+          //payload: { activePage: data.activePage, row_size },
         });
       }, time);
     },
@@ -203,30 +203,37 @@ const View = (props) => {
           </Table.Header>
         ) : null}
         <Table.Body>
-          {items.map((_, i) => {
-            //const row_index = i + (activePage - 1) * row_size;
-            const row_data = items[i];
-            return (
-              <Table.Row key={i}>
-                <Table.Cell key={`${i}-popuprow`} textAlign="center">
-                  <PopupRow rowData={row_data} tableData={data} />
-                </Table.Cell>
-                {selectedColumns.map((colDef, j) => (
-                  <Table.Cell
-                    key={`${i}-${getNameOfColumn(colDef)}`}
-                    textAlign={getAlignmentOfColumn(colDef, j)}
-                  >
-                    <RenderComponent
-                      {...props}
-                      tableData={items}
-                      colDef={colDef}
-                      row={i}
-                    />
+          {Array(
+            Math.max(
+              0,
+              Math.min(row_size, items.length - (activePage - 1) * row_size),
+            ),
+          )
+            .fill()
+            .map((_, i) => {
+              const row_index = i + (activePage - 1) * row_size;
+              const row_data = items[row_index];
+              return (
+                <Table.Row key={row_index}>
+                  <Table.Cell key={`${row_index}-popuprow`} textAlign="center">
+                    <PopupRow rowData={row_data} tableData={data} />
                   </Table.Cell>
-                ))}
-              </Table.Row>
-            );
-          })}
+                  {selectedColumns.map((colDef, j) => (
+                    <Table.Cell
+                      key={`${row_index}-${getNameOfColumn(colDef)}`}
+                      textAlign={getAlignmentOfColumn(colDef, j)}
+                    >
+                      <RenderComponent
+                        {...props}
+                        tableData={items}
+                        colDef={colDef}
+                        row={row_index}
+                      />
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+              );
+            })}
           {!items.length ? (
             <Table.Row>
               <Table.Cell textAlign="center" colSpan="100%">

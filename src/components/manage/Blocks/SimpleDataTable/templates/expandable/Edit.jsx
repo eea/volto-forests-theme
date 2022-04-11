@@ -5,10 +5,7 @@ import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 
 import config from '@plone/volto/registry';
 
-import {
-  connectToProviderData,
-  connectToMultipleProviders,
-} from '@eeacms/volto-datablocks/hocs';
+import { connectToMultipleProviders } from '@eeacms/volto-datablocks/hocs';
 
 import { SimpleDataTableSchema } from '@eeacms/volto-datablocks/components/manage/Blocks/SimpleDataTable/schema';
 import { SimpleDataTableView } from '@eeacms/volto-datablocks/components/manage/Blocks/SimpleDataTable/View';
@@ -23,11 +20,6 @@ class Edit extends Component {
     const schema = SimpleDataTableSchema(config, templateSchema(config));
 
     // TODO: create picker for columns to include
-    // console.log('bigtableprovurl', this.props.data.provider_url);
-    // console.log(
-    //   'bigprovdata',
-    //   this.props.providers_data[this.props.data.provider_url],
-    // );
 
     const provider_url = this.props.data?.provider_url;
     const provider_data = provider_url
