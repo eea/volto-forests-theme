@@ -113,7 +113,6 @@ export default compose(
       popup_map_provider_url,
       popup_table_provider_url,
     } = props.data;
-    const { max_count = 5 } = props.data;
     const providers = [
       {
         provider_url: provider_url,

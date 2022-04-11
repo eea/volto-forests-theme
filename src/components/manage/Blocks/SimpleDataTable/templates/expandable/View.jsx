@@ -88,7 +88,6 @@ const View = (props) => {
         props.dispatch({
           type: 'TABLE_FINISH_SEARCH',
           results: _.filter(filteredTableData, isMatch),
-          //payload: { activePage: data.activePage, row_size },
         });
       }, time);
     },
