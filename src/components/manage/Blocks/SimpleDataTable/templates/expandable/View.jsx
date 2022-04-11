@@ -237,7 +237,7 @@ const View = (props) => {
             ''
           )}
         </Table.Body>
-        {/* {Math.ceil(items.length / row_size) > 1 ? (
+        {Math.ceil(items.length / row_size) > 1 ? (
           <Table.Footer>
             <Table.Row>
               <Table.HeaderCell
@@ -260,7 +260,7 @@ const View = (props) => {
           </Table.Footer>
         ) : (
           ''
-        )} */}
+        )}
       </Table>
     </div>
   );

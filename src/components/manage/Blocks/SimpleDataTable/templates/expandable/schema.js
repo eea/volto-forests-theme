@@ -129,8 +129,6 @@ export default () => ({
         'popup_map_provider_url',
         'popupLong',
         'popupLat',
-        'popupCountryCode',
-        'popupMapLabel',
       ],
     },
   ],
@@ -184,15 +182,6 @@ export default () => ({
     popupLat: {
       title: 'Popup Map Lat',
       description: 'Define popup map Lat',
-      choices: [],
-    },
-    popupCountryCode: {
-      title: 'Popup Country',
-      description: 'Define popup country code',
-      choices: [],
-    },
-    popupMapLabel: {
-      title: 'Popup Map Label',
       choices: [],
     },
   },

@@ -47,19 +47,6 @@ const bulletListView = (items) => (
 );
 
 const View = (props) => {
-  console.log('props', props);
-  console.log(
-    'themprov',
-    props.data?.data_providers
-      ?.map((provider) => ({
-        provider_url: provider.path,
-        has_data_query_by_context: provider.has_data_query_by_context,
-        has_data_query_by_provider: provider.has_data_query_by_provider,
-        data_query: provider.data_query,
-      }))
-      ?.filter((provider) => provider.provider_url) || [],
-  );
-
   const [dataProviders, setDataProviders] = useState({});
   const [parentsDataProviders, setParentsDataProviders] = useState({});
   const { providers_data, providers_metadata } = props;
