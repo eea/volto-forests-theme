@@ -184,7 +184,7 @@ pipeline {
             unstash "xunit-reports"
             unstash "cypress-coverage"
             def scannerHome = tool 'SonarQubeScanner';
-            def nodeJS = tool 'NodeJS11';
+            def nodeJS = tool 'NodeJS';
             withSonarQubeEnv('Sonarqube') {
               sh '''sed -i "s#/opt/frontend/my-volto-project/src/addons/${GIT_NAME}/##g" xunit-reports/coverage/lcov.info'''
               sh "export PATH=$PATH:${scannerHome}/bin:${nodeJS}/bin; sonar-scanner -Dsonar.javascript.lcov.reportPaths=./xunit-reports/coverage/lcov.info,./cypress-coverage/coverage/lcov.info -Dsonar.sources=./src -Dsonar.projectKey=$GIT_NAME-$BRANCH_NAME -Dsonar.projectVersion=$BRANCH_NAME-$BUILD_NUMBER"
