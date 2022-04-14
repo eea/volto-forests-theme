@@ -205,39 +205,48 @@ const View = (props) => {
           </Table.Header>
         ) : null}
         <Table.Body>
-          {Array(
-            Math.max(
-              0,
-              Math.min(row_size, items.length - (activePage - 1) * row_size),
-            ),
-          )
-            .fill()
-            .map((_, i) => {
-              const row_index = i + (activePage - 1) * row_size;
-              const row_data = items[row_index];
-              return (
-                <Table.Row key={row_index}>
-                  <Table.Cell key={`${row_index}-popuprow`} textAlign="center">
-                    <PopupRow rowData={row_data} tableData={data} />
-                  </Table.Cell>
-                  {selectedColumns &&
-                    selectedColumns.length > 0 &&
-                    selectedColumns.map((colDef, j) => (
-                      <Table.Cell
-                        key={`${row_index}-${getNameOfColumn(colDef)}`}
-                        textAlign={getAlignmentOfColumn(colDef, j)}
-                      >
-                        <RenderComponent
-                          {...props}
-                          tableData={items}
-                          colDef={colDef}
-                          row={row_index}
-                        />
-                      </Table.Cell>
-                    ))}
-                </Table.Row>
-              );
-            })}
+          {selectedColumns && selectedColumns.length > 0 ? (
+            Array(
+              Math.max(
+                0,
+                Math.min(row_size, items.length - (activePage - 1) * row_size),
+              ),
+            )
+              .fill()
+              .map((_, i) => {
+                const row_index = i + (activePage - 1) * row_size;
+                const row_data = items[row_index];
+                return (
+                  <Table.Row key={row_index}>
+                    <Table.Cell
+                      key={`${row_index}-popuprow`}
+                      textAlign="center"
+                    >
+                      <PopupRow rowData={row_data} tableData={data} />
+                    </Table.Cell>
+                    {selectedColumns &&
+                      selectedColumns.length > 0 &&
+                      selectedColumns.map((colDef, j) => (
+                        <Table.Cell
+                          key={`${row_index}-${getNameOfColumn(colDef)}`}
+                          textAlign={getAlignmentOfColumn(colDef, j)}
+                        >
+                          <RenderComponent
+                            {...props}
+                            tableData={items}
+                            colDef={colDef}
+                            row={row_index}
+                          />
+                        </Table.Cell>
+                      ))}
+                  </Table.Row>
+                );
+              })
+          ) : (
+            <p style={{ textAlign: 'center', padding: '10px 0' }}>
+              Select columns data from <strong>DATA SOURCE</strong> tab.
+            </p>
+          )}
           {!items.length ? (
             <Table.Row>
               <Table.Cell textAlign="center" colSpan="100%">
