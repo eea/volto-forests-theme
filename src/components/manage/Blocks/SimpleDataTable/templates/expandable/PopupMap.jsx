@@ -73,7 +73,7 @@ const PopupMap = ({ rowData, provider_data, mapData }) => {
 
     setFeaturesData(newFeaturesData);
     /* eslint-disable-next-line */
-  }, [provider_data]);
+  }, [provider_data, mapData]);
 
   // const countries =
   //   provider_data && provider_data[mapData.country]
