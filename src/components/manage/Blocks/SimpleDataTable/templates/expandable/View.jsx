@@ -137,6 +137,7 @@ const View = (props) => {
     };
     /* eslint-disable-next-line */
   }, []);
+
   return (
     <div className="smart-table">
       <Search
@@ -172,67 +173,80 @@ const View = (props) => {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell></Table.HeaderCell>
-              {selectedColumns.map((colDef, j) => (
-                <Table.HeaderCell
-                  key={getNameOfColumn(colDef)}
-                  className={getAlignmentOfColumn(colDef, j)}
-                >
-                  <button
-                    className="sortable-th"
-                    title="Sort by"
-                    onClick={() => {
-                      if (sortBy[0] === colDef.column) {
-                        setSortBy([colDef.column, !sortBy[1]]);
-                      } else {
-                        setSortBy([colDef.column, true]);
-                      }
-                    }}
-                    style={{ display: 'flex' }}
+              {selectedColumns &&
+                selectedColumns.length > 0 &&
+                selectedColumns.map((colDef, j) => (
+                  <Table.HeaderCell
+                    key={getNameOfColumn(colDef)}
+                    className={getAlignmentOfColumn(colDef, j)}
                   >
-                    <span>{getTitleOfColumn(colDef)}</span>
-                    {sortBy[0] === colDef.column ? (
-                      <Icon name={sortBy[1] ? upSVG : downSVG} size="1rem" />
-                    ) : (
-                      <Icon name={upDownSVG} size="1rem" color="grey" />
-                    )}
-                  </button>
-                </Table.HeaderCell>
-              ))}
+                    <button
+                      className="sortable-th"
+                      title="Sort by"
+                      onClick={() => {
+                        if (sortBy[0] === colDef.column) {
+                          setSortBy([colDef.column, !sortBy[1]]);
+                        } else {
+                          setSortBy([colDef.column, true]);
+                        }
+                      }}
+                      style={{ display: 'flex' }}
+                    >
+                      <span>{getTitleOfColumn(colDef)}</span>
+                      {sortBy[0] === colDef.column ? (
+                        <Icon name={sortBy[1] ? upSVG : downSVG} size="1rem" />
+                      ) : (
+                        <Icon name={upDownSVG} size="1rem" color="grey" />
+                      )}
+                    </button>
+                  </Table.HeaderCell>
+                ))}
             </Table.Row>
           </Table.Header>
         ) : null}
         <Table.Body>
-          {Array(
-            Math.max(
-              0,
-              Math.min(row_size, items.length - (activePage - 1) * row_size),
-            ),
-          )
-            .fill()
-            .map((_, i) => {
-              const row_index = i + (activePage - 1) * row_size;
-              const row_data = items[row_index];
-              return (
-                <Table.Row key={row_index}>
-                  <Table.Cell key={`${row_index}-popuprow`} textAlign="center">
-                    <PopupRow rowData={row_data} tableData={data} />
-                  </Table.Cell>
-                  {selectedColumns.map((colDef, j) => (
+          {selectedColumns && selectedColumns.length > 0 ? (
+            Array(
+              Math.max(
+                0,
+                Math.min(row_size, items.length - (activePage - 1) * row_size),
+              ),
+            )
+              .fill()
+              .map((_, i) => {
+                const row_index = i + (activePage - 1) * row_size;
+                const row_data = items[row_index];
+                return (
+                  <Table.Row key={row_index}>
                     <Table.Cell
-                      key={`${row_index}-${getNameOfColumn(colDef)}`}
-                      textAlign={getAlignmentOfColumn(colDef, j)}
+                      key={`${row_index}-popuprow`}
+                      textAlign="center"
                     >
-                      <RenderComponent
-                        {...props}
-                        tableData={items}
-                        colDef={colDef}
-                        row={row_index}
-                      />
+                      <PopupRow rowData={row_data} tableData={data} />
                     </Table.Cell>
-                  ))}
-                </Table.Row>
-              );
-            })}
+                    {selectedColumns &&
+                      selectedColumns.length > 0 &&
+                      selectedColumns.map((colDef, j) => (
+                        <Table.Cell
+                          key={`${row_index}-${getNameOfColumn(colDef)}`}
+                          textAlign={getAlignmentOfColumn(colDef, j)}
+                        >
+                          <RenderComponent
+                            {...props}
+                            tableData={items}
+                            colDef={colDef}
+                            row={row_index}
+                          />
+                        </Table.Cell>
+                      ))}
+                  </Table.Row>
+                );
+              })
+          ) : (
+            <p style={{ textAlign: 'center', padding: '10px 0' }}>
+              Select columns data from <strong>DATA SOURCE</strong> tab.
+            </p>
+          )}
           {!items.length ? (
             <Table.Row>
               <Table.Cell textAlign="center" colSpan="100%">
@@ -243,7 +257,9 @@ const View = (props) => {
             ''
           )}
         </Table.Body>
-        {Math.ceil(items.length / row_size) > 1 ? (
+        {selectedColumns &&
+        selectedColumns.length > 0 &&
+        Math.ceil(items.length / row_size) > 1 ? (
           <Table.Footer>
             <Table.Row>
               <Table.HeaderCell
