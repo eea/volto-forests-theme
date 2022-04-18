@@ -10,7 +10,7 @@ import cx from 'classnames';
 import { isActive, getNavigationByParent, getBasePath } from './helpers';
 import { useEffect } from 'react';
 import './styles.css';
-import cookie from 'react-cookie';
+import { useCookies } from 'react-cookie';
 import { Icon } from '@plone/volto/components';
 import downIcon from '@plone/volto/icons/down-key.svg';
 import closeIcon from '@plone/volto/icons/clear.svg';
@@ -24,8 +24,10 @@ const View = ({ content, ...props }) => {
   const [pages, setPages] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
   const [expand, setExpand] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie, removeCookie] = useCookies();
 
-  const isLoggedIn = cookie.load('auth_token');
+  const isLoggedIn = cookies && cookies.auth_token;
 
   const parent =
     data?.navFromParent && props.properties?.parent
