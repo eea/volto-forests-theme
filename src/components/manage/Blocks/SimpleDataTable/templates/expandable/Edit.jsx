@@ -68,6 +68,7 @@ class Edit extends Component {
     schema.properties.popupTitle.choices = choices;
     schema.properties.popupDescription.choices = choices;
     schema.properties.popupUrl.choices = choices;
+    schema.properties.defaultSortColumn.choices = choices;
 
     //set choices for the popup table columns
     schema.properties.popupTableColumns.schema.properties.column.choices = tableChoices;

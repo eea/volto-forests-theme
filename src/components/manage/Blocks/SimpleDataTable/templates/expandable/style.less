@@ -1,4 +1,4 @@
-.smart-table {
+.expandable-table {
   .ui.search .ui.icon.input {
     width: 100%;
 
@@ -13,17 +13,20 @@
   }
 
   .sortable-th {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
     background: none;
     cursor: pointer;
+    font-weight: 400;
+    // width: fit-content;
 
     > * {
       font-size: 1rem;
       line-height: 1rem;
     }
+  }
+
+  .ui.table thead {
+    background: #72b38e;
   }
 
   table {
@@ -75,11 +78,8 @@
     }
 
     .expand-row-icon {
+      width: 120px !important;
       cursor: pointer;
-    }
-
-    .expand-row-icon:hover {
-      fill: #058373 !important;
     }
 
     .expand-row-img {
@@ -89,11 +89,8 @@
       padding: 5px;
       cursor: pointer;
       object-fit: contain;
-    }
 
-    .expand-row-img:hover {
-      border-radius: 5px;
-      box-shadow: 0px 0px 13px -7px #564535;
+      border: 1px solid transparent;
     }
   }
 }
@@ -161,4 +158,31 @@
 .map-container .ol-map {
   height: 400px;
   min-height: 400px;
+}
+
+.popup-trigger-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.popup-trigger-title {
+  font-weight: 500;
+  margin: 0 0 0 15px !important;
+}
+
+.popup-trigger-container:hover {
+  .popup-trigger-title {
+    color: #ca4300 !important;
+    font-weight: 500;
+  }
+
+  .expand-row-img {
+    border-radius: 5px;
+    border: 1px solid #ca4300;
+  }
+
+  .expand-row-icon {
+    fill: #ca4300 !important;
+  }
 }

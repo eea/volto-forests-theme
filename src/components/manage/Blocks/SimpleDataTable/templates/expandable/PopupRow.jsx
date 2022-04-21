@@ -175,16 +175,21 @@ const PopupRow = ({
       );
     }
   };
-
   return (
     <Modal
       onClose={() => handleClose()}
       onOpen={() => handleExpand()}
       open={expand}
       trigger={
-        <span>
+        <div className="popup-trigger-container">
           <ValidImage imageUrl={rowData[tableData.image_url]} />
-        </span>
+          <p className="popup-trigger-title">
+            {rowData &&
+              tableData &&
+              tableData.popupTitle &&
+              rowData[tableData.popupTitle]}
+          </p>
+        </div>
       }
     >
       <Modal.Header className="popup-header">{popupSchema.title}</Modal.Header>

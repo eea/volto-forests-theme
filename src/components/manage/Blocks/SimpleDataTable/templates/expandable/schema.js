@@ -124,6 +124,8 @@ export default () => ({
         'popupTitle',
         'popupDescription',
         'popupUrl',
+        'defaultSortColumn',
+        'defaultSortOrder',
         'popup_table_provider_url',
         'popupTableColumns',
         'popup_map_provider_url',
@@ -136,6 +138,18 @@ export default () => ({
     searchDescription: {
       title: 'Search description',
       widget: 'textarea',
+    },
+    defaultSortColumn: {
+      title: 'Default Sort Column',
+      description: 'Automatic sorting of table by selected column',
+      choices: [],
+    },
+    defaultSortOrder: {
+      title: 'Default Sort Order',
+      choices: [
+        ['ascending', 'ascending'],
+        ['descending', 'descending'],
+      ],
     },
     popup_table_provider_url: {
       title: 'Popup Table provider',
@@ -158,6 +172,7 @@ export default () => ({
     popupTitle: {
       title: 'Popup Title',
       choices: [],
+      description: 'Title for main table and popup',
     },
     popupDescription: {
       title: 'Popup description',
