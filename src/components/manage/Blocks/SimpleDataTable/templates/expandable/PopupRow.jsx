@@ -18,7 +18,7 @@ import {
 
 const defaultSchema = {
   title: '',
-  description: '', //
+  description: '',
   tableColumns: [],
   url: '',
   logo: '',
@@ -177,6 +177,8 @@ const PopupRow = ({
   };
   return (
     <Modal
+      className="expandable-modal"
+      closeIcon
       onClose={() => handleClose()}
       onOpen={() => handleExpand()}
       open={expand}

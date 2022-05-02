@@ -17,7 +17,6 @@
     background: none;
     cursor: pointer;
     font-weight: 400;
-    // width: fit-content;
 
     > * {
       font-size: 1rem;
@@ -87,10 +86,9 @@
       max-width: 100% !important;
       height: 60px;
       padding: 5px;
+      border: 1px solid transparent;
       cursor: pointer;
       object-fit: contain;
-
-      border: 1px solid transparent;
     }
   }
 }
@@ -115,6 +113,21 @@
     border: 2px solid #1e8339;
     border-radius: 5px;
     color: #1e8339;
+  }
+}
+
+.expandable-modal {
+  .close {
+    top: 1.0535rem !important;
+    right: 1rem !important;
+    color: #494e13 !important;
+    font-size: 1.6em !important;
+    font-weight: bold;
+    opacity: 1 !important;
+  }
+
+  .close:hover {
+    color: #ca4300 !important;
   }
 }
 
@@ -167,8 +180,8 @@
 }
 
 .popup-trigger-title {
-  font-weight: 500;
   margin: 0 0 0 15px !important;
+  font-weight: 500;
 }
 
 .popup-trigger-container:hover {
@@ -178,8 +191,8 @@
   }
 
   .expand-row-img {
-    border-radius: 5px;
     border: 1px solid #ca4300;
+    border-radius: 5px;
   }
 
   .expand-row-icon {
