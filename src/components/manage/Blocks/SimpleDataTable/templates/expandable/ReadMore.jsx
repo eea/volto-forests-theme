@@ -18,9 +18,13 @@ const ReadMore = ({ text, maxChars }) => {
     <span className="readmore-container">
       <p className="readmore-text">{more ? text : displayText}</p>
       {showAction && (
-        <button className="readmore-action" onClick={() => setMore(!more)}>
+        <p
+          role="presentation"
+          className="readmore-action"
+          onClick={() => setMore(!more)}
+        >
           {more ? 'Read less..' : 'Read more..'}
-        </button>
+        </p>
       )}
     </span>
   );
