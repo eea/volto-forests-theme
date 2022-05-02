@@ -124,6 +124,7 @@ export default () => ({
         'popupTitle',
         'popupDescription',
         'popupUrl',
+        'popupEmail',
         'defaultSortColumn',
         'defaultSortOrder',
         'popup_table_provider_url',
@@ -180,6 +181,10 @@ export default () => ({
     },
     popupUrl: {
       title: 'Popup Url',
+      choices: [],
+    },
+    popupEmail: {
+      title: 'Popup Email',
       choices: [],
     },
     popupTableColumns: {

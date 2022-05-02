@@ -21,6 +21,7 @@ const defaultSchema = {
   description: '',
   tableColumns: [],
   url: '',
+  email: '',
   logo: '',
   mapData: {},
 };
@@ -77,6 +78,7 @@ const PopupRow = ({
         image_url,
         popupDescription,
         popupUrl,
+        popupEmail,
         popupTableColumns,
         popupLong,
         popupLat,
@@ -90,6 +92,7 @@ const PopupRow = ({
         logo: rowData[image_url],
         description: rowData[popupDescription],
         url: validUrl(rowData[popupUrl]),
+        email: rowData[popupEmail],
         tableColumns: popupTableColumns,
         mapData: {
           long: popupLong,
@@ -199,18 +202,52 @@ const PopupRow = ({
         <Modal.Description style={{ display: 'flex' }}>
           {popupSchema.description && (
             <div className="description-container">
-              <ReadMore maxChars={200} text={popupSchema.description} />
+              <ReadMore maxChars={600} text={popupSchema.description} />
             </div>
           )}
           {popupSchema.logo && (
-            <img
-              src={popupSchema.logo}
-              alt={popupSchema.logo}
-              className="popup-logo"
-              onError={() => setPopupSchema({ ...popupSchema, logo: '' })} // don't show it if it's not available
-            />
+            <a
+              className="popup-logo-container"
+              href={popupSchema.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={popupSchema.logo}
+                alt={popupSchema.logo}
+                className="popup-logo"
+                onError={() => setPopupSchema({ ...popupSchema, logo: '' })} // don't show it if it's not available
+              />
+            </a>
           )}
         </Modal.Description>
+        {popupSchema.email && popupSchema.url && (
+          <div className="info-container">
+            {popupSchema.email && (
+              <div style={{ display: 'flex' }}>
+                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>Email:</p>
+                <a href={`mailto:${popupSchema.email}`} className="popup-url">
+                  {popupSchema.email}
+                </a>
+              </div>
+            )}
+            {popupSchema.url && (
+              <div style={{ display: 'flex' }}>
+                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
+                  Website:
+                </p>
+                <a
+                  href={popupSchema.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="popup-url"
+                >
+                  {popupSchema.url}
+                </a>
+              </div>
+            )}
+          </div>
+        )}
         <div
           style={{
             display: 'flex',
@@ -226,14 +263,6 @@ const PopupRow = ({
                 tableColumns={popupSchema.tableColumns}
               />
             )}
-            <a
-              href={popupSchema.url}
-              target="_blank"
-              rel="noreferrer"
-              className="popup-url"
-            >
-              {popupSchema.url}
-            </a>
           </div>
           <div style={{ width: '49%' }}>
             {rowData && (

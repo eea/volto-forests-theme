@@ -19,14 +19,10 @@ class Edit extends Component {
 
     const schema = SimpleDataTableSchema(config, templateSchema(config));
 
-    // TODO: create picker for columns to include
-
     const provider_url = this.props.data?.provider_url;
     const provider_data = provider_url
       ? this.props.providers_data[provider_url]
       : '';
-
-    // const { provider_data } = this.props;
 
     if (!provider_data) return schema;
 
@@ -68,6 +64,8 @@ class Edit extends Component {
     schema.properties.popupTitle.choices = choices;
     schema.properties.popupDescription.choices = choices;
     schema.properties.popupUrl.choices = choices;
+    schema.properties.popupEmail.choices = choices;
+
     schema.properties.defaultSortColumn.choices = choices;
 
     //set choices for the popup table columns
