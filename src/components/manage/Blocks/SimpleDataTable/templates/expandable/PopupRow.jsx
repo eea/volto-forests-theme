@@ -199,12 +199,7 @@ const PopupRow = ({
     >
       <Modal.Header className="popup-header">{popupSchema.title}</Modal.Header>
       <Modal.Content scrolling>
-        <Modal.Description style={{ display: 'flex' }}>
-          {popupSchema.description && (
-            <div className="description-container">
-              <ReadMore maxChars={600} text={popupSchema.description} />
-            </div>
-          )}
+        <div style={{ display: 'flex' }}>
           {popupSchema.logo && (
             <a
               className="popup-logo-container"
@@ -220,34 +215,44 @@ const PopupRow = ({
               />
             </a>
           )}
+          {popupSchema.email && popupSchema.url && (
+            <div className="info-container">
+              {popupSchema.email && (
+                <div style={{ display: 'flex' }}>
+                  <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
+                    Email:
+                  </p>
+                  <a href={`mailto:${popupSchema.email}`} className="popup-url">
+                    {popupSchema.email}
+                  </a>
+                </div>
+              )}
+              {popupSchema.url && (
+                <div style={{ display: 'flex' }}>
+                  <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
+                    Website:
+                  </p>
+                  <a
+                    href={popupSchema.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="popup-url"
+                  >
+                    {popupSchema.url}
+                  </a>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        <Modal.Description style={{ display: 'flex' }}>
+          {popupSchema.description && (
+            <div className="description-container">
+              <ReadMore maxChars={600} text={popupSchema.description} />
+            </div>
+          )}
         </Modal.Description>
-        {popupSchema.email && popupSchema.url && (
-          <div className="info-container">
-            {popupSchema.email && (
-              <div style={{ display: 'flex' }}>
-                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>Email:</p>
-                <a href={`mailto:${popupSchema.email}`} className="popup-url">
-                  {popupSchema.email}
-                </a>
-              </div>
-            )}
-            {popupSchema.url && (
-              <div style={{ display: 'flex' }}>
-                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
-                  Website:
-                </p>
-                <a
-                  href={popupSchema.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="popup-url"
-                >
-                  {popupSchema.url}
-                </a>
-              </div>
-            )}
-          </div>
-        )}
+
         <div
           style={{
             display: 'flex',
