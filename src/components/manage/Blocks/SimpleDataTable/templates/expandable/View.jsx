@@ -96,6 +96,16 @@ const View = (props) => {
   );
 
   React.useEffect(() => {
+    if (data.defaultSortColumn && data.defaultSortOrder) {
+      if (data.defaultSortOrder === 'ascending') {
+        setSortBy([data.defaultSortColumn, true]);
+      } else {
+        setSortBy([data.defaultSortColumn, false]);
+      }
+    }
+  }, [data.defaultSortColumn, data.defaultSortOrder]);
+
+  React.useEffect(() => {
     const newTableData = [];
     if (provider_data_length) {
       const keys = Object.keys(provider_data);
@@ -139,9 +149,10 @@ const View = (props) => {
   }, []);
 
   return (
-    <div className="smart-table">
+    <div className="expandable-table">
       <Search
         ref={search}
+        placeholder={data.searchDescription}
         loading={loadingProviderData || loading}
         onResultSelect={() => {}}
         showNoResults={false}
@@ -158,11 +169,6 @@ const View = (props) => {
           return '';
         }}
       />
-      {data.searchDescription ? (
-        <p className="search-description">{data.searchDescription}</p>
-      ) : (
-        ''
-      )}
       <Table
         textAlign="left"
         striped={data.striped}
@@ -172,7 +178,31 @@ const View = (props) => {
         {show_header ? (
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell></Table.HeaderCell>
+              <Table.HeaderCell>
+                <button
+                  className="sortable-th"
+                  title="Sort by"
+                  onClick={() => {
+                    if (sortBy[0] === data.popupTitle) {
+                      setSortBy([data.popupTitle, !sortBy[1]]);
+                    } else {
+                      setSortBy([data.popupTitle, true]);
+                    }
+                  }}
+                  style={{ display: 'flex' }}
+                >
+                  <span>
+                    <span style={{ color: '#3f3227', fontWeight: 'bold' }}>
+                      Organisation
+                    </span>
+                    {sortBy[0] === data.popupTitle ? (
+                      <Icon name={sortBy[1] ? upSVG : downSVG} size="1rem" />
+                    ) : (
+                      <Icon name={upDownSVG} size="1rem" color="grey" />
+                    )}
+                  </span>
+                </button>
+              </Table.HeaderCell>
               {selectedColumns &&
                 selectedColumns.length > 0 &&
                 selectedColumns.map((colDef, j) => (
@@ -180,8 +210,8 @@ const View = (props) => {
                     key={getNameOfColumn(colDef)}
                     className={getAlignmentOfColumn(colDef, j)}
                   >
-                    <button
-                      className="sortable-th"
+                    <p
+                      role="presentation"
                       title="Sort by"
                       onClick={() => {
                         if (sortBy[0] === colDef.column) {
@@ -190,15 +220,24 @@ const View = (props) => {
                           setSortBy([colDef.column, true]);
                         }
                       }}
-                      style={{ display: 'flex' }}
+                      style={{
+                        marginBottom: 0,
+                        whiteSpace: 'nowrap',
+                        color: '#3f3227',
+                      }}
                     >
-                      <span>{getTitleOfColumn(colDef)}</span>
-                      {sortBy[0] === colDef.column ? (
-                        <Icon name={sortBy[1] ? upSVG : downSVG} size="1rem" />
-                      ) : (
-                        <Icon name={upDownSVG} size="1rem" color="grey" />
-                      )}
-                    </button>
+                      <span style={{ display: 'inline-block' }}>
+                        <span>{getTitleOfColumn(colDef)}</span>
+                        {sortBy[0] === colDef.column ? (
+                          <Icon
+                            name={sortBy[1] ? upSVG : downSVG}
+                            size="1rem"
+                          />
+                        ) : (
+                          <Icon name={upDownSVG} size="1rem" color="grey" />
+                        )}
+                      </span>
+                    </p>
                   </Table.HeaderCell>
                 ))}
             </Table.Row>
