@@ -199,7 +199,7 @@ const PopupRow = ({
     >
       <Modal.Header className="popup-header">{popupSchema.title}</Modal.Header>
       <Modal.Content scrolling>
-        <div style={{ display: 'flex' }}>
+        <div className="popup-header-data">
           {popupSchema.logo && (
             <a
               className="popup-logo-container"
@@ -215,35 +215,31 @@ const PopupRow = ({
               />
             </a>
           )}
-          {popupSchema.email && popupSchema.url && (
-            <div className="info-container">
-              {popupSchema.email && (
-                <div style={{ display: 'flex' }}>
-                  <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
-                    Email:
-                  </p>
-                  <a href={`mailto:${popupSchema.email}`} className="popup-url">
-                    {popupSchema.email}
-                  </a>
-                </div>
-              )}
-              {popupSchema.url && (
-                <div style={{ display: 'flex' }}>
-                  <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
-                    Website:
-                  </p>
-                  <a
-                    href={popupSchema.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="popup-url"
-                  >
-                    {popupSchema.url}
-                  </a>
-                </div>
-              )}
-            </div>
-          )}
+          <div className="info-container">
+            {popupSchema.email && (
+              <div style={{ display: 'flex' }}>
+                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>Email:</p>
+                <a href={`mailto:${popupSchema.email}`} className="popup-url">
+                  {popupSchema.email}
+                </a>
+              </div>
+            )}
+            {popupSchema.url && (
+              <div style={{ display: 'flex' }}>
+                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
+                  Website:
+                </p>
+                <a
+                  href={popupSchema.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="popup-url"
+                >
+                  {popupSchema.url}
+                </a>
+              </div>
+            )}
+          </div>
         </div>
         <Modal.Description style={{ display: 'flex' }}>
           {popupSchema.description && (
@@ -253,14 +249,8 @@ const PopupRow = ({
           )}
         </Modal.Description>
 
-        <div
-          style={{
-            display: 'flex',
-            margin: '10px 0',
-            justifyContent: 'space-between',
-          }}
-        >
-          <div style={{ width: '49%' }}>
+        <div className="popup-columns-container">
+          <div className="popup-column">
             {rowData && (
               <PopupTable
                 rowData={rowData}
@@ -269,7 +259,7 @@ const PopupRow = ({
               />
             )}
           </div>
-          <div style={{ width: '49%' }}>
+          <div className="popup-column">
             {rowData && (
               <PopupMap
                 rowData={rowData}
