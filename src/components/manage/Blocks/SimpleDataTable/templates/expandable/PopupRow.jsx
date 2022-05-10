@@ -101,7 +101,8 @@ const PopupRow = ({
           country: popupCountryCode,
         },
       });
-    } else {
+    }
+    if (!expand) {
       setPopupSchema(defaultSchema);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,12 +149,6 @@ const PopupRow = ({
         queryVal,
         type,
       );
-      handleSetFilterProvider(
-        popup_table_provider_url,
-        popup_data_query,
-        queryVal,
-        type,
-      );
     }
   };
 
@@ -171,13 +166,9 @@ const PopupRow = ({
         popup_data_query,
         type,
       );
-      handleRemoveFilterProvider(
-        popup_table_provider_url,
-        popup_data_query,
-        type,
-      );
     }
   };
+
   return (
     <Modal
       className="expandable-modal"
@@ -197,83 +188,94 @@ const PopupRow = ({
         </div>
       }
     >
-      <Modal.Header className="popup-header">{popupSchema.title}</Modal.Header>
-      <Modal.Content scrolling>
-        <div className="popup-header-data">
-          {popupSchema.logo && (
-            <a
-              className="popup-logo-container"
-              href={popupSchema.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src={popupSchema.logo}
-                alt={popupSchema.logo}
-                className="popup-logo"
-                onError={() => setPopupSchema({ ...popupSchema, logo: '' })} // don't show it if it's not available
-              />
-            </a>
-          )}
-          <div className="info-container">
-            {popupSchema.email && (
-              <div style={{ display: 'flex' }}>
-                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>Email:</p>
-                <a href={`mailto:${popupSchema.email}`} className="popup-url">
-                  {popupSchema.email}
-                </a>
-              </div>
-            )}
-            {popupSchema.url && (
-              <div style={{ display: 'flex' }}>
-                <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
-                  Website:
-                </p>
+      {popupSchema !== defaultSchema && (
+        <React.Fragment>
+          <Modal.Header className="popup-header">
+            {popupSchema.title}
+          </Modal.Header>
+          <Modal.Content scrolling>
+            <div className="popup-header-data">
+              {popupSchema.logo && (
                 <a
+                  className="popup-logo-container"
                   href={popupSchema.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="popup-url"
                 >
-                  {popupSchema.url}
+                  <img
+                    src={popupSchema.logo}
+                    alt={popupSchema.logo}
+                    className="popup-logo"
+                    onError={() => setPopupSchema({ ...popupSchema, logo: '' })} // don't show it if it's not available
+                  />
                 </a>
+              )}
+              <div className="info-container">
+                {popupSchema.email && (
+                  <div style={{ display: 'flex' }}>
+                    <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
+                      Email:
+                    </p>
+                    <a
+                      href={`mailto:${popupSchema.email}`}
+                      className="popup-url"
+                    >
+                      {popupSchema.email}
+                    </a>
+                  </div>
+                )}
+                {popupSchema.url && (
+                  <div style={{ display: 'flex' }}>
+                    <p style={{ margin: '0 10px 0 0', fontSize: '24px' }}>
+                      Website:
+                    </p>
+                    <a
+                      href={popupSchema.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="popup-url"
+                    >
+                      {popupSchema.url}
+                    </a>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </div>
-        <Modal.Description style={{ display: 'flex' }}>
-          {popupSchema.description && (
-            <div className="description-container">
-              <ReadMore maxChars={600} text={popupSchema.description} />
             </div>
-          )}
-        </Modal.Description>
+            <Modal.Description style={{ display: 'flex' }}>
+              {popupSchema.description && (
+                <div className="description-container">
+                  <ReadMore maxChars={600} text={popupSchema.description} />
+                </div>
+              )}
+            </Modal.Description>
 
-        <div className="popup-columns-container">
-          <div className="popup-column">
-            {rowData && (
-              <PopupTable
-                rowData={rowData}
-                providerUrl={popup_table_provider_url}
-                tableColumns={popupSchema.tableColumns}
-              />
-            )}
-          </div>
-          <div className="popup-column">
-            {rowData && (
-              <PopupMap
-                rowData={rowData}
-                providerUrl={popup_map_provider_url}
-                mapData={popupSchema.mapData}
-              />
-            )}
-          </div>
-        </div>
-      </Modal.Content>
+            <div className="popup-columns-container">
+              <div className="popup-column">
+                {rowData && (
+                  <PopupTable
+                    rowData={rowData}
+                    providerUrl={popup_table_provider_url}
+                    tableColumns={popupSchema.tableColumns}
+                  />
+                )}
+              </div>
+              <div className="popup-column">
+                {rowData && (
+                  <PopupMap
+                    rowData={rowData}
+                    providerUrl={popup_map_provider_url}
+                    mapData={popupSchema.mapData}
+                  />
+                )}
+              </div>
+            </div>
+          </Modal.Content>
 
-      <Modal.Actions>
-        <Button onClick={() => handleClose()}>Close</Button>
-      </Modal.Actions>
+          <Modal.Actions>
+            <Button onClick={() => handleClose()}>Close</Button>
+          </Modal.Actions>
+        </React.Fragment>
+      )}
     </Modal>
   );
 };
