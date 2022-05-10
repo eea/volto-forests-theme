@@ -38,7 +38,7 @@ const PopupTable = ({ rowData, providerUrl, provider_data, tableColumns }) => {
 
   return (
     <div className="popup-table-container">
-      <Table striped celled className="popup-table">
+      <Table unstackable striped celled className="popup-table">
         <Table.Header>
           <Table.Row>
             {tableColumns &&
