@@ -149,6 +149,12 @@ const PopupRow = ({
         queryVal,
         type,
       );
+      handleSetFilterProvider(
+        popup_table_provider_url,
+        popup_data_query,
+        queryVal,
+        type,
+      );
     }
   };
 
@@ -163,6 +169,11 @@ const PopupRow = ({
     ) {
       handleRemoveFilterProvider(
         popup_map_provider_url,
+        popup_data_query,
+        type,
+      );
+      handleRemoveFilterProvider(
+        popup_table_provider_url,
         popup_data_query,
         type,
       );
