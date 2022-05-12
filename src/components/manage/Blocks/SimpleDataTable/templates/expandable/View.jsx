@@ -77,8 +77,14 @@ const View = (props) => {
           return;
         }
         const re = new RegExp(_.escapeRegExp(data.value), 'i');
+
+        const searchableCols =
+          props.data && props.data.popupTitle
+            ? [...selectedColumns, { column: props.data.popupTitle }]
+            : selectedColumns;
+
         const isMatch = (result) => {
-          for (let colDef of selectedColumns) {
+          for (let colDef of searchableCols) {
             if (re.test(result[colDef.column])) {
               return true;
             }
@@ -92,7 +98,7 @@ const View = (props) => {
       }, time);
     },
     /* eslint-disable-next-line */
-    [filteredTableData, selectedColumns],
+    [filteredTableData, selectedColumns, data.popupTitle],
   );
 
   React.useEffect(() => {
