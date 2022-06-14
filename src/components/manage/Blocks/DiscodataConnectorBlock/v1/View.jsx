@@ -117,7 +117,7 @@ const View = (props) => {
   }, [JSON.stringify(dataProviders)]);
 
   const view = (
-    <div className="flex h-100 pa-1" style={{ position: 'relative' }}>
+    <div className="flex pa-1" style={{ position: 'relative' }}>
       <div className="flex flex-column w-100">
         {/* {props.data?.block_title ? <h5>{props.data.block_title}</h5> : ''} */}
         {parentsDataProviders &&
