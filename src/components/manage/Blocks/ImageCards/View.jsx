@@ -143,7 +143,7 @@ Cards.schema = () => ({
       title: 'Link title',
     },
     attachedimage: {
-      widget: 'attachedimagewidget',
+      widget: 'attachedimage',
       title: 'Image',
     },
     copyright: {
