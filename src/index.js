@@ -6,6 +6,7 @@ import installAppExtras from '@eeacms/volto-forests-theme/components/theme/AppEx
 import { applyConfig as installFiseFrontend } from './localconfig';
 import installDiscodataConnectorBlock from '@eeacms/volto-forests-theme/components/manage/Blocks/DiscodataConnectorBlock';
 import installExpandableDataTable from './components/manage/Blocks/SimpleDataTable';
+import installImageCards from './components/manage/Blocks/ImageCards';
 
 import ObjectListInlineWidget from './components/manage/Widgets/ObjectListInlineWidget';
 import reducers from '@eeacms/volto-forests-theme/reducers';
@@ -19,6 +20,7 @@ export default function applyConfig(config) {
     installFiseFrontend,
     installDiscodataConnectorBlock,
     installExpandableDataTable,
+    installImageCards,
   ].reduce((acc, apply) => apply(acc), config);
 
   config.settings = {
