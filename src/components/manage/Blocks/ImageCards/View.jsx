@@ -53,21 +53,6 @@ const Cards = (props) => {
 
   const makeTextBody = (item) => (
     <>
-      {/* <Card.Content>
-        <Card.Header>{item.title ? item.title : item.id}</Card.Header>
-        {item.meta && <Card.Meta>{serializeNodes(item.meta)}</Card.Meta>}
-        {item.text && (
-          <Card.Description>{serializeNodes(item.text)}</Card.Description>
-        )}
-      </Card.Content>
-      {item.link && (
-        <Card.Content extra>
-          <UniversalLink href={item.link}>
-            <Icon name="linkify" />
-            {item.linkTitle || item.link}
-          </UniversalLink>
-        </Card.Content>
-      )} */}
       <h3 className="tile-listing-title">
         {item.title ? item.title : item.id}
       </h3>
@@ -109,15 +94,7 @@ Cards.schema = () => ({
     {
       id: 'default',
       title: 'Default',
-      fields: [
-        'title',
-        'meta',
-        'text',
-        'attachedimage',
-        'link',
-        'linkTitle',
-        'copyright',
-      ],
+      fields: ['title', 'text', 'attachedimage', 'link'],
     },
   ],
 
@@ -125,10 +102,6 @@ Cards.schema = () => ({
     title: {
       type: 'string',
       title: 'Title',
-    },
-    meta: {
-      widget: 'slate_richtext',
-      title: 'Meta data',
     },
     text: {
       widget: 'slate_richtext',
@@ -138,17 +111,9 @@ Cards.schema = () => ({
       widget: 'url',
       title: 'Link',
     },
-    linkTitle: {
-      type: 'string',
-      title: 'Link title',
-    },
     attachedimage: {
       widget: 'attachedimage',
       title: 'Image',
-    },
-    copyright: {
-      widget: 'slate_richtext',
-      title: 'Copyright',
     },
   },
 
