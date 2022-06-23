@@ -63,9 +63,10 @@ const Cards = (props) => {
   );
 
   const handleNavigate = (link) => {
-    history.push(flattenToAppURL(link));
+    if (!props.editable) {
+      history.push(flattenToAppURL(link));
+    }
   };
-
   return cards && cards.length > 0 ? (
     <div className={cx('ui fluid cards', gridSize)}>
       {cards.map((item) => (
