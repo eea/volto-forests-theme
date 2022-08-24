@@ -2296,9 +2296,7 @@ main {
   .thematic-areas {
     page-break-before: always;
   }
-}
 
-#main.print {
   .ui.container {
     position: relative !important;
     display: block !important;
@@ -2359,6 +2357,30 @@ main {
       background: #fff;
     }
 
+    .logo-nav-wrapper .logoImage.tablet,
+    .logo-nav-wrapper .logoImageSm.tablet {
+      display: none !important;
+    }
+
+    .logo-nav-wrapper .logoImageSm.computer {
+      display: static !important;
+    }
+
+    .sticky-outer-wrapper .logo {
+      margin: 0 !important;
+    }
+
+    .sticky-outer-wrapper .logo-nav-wrapper .logo:after,
+    .sticky-outer-wrapper.active .logo-nav-wrapper .logo:after {
+      content: 'Forest Information System for Europe';
+      color: #058373;
+      font-size: 20px;
+      font-weight: 700;
+      margin-left: 10px;
+      max-width: 210px;
+      display: inline-block !important;
+    }
+
     .header-bg.contentpage,
     .ui.breadcrumbs,
     .placeholder.header-image {
@@ -2380,16 +2402,10 @@ main {
       }
 
       .header-image-content {
-        h1 {
-          margin: 0 !important;
-          color: #000 !important;
-          text-align: left !important;
-        }
-
-        p {
-          margin: 0 !important;
-          color: #000 !important;
-          text-align: left !important;
+        h1, p {
+          margin: 0;
+          color: #464b0b;
+          text-align: left;
         }
       }
     }
@@ -2399,8 +2415,8 @@ main {
       position: relative !important;
       width: 100% !important;
       height: auto !important;
-      background: transparent;
-      box-shadow: none;
+      background: transparent !important;
+      box-shadow: none !important;
       @media (max-width: 1200px) {
         top: 75px !important;
       }
@@ -2423,7 +2439,7 @@ main {
   }
 
   .footerWrapper {
-    display: none !important;
+    display: none;
   }
 
   .react-grid-layout {
