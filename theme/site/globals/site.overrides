@@ -2362,11 +2362,12 @@ main {
       display: none !important;
     }
 
-    .logo-nav-wrapper .logoImageSm.computer {
-      display: static !important;
+    .sticky-outer-wrapper.active .sticky-inner-wrapper .logo .logoImageSm {
+      height: 80px !important;
     }
 
     .sticky-outer-wrapper .logo {
+      display: flex;
       margin: 0 !important;
     }
 
@@ -2376,9 +2377,8 @@ main {
       color: #058373;
       font-size: 20px;
       font-weight: 700;
-      margin-left: 10px;
+      margin: 1.5rem 0 0 1rem;
       max-width: 210px;
-      display: inline-block !important;
     }
 
     .header-bg.contentpage,
@@ -2436,6 +2436,25 @@ main {
         }
       }
     }
+
+    .header-navigation-lead {
+      justify-content: flex-start;
+      .active-lead-nav {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        overflow: initial;
+        text-overflow: initial;
+        padding: 0;
+        width: auto !important;
+        font-size: 20px;
+      }
+
+      .lead-navigation-item:not(:first-child) {
+        display: none;
+      }
+    }
+
   }
 
   .footerWrapper {
