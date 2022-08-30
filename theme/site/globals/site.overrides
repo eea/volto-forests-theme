@@ -2265,6 +2265,8 @@ main {
 
   blockquote {
     page-break-inside: avoid;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   h1,
@@ -2305,6 +2307,10 @@ main {
     padding: 0 !important;
     margin: 0 !important;
     float: none !important;
+
+    p {
+      text-align: left !important;
+    }
   }
 
   .columns-view {
@@ -2357,6 +2363,21 @@ main {
       background: #fff;
     }
 
+    .header-bg {
+      display: none;
+    }
+
+    //.slider-wrapper {
+    //  .slider-slide > img {
+    //    display: none;
+    //  }
+  //  }
+
+    .header-image-big {
+      height: auto !important;
+      padding: 40px 10px 10px 10px !important;
+    }
+
     .logo-nav-wrapper .logoImage.tablet,
     .logo-nav-wrapper .logoImageSm.tablet {
       display: none !important;
@@ -2366,9 +2387,15 @@ main {
       height: 80px !important;
     }
 
+    .logoImage {
+      @media (max-width: 600px) {
+        height: 80px !important;
+      }
+    }
+
     .sticky-outer-wrapper .logo {
       display: flex;
-      margin: 0 !important;
+      margin: 1rem 0 0 0 !important;
     }
 
     .sticky-outer-wrapper .logo-nav-wrapper .logo:after,
@@ -2408,6 +2435,10 @@ main {
           text-align: left;
         }
       }
+
+      .header-meta-data {
+        display: none;
+      }
     }
 
     .sticky-outer-wrapper,
@@ -2418,9 +2449,6 @@ main {
       background: transparent !important;
       box-shadow: none !important;
       transform: none !important;
-      @media (max-width: 1200px) {
-        top: 75px !important;
-      }
     }
 
     .sticky-inner-wrapper {
@@ -2440,6 +2468,7 @@ main {
 
     .header-navigation-lead {
       justify-content: flex-start;
+
       .active-lead-nav {
         background: transparent;
         box-shadow: none;
@@ -2453,13 +2482,36 @@ main {
 
       .lead-navigation-item {
         display: none;
+        height: auto;
       }
       .lead-navigation-item.active-lead-nav {
         display: initial;
+        padding-top: 20px;
+      }
+      .navigation-next {
+        display: none;
       }
     }
 
-  }
+    .lead-mobile-nav {
+
+      .lead-nav-item {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        overflow: initial;
+        text-overflow: initial;
+        padding: 0;
+        width: auto !important;
+        font-size: 20px;
+
+        .lead-nav-icon {
+          display: none;
+        }
+      }
+    }
+
+   }
 
   .footerWrapper {
     display: none;
@@ -2498,11 +2550,87 @@ main {
     }
   }
 
+  .homepage-button {
+    display: none;
+  }
+
   .thematic-areas {
     width: 756px !important;
     padding: 0 !important;
     margin: 0 !important;
     background: #fff !important;
+  }
+
+  .simple-data-table {
+    padding: 0 1em;
+    overflow-x: visible;
+    margin-left: -30px;
+  }
+
+  .ui.table {
+    thead {
+      background-color: transparent !important;
+    }
+
+    tr {
+      th {
+        border-bottom: none !important;
+
+        &:not(:first-child) {
+         border-right: 1px solid #e8e8e8 !important;
+        }
+
+        &.right:last-child {
+        border-right: none !important;
+        }
+
+      }
+
+      td {
+        border-top: 1px solid #e8e8e8 !important;
+        border-bottom: none !important;
+
+        &:not(:first-child) {
+          border-right: 1px solid #e8e8e8 !important;
+        }
+
+        &.right:last-child {
+          border-right: none !important;
+        }
+      }
+    }
+  }
+
+  #page-document {
+    .styled-with-bg {
+      background-color: transparent !important;
+      .styled-columnsBlock {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .simple-data-table .colored-table table tbody:after {
+    display: none;
+  }
+
+  .drop-shadow-block,
+  .drop-shadow-tile {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) .content-area main {
+    padding: 1rem 40px !important;
+  }
+
+  .margin-block-10 {
+    margin: 0 !important;
+  }
+
+  .padding-block-10 {
+    padding: 0 !important;
   }
 
   .svg-container {
