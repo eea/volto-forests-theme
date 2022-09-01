@@ -2367,11 +2367,9 @@ main {
       display: none;
     }
 
-    //.slider-wrapper {
-    //  .slider-slide > img {
-    //    display: none;
-    //  }
-  //  }
+    .slider-wrapper, .extra-header {
+      display: none;
+    }
 
     .header-image-big {
       height: auto !important;
@@ -2567,9 +2565,14 @@ main {
     margin-left: -30px;
   }
 
+  .image {
+    width: 50%;
+  }
+
   .ui.table {
-    thead {
+    thead, thead th {
       background-color: transparent !important;
+      color: #000000 !important;
     }
 
     tr {
@@ -2639,6 +2642,14 @@ main {
 
   .print-button {
     display: none;
+  }
+
+  .embed-visualization, .plotly-chart {
+    display: block !important;
+  }
+
+  .connected-chart-wrapper {
+    overflow: initial !important;
   }
 }
 
