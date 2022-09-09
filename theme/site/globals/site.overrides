@@ -2313,6 +2313,24 @@ main {
     }
   }
 
+  .ui.secondary.vertical.segment.breadcrumbs {
+    display: inline !important;
+    width: 100vw !important;
+    padding: 0 !important;
+
+    .ui.breadcrumb {
+      display: inline !important;
+      background: transparent !important;
+
+      .section {
+        color: #cd4200 !important;
+      }
+      .active.section {
+        font-weight: 700;
+      }
+    }
+  }
+
   .columns-view {
     .grid.column-grid {
       display: block;
@@ -2393,7 +2411,7 @@ main {
 
     .sticky-outer-wrapper .logo {
       display: flex;
-      margin: 1rem 0 0 0 !important;
+      margin: 1rem 0 !important;
     }
 
     .sticky-outer-wrapper .logo-nav-wrapper .logo:after,
@@ -2407,7 +2425,6 @@ main {
     }
 
     .header-bg.contentpage,
-    .ui.breadcrumbs,
     .placeholder.header-image {
       display: none !important;
     }
@@ -2465,30 +2482,7 @@ main {
     }
 
     .header-navigation-lead {
-      justify-content: flex-start;
-
-      .active-lead-nav {
-        background: transparent;
-        box-shadow: none;
-        border: none;
-        overflow: initial;
-        text-overflow: initial;
-        padding: 0;
-        width: auto !important;
-        font-size: 20px;
-      }
-
-      .lead-navigation-item {
-        display: none;
-        height: auto;
-      }
-      .lead-navigation-item.active-lead-nav {
-        display: initial;
-        padding-top: 20px;
-      }
-      .navigation-next {
-        display: none;
-      }
+      display: none;
     }
 
     .lead-mobile-nav {
@@ -2644,8 +2638,12 @@ main {
     display: none;
   }
 
-  .embed-visualization, .plotly-chart {
-    display: block !important;
+  .embed-visualization {
+    page-break-before: always !important;
+
+    svg {
+      position: static !important;
+    }
   }
 
   .connected-chart-wrapper {
