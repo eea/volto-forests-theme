@@ -2313,12 +2313,13 @@ main {
     }
   }
 
-  .ui.secondary.vertical.segment.breadcrumbs {
+  .ui.secondary.vertical.segment.breadcrumbs,
+  .ui.secondary.vertical.segment.breadcrumbs:not(aside .ui.vertical.segment.breadcrumbs) {
     display: inline !important;
     width: 100vw !important;
     padding: 0 !important;
 
-    .ui.breadcrumb {
+    .breadcrumb {
       display: inline !important;
       background: transparent !important;
 
@@ -2432,7 +2433,7 @@ main {
     .header-image-wrapper {
       height: auto;
       align-items: start;
-      padding: 0 10px;
+      padding: 40px 10px !important;
 
       .header-image {
         width: 756px;
@@ -2554,13 +2555,15 @@ main {
   }
 
   .simple-data-table {
+    display: block;
     padding: 0 1em;
     overflow-x: visible;
     margin-left: -30px;
   }
 
-  .image {
-    width: 50%;
+  .image, img {
+    width: 80% !important;
+    height: auto;
   }
 
   .ui.table {
@@ -2630,24 +2633,39 @@ main {
     padding: 0 !important;
   }
 
-  .svg-container {
-    width: 100%;
-  }
-
   .print-button {
     display: none;
   }
 
   .embed-visualization {
-    page-break-before: always !important;
+    page-break-inside: avoid !important;
+    //page-break-after: always !important;
 
-    svg {
-      position: static !important;
+    .svg-container {
+      display: block;
+      width: 100%;
+    }
+
+    .download-button {
+      display: none;
     }
   }
 
   .connected-chart-wrapper {
     overflow: initial !important;
+  }
+
+  .privacy-protection-wrapper {
+    min-height: 100% !important;
+    width: 100% !important;
+  }
+
+  .columns-view > .grid.column-grid > .column.column-blocks-wrapper {
+    display: block !important;
+  }
+
+  .columns-view > .grid.column-grid > .column.column-blocks-wrapper > div {
+    display: block !important;
   }
 }
 
