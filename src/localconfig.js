@@ -63,7 +63,10 @@ function addViewlets(config) {
     config.viewlets.push({ path: '/', component: ForestMetadata });
   }
   if (!config.viewlets) {
-    config.viewlets = [{ path: '/', component: ForestMetadata }];
+    config = {
+      ...config,
+      viewlets: [{ path: '/', component: ForestMetadata }],
+    };
   }
 }
 
