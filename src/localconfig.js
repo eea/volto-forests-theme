@@ -58,8 +58,22 @@ function addCustomGroup(config) {
   }
 }
 
+function addViewlets(config) {
+  if (config.viewlets && config.viewlets.length > 0) {
+    config.viewlets.push({ path: '/', component: ForestMetadata });
+  }
+  if (!config.viewlets) {
+    config = {
+      ...config,
+      viewlets: [{ path: '/', component: ForestMetadata }],
+    };
+  }
+}
+
 export function applyConfig(config) {
   addCustomGroup(config);
+  addViewlets(config);
+
   config.settings = {
     ...config.settings,
     navDepth: 4,
@@ -148,10 +162,10 @@ export function applyConfig(config) {
     },
   };
 
-  config.viewlets = [
-    { path: '/', component: ForestMetadata },
-    ...(config.viewlets || []),
-  ];
+  // config.viewlets = [
+  //   ...config.viewlets,
+  //   { path: '/', component: ForestMetadata },
+  // ];
 
   config.settings.plotlyCustomColors = [
     {
@@ -245,5 +259,6 @@ export function applyConfig(config) {
   //   'templated_country_factsheet',
   //   'basic_data_factsheet',
   // ];
+
   return config;
 }
