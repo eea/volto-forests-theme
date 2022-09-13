@@ -65,10 +65,6 @@ export default function applyConfig(config) {
   //   ...config.portlets,
   // };
 
-  config.editForms = {
-    ...config.editForms,
-  };
-
   config.settings.slate = config.settings.slate || {};
   config.settings.slate.styleMenu = config.settings.slate.styleMenu || {};
   config.settings.slate.styleMenu.inlineStyles = [

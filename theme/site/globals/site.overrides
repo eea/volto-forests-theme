@@ -2265,6 +2265,8 @@ main {
 
   blockquote {
     page-break-inside: avoid;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   h1,
@@ -2296,9 +2298,7 @@ main {
   .thematic-areas {
     page-break-before: always;
   }
-}
 
-#main.print {
   .ui.container {
     position: relative !important;
     display: block !important;
@@ -2307,6 +2307,29 @@ main {
     padding: 0 !important;
     margin: 0 !important;
     float: none !important;
+
+    p {
+      text-align: left !important;
+    }
+  }
+
+  .ui.secondary.vertical.segment.breadcrumbs,
+  .ui.secondary.vertical.segment.breadcrumbs:not(aside .ui.vertical.segment.breadcrumbs) {
+    display: inline !important;
+    width: 100vw !important;
+    padding: 0 !important;
+
+    .breadcrumb {
+      display: inline !important;
+      background: transparent !important;
+
+      .section {
+        color: #cd4200 !important;
+      }
+      .active.section {
+        font-weight: 700;
+      }
+    }
   }
 
   .columns-view {
@@ -2359,8 +2382,50 @@ main {
       background: #fff;
     }
 
+    .header-bg {
+      display: none;
+    }
+
+    .slider-wrapper, .extra-header {
+      display: none;
+    }
+
+    .header-image-big {
+      height: auto !important;
+      padding: 40px 10px 10px 10px !important;
+    }
+
+    .logo-nav-wrapper .logoImage.tablet,
+    .logo-nav-wrapper .logoImageSm.tablet {
+      display: none !important;
+    }
+
+    .sticky-outer-wrapper.active .sticky-inner-wrapper .logo .logoImageSm {
+      height: 80px !important;
+    }
+
+    .logoImage {
+      @media (max-width: 600px) {
+        height: 80px !important;
+      }
+    }
+
+    .sticky-outer-wrapper .logo {
+      display: flex;
+      margin: 1rem 0 !important;
+    }
+
+    .sticky-outer-wrapper .logo-nav-wrapper .logo:after,
+    .sticky-outer-wrapper.active .logo-nav-wrapper .logo:after {
+      content: 'Forest Information System for Europe';
+      color: #058373;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 1.5rem 0 0 1rem;
+      max-width: 210px;
+    }
+
     .header-bg.contentpage,
-    .ui.breadcrumbs,
     .placeholder.header-image {
       display: none !important;
     }
@@ -2368,7 +2433,7 @@ main {
     .header-image-wrapper {
       height: auto;
       align-items: start;
-      padding: 0 10px;
+      padding: 40px 10px !important;
 
       .header-image {
         width: 756px;
@@ -2380,30 +2445,26 @@ main {
       }
 
       .header-image-content {
-        h1 {
-          margin: 0 !important;
-          color: #000 !important;
-          text-align: left !important;
+        h1, p {
+          margin: 0;
+          color: #464b0b;
+          text-align: left;
         }
+      }
 
-        p {
-          margin: 0 !important;
-          color: #000 !important;
-          text-align: left !important;
-        }
+      .header-meta-data {
+        display: none;
       }
     }
 
     .sticky-outer-wrapper,
     .sticky-inner-wrapper {
       position: relative !important;
-      width: 100% !important;
+      width: auto !important;
       height: auto !important;
-      background: transparent;
-      box-shadow: none;
-      @media (max-width: 1200px) {
-        top: 75px !important;
-      }
+      background: transparent !important;
+      box-shadow: none !important;
+      transform: none !important;
     }
 
     .sticky-inner-wrapper {
@@ -2420,10 +2481,33 @@ main {
         }
       }
     }
-  }
+
+    .header-navigation-lead {
+      display: none;
+    }
+
+    .lead-mobile-nav {
+
+      .lead-nav-item {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        overflow: initial;
+        text-overflow: initial;
+        padding: 0;
+        width: auto !important;
+        font-size: 20px;
+
+        .lead-nav-icon {
+          display: none;
+        }
+      }
+    }
+
+   }
 
   .footerWrapper {
-    display: none !important;
+    display: none;
   }
 
   .react-grid-layout {
@@ -2459,6 +2543,10 @@ main {
     }
   }
 
+  .homepage-button {
+    display: none;
+  }
+
   .thematic-areas {
     width: 756px !important;
     padding: 0 !important;
@@ -2466,12 +2554,118 @@ main {
     background: #fff !important;
   }
 
-  .svg-container {
-    width: 100%;
+  .simple-data-table {
+    display: block;
+    padding: 0 1em;
+    overflow-x: visible;
+    margin-left: -30px;
+  }
+
+  .image, img {
+    width: 80% !important;
+    height: auto;
+  }
+
+  .ui.table {
+    thead, thead th {
+      background-color: transparent !important;
+      color: #000000 !important;
+    }
+
+    tr {
+      th {
+        border-bottom: none !important;
+
+        &:not(:first-child) {
+         border-right: 1px solid #e8e8e8 !important;
+        }
+
+        &.right:last-child {
+        border-right: none !important;
+        }
+
+      }
+
+      td {
+        border-top: 1px solid #e8e8e8 !important;
+        border-bottom: none !important;
+
+        &:not(:first-child) {
+          border-right: 1px solid #e8e8e8 !important;
+        }
+
+        &.right:last-child {
+          border-right: none !important;
+        }
+      }
+    }
+  }
+
+  #page-document {
+    .styled-with-bg {
+      background-color: transparent !important;
+      .styled-columnsBlock {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .simple-data-table .colored-table table tbody:after {
+    display: none;
+  }
+
+  .drop-shadow-block,
+  .drop-shadow-tile {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) .content-area main {
+    padding: 1rem 40px !important;
+  }
+
+  .margin-block-10 {
+    margin: 0 !important;
+  }
+
+  .padding-block-10 {
+    padding: 0 !important;
   }
 
   .print-button {
     display: none;
+  }
+
+  .embed-visualization {
+    page-break-inside: avoid !important;
+    //page-break-after: always !important;
+
+    .svg-container {
+      display: block;
+      width: 100%;
+    }
+
+    .download-button {
+      display: none;
+    }
+  }
+
+  .connected-chart-wrapper {
+    overflow: initial !important;
+  }
+
+  .privacy-protection-wrapper {
+    min-height: 100% !important;
+    width: 100% !important;
+  }
+
+  .columns-view > .grid.column-grid > .column.column-blocks-wrapper {
+    display: block !important;
+  }
+
+  .columns-view > .grid.column-grid > .column.column-blocks-wrapper > div {
+    display: block !important;
   }
 }
 

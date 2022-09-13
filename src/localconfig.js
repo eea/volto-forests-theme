@@ -245,5 +245,8 @@ export function applyConfig(config) {
   //   'templated_country_factsheet',
   //   'basic_data_factsheet',
   // ];
+
+  Object.preventExtensions(config);
+
   return config;
 }
