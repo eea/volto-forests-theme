@@ -153,6 +153,8 @@ export function applyConfig(config) {
     ...(config.viewlets || []),
   ];
 
+  Object.preventExtensions(config);
+
   config.settings.plotlyCustomColors = [
     {
       title: 'Forest Default',
