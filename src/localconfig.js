@@ -149,8 +149,8 @@ export function applyConfig(config) {
   };
 
   config.viewlets = [
-    { path: '/', component: ForestMetadata },
     ...(config.viewlets || []),
+    { path: '/', component: ForestMetadata },
   ];
 
   config.settings.plotlyCustomColors = [
@@ -245,8 +245,6 @@ export function applyConfig(config) {
   //   'templated_country_factsheet',
   //   'basic_data_factsheet',
   // ];
-
-  Object.preventExtensions(config);
 
   return config;
 }
