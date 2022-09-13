@@ -58,6 +58,7 @@ export default function applyConfig(config) {
     },
   };
 
+  config.viewlets = config.viewlets || [];
   config.addonReducers = { ...config.addonReducers, ...reducers };
 
   // export const portlets = {

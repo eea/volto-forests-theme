@@ -149,7 +149,7 @@ export function applyConfig(config) {
   };
 
   config.viewlets = [
-    ...(config.viewlets || []),
+    ...config.viewlets,
     { path: '/', component: ForestMetadata },
   ];
 
