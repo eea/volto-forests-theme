@@ -2562,7 +2562,6 @@ main {
   }
 
   .image, img {
-    width: 80% !important;
     height: auto;
   }
 
@@ -2608,6 +2607,24 @@ main {
         padding: 0 !important;
       }
     }
+  }
+
+  .styled-columnsBlock {
+    padding: 0 !important;
+  }
+
+  .styled-group {
+    margin: 0 !important;
+  }
+
+  .block, image {
+   max-width: 100% !important;
+   margin: 0 !important;
+   padding: 0 !important;
+  }
+  
+  .styled img.bg {
+    display: none;
   }
 
   .simple-data-table .colored-table table tbody:after {
