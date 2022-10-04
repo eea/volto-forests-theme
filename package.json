@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-forests-theme",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "description": "@eeacms/volto-forests-theme: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -39,7 +39,8 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "cypress": "10.7.0"
+    "cypress": "10.7.0",
+    "md5": "^2.3.0"
   },
   "scripts": {
     "release": "release-it",

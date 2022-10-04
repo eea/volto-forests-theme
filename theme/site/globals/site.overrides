@@ -1562,7 +1562,6 @@ span.float-right {
 .block-container,
 .columns-view {
   h5 {
-    color: @darkBrown;
     font-weight: bold;
     text-transform: uppercase;
   }
