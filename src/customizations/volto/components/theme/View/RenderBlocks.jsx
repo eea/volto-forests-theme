@@ -7,8 +7,8 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
-import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
+import StyleWrapper from '../../manage/Blocks/Block/StyleWrapper';
 
 const messages = defineMessages({
   unknownBlock: {
