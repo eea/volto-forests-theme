@@ -3,7 +3,7 @@ import cx from 'classnames';
 import config from '@plone/volto/registry';
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import { Card, Message } from 'semantic-ui-react';
-import { serializeNodes } from 'volto-slate/editor/render';
+import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { compose } from 'redux';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { withRouter } from 'react-router-dom';
