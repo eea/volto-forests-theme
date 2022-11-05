@@ -150,8 +150,6 @@ class DisplaySelect extends Component {
 
   componentDidMount() {
     this.props.getSchema(this.props.type);
-    console.log(config?.views?.layoutViewsNamesMapping, 'config');
-    console.log(this.props.layout, 'config');
   }
 
   /**
@@ -198,7 +196,7 @@ class DisplaySelect extends Component {
   render() {
     const { selectedOption } = this.state;
     const Select = this.props.reactSelect.default;
-    const layoutsNames = config.views.layoutViewsNamesMapping;
+    // const layoutsNames = config.views.layoutViewsNamesMapping;
     const layoutOptions = this.props.layouts
       .filter(
         (layout) =>
