@@ -1,11 +1,6 @@
+import config from '@plone/volto/registry';
+
 export default {
-  album_view: 'Album view',
-  event_listing: 'Event listing',
-  full_view: 'All content',
-  listing_view: 'Listing view',
-  summary_view: 'Summary view',
-  tabular_view: 'Tabular view',
-  layout_view: 'Mosaic layout',
-  document_view: 'Document view',
+  ...config.views.layoutViewsNamesMapping,
   country_tab_view: 'Country page',
 };
