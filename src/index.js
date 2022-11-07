@@ -130,6 +130,5 @@ export default function applyConfig(config) {
   //   { cssClass: 'green-block-text', label: 'Green Text' },
   //   { cssClass: 'underline-block-text', label: 'Underline Text' },
   // ];
-
   return config;
 }

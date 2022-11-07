@@ -1,5 +1,6 @@
-import layouts from '@plone/volto/constants/Layouts';
+import config from '@plone/volto/registry';
+
 export default {
-  ...layouts,
+  ...config.views.layoutViewsNamesMapping,
   country_tab_view: 'Country page',
 };
