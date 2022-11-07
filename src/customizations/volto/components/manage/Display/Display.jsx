@@ -196,7 +196,6 @@ class DisplaySelect extends Component {
   render() {
     const { selectedOption } = this.state;
     const Select = this.props.reactSelect.default;
-    // const layoutsNames = config.views.layoutViewsNamesMapping;
     const layoutOptions = this.props.layouts
       .filter(
         (layout) =>
