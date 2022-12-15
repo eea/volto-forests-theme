@@ -58,5 +58,6 @@
     "lint:fix": "../../../node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx}'",
     "cypress:run": "../../../node_modules/cypress/bin/cypress run",
     "cypress:open": "../../../node_modules/cypress/bin/cypress open"
-  }
+  },
+  "packageManager": "yarn@1.18.0"
 }
