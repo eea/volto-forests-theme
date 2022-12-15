@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-forests-theme",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "@eeacms/volto-forests-theme: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -58,5 +58,6 @@
     "lint:fix": "../../../node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx}'",
     "cypress:run": "../../../node_modules/cypress/bin/cypress run",
     "cypress:open": "../../../node_modules/cypress/bin/cypress open"
-  }
+  },
+  "packageManager": "yarn@1.18.0"
 }
