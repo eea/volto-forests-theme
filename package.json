@@ -45,8 +45,8 @@
     "md5": "^2.3.0",
     "@plone/scripts": "*",
     "cypress-fail-fast": "^5.0.1",
-    "husky": "*",
-    "lint-staged": "*"
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
