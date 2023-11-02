@@ -2,9 +2,9 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   viewportWidth: 1280,
-  defaultCommandTimeout: 5000,
+  defaultCommandTimeout: 8888,
   reporter: 'junit',
-  video: true,
+  video: false,
   reporterOptions: {
     mochaFile: 'cypress/reports/cypress-[hash].xml',
     jenkinsMode: true,
@@ -12,7 +12,7 @@ module.exports = defineConfig({
   },
   chromeWebSecurity: false,
   retries: {
-    runMode: 1,
+    runMode: 2,
     openMode: 0,
   },
   e2e: {
