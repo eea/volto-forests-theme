@@ -137,7 +137,7 @@ const dataProviderSchema = {
           See{' '}
           <a
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             href="https://github.com/d3/d3-format"
           >
             D3 format documentation

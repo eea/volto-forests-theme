@@ -142,7 +142,7 @@ const Footer = ({
             </ul>
             <p className="release-info">
               Software version{' '}
-              <a rel="noreferrer" target="_blank" href={version_url}>
+              <a rel="noopener" target="_blank" href={version_url}>
                 {version}
               </a>
               , last updated {published_at}
@@ -161,7 +161,7 @@ const Footer = ({
               <b>Partners</b>
               <div className="footerLogoWrapper">
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://ec.europa.eu/"
                   title="European Commission"
@@ -183,7 +183,7 @@ const Footer = ({
                   />
                 </a>
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://www.eea.europa.eu/"
                   title="European Environment Agency"
@@ -210,7 +210,7 @@ const Footer = ({
               <b>Other European Information Systems</b>
               <div className="footerLogoWrapper">
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://climate-adapt.eea.europa.eu/"
                   title="Climate Adapt"
@@ -232,7 +232,7 @@ const Footer = ({
                   />
                 </a>
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://biodiversity.europa.eu/"
                   title="Biodiversity Information Sistems for Europe"
@@ -255,7 +255,7 @@ const Footer = ({
                 </a>
 
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://water.europa.eu/"
                   title="Water Information System for Europe"
@@ -278,7 +278,7 @@ const Footer = ({
                 </a>
 
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://land.copernicus.eu/"
                   title="Land Monitoring Service"
@@ -300,7 +300,7 @@ const Footer = ({
                   />
                 </a>
                 <a
-                  rel="noreferrer"
+                  rel="noopener"
                   target="_blank"
                   href="https://climate.copernicus.eu/"
                   title="Climate Change Service"

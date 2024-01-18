@@ -211,7 +211,7 @@ const PopupRow = ({
                   className="popup-logo-container"
                   href={popupSchema.url}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener"
                 >
                   <img
                     src={popupSchema.logo}
@@ -243,7 +243,7 @@ const PopupRow = ({
                     <a
                       href={popupSchema.url}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener"
                       className="popup-url"
                     >
                       {popupSchema.url}
