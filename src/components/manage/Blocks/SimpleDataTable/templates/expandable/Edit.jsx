@@ -26,10 +26,9 @@ class Edit extends Component {
 
     if (!provider_data) return schema;
 
-    const choices = Array.from(Object.keys(provider_data).sort()).map((n) => [
-      n,
-      n,
-    ]);
+    const choices = Array.from(
+      Object.keys(provider_data).sort((a, b) => a.localeCompare(b)),
+    ).map((n) => [n, n]);
 
     schema.properties.columns.schema.properties.column.choices = choices;
     schema.properties.columns.schema.properties.column_link.choices = choices;
@@ -52,11 +51,15 @@ class Edit extends Component {
         : '';
 
     const mapChoices = map_provider_data
-      ? Array.from(Object.keys(map_provider_data).sort()).map((n) => [n, n])
+      ? Array.from(
+          Object.keys(map_provider_data).sort((a, b) => a.localeCompare(b)),
+        ).map((n) => [n, n])
       : [];
 
     const tableChoices = table_provider_data
-      ? Array.from(Object.keys(table_provider_data).sort()).map((n) => [n, n])
+      ? Array.from(
+          Object.keys(table_provider_data).sort((a, b) => a.localeCompare(b)),
+        ).map((n) => [n, n])
       : [];
     schema.properties.popup_data_query.choices = choices;
 
