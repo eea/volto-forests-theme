@@ -63,11 +63,8 @@ const PopupRow = ({
   const [popupSchema, setPopupSchema] = React.useState(defaultSchema);
   const type = tableData['@type'];
 
-  const {
-    popup_table_provider_url,
-    popup_map_provider_url,
-    popup_data_query,
-  } = tableData;
+  const { popup_table_provider_url, popup_map_provider_url, popup_data_query } =
+    tableData;
 
   const queryVal = rowData[popup_data_query];
 

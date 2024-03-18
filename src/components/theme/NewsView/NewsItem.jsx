@@ -20,9 +20,8 @@ const NewsItem = ({ item }) => {
       month: 'long',
       year: 'numeric',
     });
-    const [{ value: da }, , { value: mo }, , { value: ye }] = dtf.formatToParts(
-      date,
-    );
+    const [{ value: da }, , { value: mo }, , { value: ye }] =
+      dtf.formatToParts(date);
     return `${da} ${mo} ${ye}`;
   };
 

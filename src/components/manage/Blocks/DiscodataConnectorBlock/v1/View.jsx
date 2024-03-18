@@ -134,10 +134,9 @@ const View = (props) => {
                       dataProvider,
                       props.editMode,
                     )}
-                    {Object.entries(
-                      dataProvider.children,
-                    ).map(([cildrenKey, children]) =>
-                      providerView(cildrenKey, children, props.editMode),
+                    {Object.entries(dataProvider.children).map(
+                      ([cildrenKey, children]) =>
+                        providerView(cildrenKey, children, props.editMode),
                     )}
                   </div>
                 );

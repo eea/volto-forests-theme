@@ -72,8 +72,10 @@ class Edit extends Component {
     schema.properties.defaultSortColumn.choices = choices;
 
     //set choices for the popup table columns
-    schema.properties.popupTableColumns.schema.properties.column.choices = tableChoices;
-    schema.properties.popupTableColumns.schema.properties.column_link.choices = tableChoices;
+    schema.properties.popupTableColumns.schema.properties.column.choices =
+      tableChoices;
+    schema.properties.popupTableColumns.schema.properties.column_link.choices =
+      tableChoices;
 
     //set choices for the popup map
     schema.properties.popupLong.choices = mapChoices;
@@ -110,11 +112,8 @@ class Edit extends Component {
 
 export default compose(
   connectToMultipleProviders((props) => {
-    const {
-      provider_url,
-      popup_map_provider_url,
-      popup_table_provider_url,
-    } = props.data;
+    const { provider_url, popup_map_provider_url, popup_table_provider_url } =
+      props.data;
     const providers = [
       {
         provider_url: provider_url,
