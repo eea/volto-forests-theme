@@ -111,7 +111,7 @@ const getColumnSchema = (schema, child) => {
   };
 };
 
-export default () => ({
+const expandableSchema = () => ({
   title: 'Expandable datatable',
   fieldsets: [
     {
@@ -207,3 +207,5 @@ export default () => ({
   },
   required: [],
 });
+
+export default expandableSchema;

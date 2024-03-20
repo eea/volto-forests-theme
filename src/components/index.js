@@ -8,4 +8,4 @@
  *   Footer,
  * };
  */
-export CountryView from '@eeacms/volto-forests-theme/components/theme/CountryView/CountryView';
+export { default as CountryView } from '@eeacms/volto-forests-theme/components/theme/CountryView/CountryView';

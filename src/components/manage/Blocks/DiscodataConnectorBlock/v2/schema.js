@@ -158,7 +158,7 @@ const SourceSchema = {
   required: ['source'],
 };
 
-export default (props) => ({
+const getSchema = (props) => ({
   title: 'Discodata connector block',
   fieldsets: [
     {
@@ -202,3 +202,5 @@ export default (props) => ({
   },
   required: [],
 });
+
+export default getSchema;
