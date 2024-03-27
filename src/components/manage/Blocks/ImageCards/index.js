@@ -1,6 +1,6 @@
 import Cards from './View';
 
-export default (config) => {
+const applyConfig = (config) => {
   if (
     config.blocks.blocksConfig.imagecards &&
     config.blocks.blocksConfig.imagecards.blockRenderers
@@ -17,3 +17,5 @@ export default (config) => {
   }
   return config;
 };
+
+export default applyConfig;

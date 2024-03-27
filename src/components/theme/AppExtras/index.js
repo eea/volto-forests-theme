@@ -1,6 +1,6 @@
 import CopyPaste from './CopyPaste';
 
-export default (config) => {
+const applyConfig = (config) => {
   config.settings.appExtras = [
     ...(config.settings.appExtras || []),
     {
@@ -11,3 +11,5 @@ export default (config) => {
 
   return config;
 };
+
+export default applyConfig;

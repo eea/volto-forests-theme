@@ -4,7 +4,7 @@ import {
   ExpandableView,
 } from './templates/expandable';
 
-export default (config) => {
+const applyConfig = (config) => {
   config.blocks.blocksConfig.simpleDataConnectedTable = {
     ...config.blocks.blocksConfig.simpleDataConnectedTable,
     templates: {
@@ -19,3 +19,5 @@ export default (config) => {
   };
   return config;
 };
+
+export default applyConfig;

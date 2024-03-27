@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { connectToMultipleProviders } from '@eeacms/volto-datablocks/hocs';
 import { DataConnectedValue } from '@eeacms/volto-datablocks/Utils';
-import { Sources } from '@eeacms/volto-datablocks/Utils';
+import { Sources } from '@eeacms/volto-embed/Toolbar';
 
 const providerView = (dataProviderKey, dataProvider, editMode) => {
   return (
@@ -134,10 +134,9 @@ const View = (props) => {
                       dataProvider,
                       props.editMode,
                     )}
-                    {Object.entries(
-                      dataProvider.children,
-                    ).map(([cildrenKey, children]) =>
-                      providerView(cildrenKey, children, props.editMode),
+                    {Object.entries(dataProvider.children).map(
+                      ([cildrenKey, children]) =>
+                        providerView(cildrenKey, children, props.editMode),
                     )}
                   </div>
                 );

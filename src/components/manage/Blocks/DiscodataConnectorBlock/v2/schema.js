@@ -4,9 +4,9 @@ const dataProviderSchemaExtender = (schema = {}, child = {}, props) => {
   const title = child.title || child.url;
   if (!title || !props.providers_data) return schema;
   const provider_data = props.providers_data[title] || {};
-  const columns = Array.from(
-    new Set(Object.keys(provider_data || {})),
-  ).map((n) => [n, n]);
+  const columns = Array.from(new Set(Object.keys(provider_data || {}))).map(
+    (n) => [n, n],
+  );
   const rows =
     child.column && provider_data[child.column]
       ? provider_data[child.column].map((value, index) => [index, value])
@@ -158,7 +158,7 @@ const SourceSchema = {
   required: ['source'],
 };
 
-export default (props) => ({
+const getSchema = (props) => ({
   title: 'Discodata connector block',
   fieldsets: [
     {
@@ -202,3 +202,5 @@ export default (props) => ({
   },
   required: [],
 });
+
+export default getSchema;

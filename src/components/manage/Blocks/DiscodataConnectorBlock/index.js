@@ -4,7 +4,7 @@ import DiscodataConnectorBlockView from './v1/View';
 
 // TODO: Move this to volto-forests-theme
 
-export default (config) => {
+const applyConfig = (config) => {
   config.blocks.blocksConfig.discodata_connector_block = {
     id: 'discodata_connector_block',
     title: 'Discodata connector block',
@@ -22,3 +22,5 @@ export default (config) => {
   };
   return config;
 };
+
+export default applyConfig;
